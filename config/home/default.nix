@@ -1,19 +1,14 @@
-{ ... }:
-
 {
   imports = [
-    ./ags.nix
     ./alacritty.nix
     ./bash.nix
+    ./devtools.nix
     ./gtk-qt.nix
+    ./gui.nix
     ./hyprland.nix
-#    ./kdeConnect.nix
-#    ./nautilus.nix
-    ./neovim.nix
-    ./packages.nix
-    ./swaylock.nix
-
-    # Place Home Files Like Pictures
-    ./files.nix
+    ./hyprstuff.nix
+    ./rnnoise.nix
+    ./spicetify.nix
+    ./suckless.nix
   ];
 }

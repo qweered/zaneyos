@@ -1,46 +1,28 @@
-{ inputs, config, username, host, ... }:
-let 
-  inherit (import ./../hosts/${host}/options.nix)
-    gitUsername gitEmail version;
-in {
-  home.username = "${username}";
-  home.homeDirectory = "/home/${username}";
+{ cfg, inputs, ... }:
 
+{
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-    inputs.hyprland.homeManagerModules.default
-    inputs.nur.hmModules.nur
+    inputs.nvf.homeManagerModules.default
+    inputs.spicetify-nix.homeManagerModules.default
     ./../config/home
   ];
 
+  programs.home-manager.enable = true;
+
+  home = {
+    username = cfg.username;
+    homeDirectory = "/home/${cfg.username}";
+    stateVersion = cfg.version;
+  };
+
   news.display = "show";
 
-  programs.git = {
-    enable = true;
-#    extraConfig = {
-#          color.ui = true;
-#          core.editor = "nvim";
-#          credential.helper = "store";
-#          push.autoSetupRemote = true;
-#    };
-    userName = "${gitUsername}";
-    userEmail = "${gitEmail}";
-  };
-
   xdg = {
+    #    terminal-exec.enable = true;
+    #    terminal-exec.package = pkgs.alacritty; # TODO: only in system now
     userDirs = {
-        enable = true;
-        createDirectories = true;
+      enable = true;
+      createDirectories = true;
     };
   };
-
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
-  };
-
-  programs.home-manager.enable = true;
-  home.stateVersion = version;
 }

@@ -1,17 +1,13 @@
-{ pkgs, config, username, host, ... }:
+{ pkgs, cfg, ... }:
 
-let
-  inherit (import ./../hosts/${host}/options.nix) theShell;
-in {
+{
   users.users = {
-    "${username}" = {
+    "${cfg.username}" = {
       isNormalUser = true;
-      initialPassword = "${username}";
+      initialPassword = "${cfg.username}";
       # description = "${gitUsername}"; TODO: setup description
       extraGroups = [ "networkmanager" "wheel" "libvirtd" "audio" "video" ];
-      shell = pkgs.${theShell};
+      shell = pkgs.bash;
     };
-
-    # Add users here
   };
 }
