@@ -3,6 +3,7 @@
     ./alacritty.nix
     ./bash.nix
     ./devtools.nix
+    ./easyeffects.nix
     ./gtk-qt.nix
     ./gui.nix
     ./hyprland.nix

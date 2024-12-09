@@ -39,13 +39,22 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nix-mineral = {
       url = "github:cynicsketch/nix-mineral";
       flake = false;
     };
+    easyeffects-presets = {
+      url = "github:jackhack96/easyeffects-presets";
+      flake = false;
+    };
+    easyeffects-presets-loudness-equalizer = {
+      url = "github:digitalone1/easyeffects-presets";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ flake-parts, chaotic, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ flake-parts, chaotic, nixpkgs, home-manager, easyeffects-presets-loudness-equalizer, easyeffects-presets, ... }:
     let
       host = "hyprnix";
       cfg = import ./hosts/${host}/options.nix;

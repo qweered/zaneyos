@@ -74,6 +74,38 @@
         "type": "github"
       }
     },
+    "easyeffects-presets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715528396,
+        "narHash": "sha256-t+9E1l0ejRCmIUu8dK3e+0OX4lslRm1AN7yHUfd9frg=",
+        "owner": "jackhack96",
+        "repo": "easyeffects-presets",
+        "rev": "bd175d6f110e4053e3d0f4a0affd445fa5ecb814",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jackhack96",
+        "repo": "easyeffects-presets",
+        "type": "github"
+      }
+    },
+    "easyeffects-presets-loudness-equalizer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1720513537,
+        "narHash": "sha256-U9SSyHOOs8GsV6GBEqAqlBAuYONeh/4nkK8HurkEfWk=",
+        "owner": "digitalone1",
+        "repo": "easyeffects-presets",
+        "rev": "32d0f416e7867ccffdab16c7fe396f2522d04b2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "digitalone1",
+        "repo": "easyeffects-presets",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -2857,6 +2889,8 @@
       "inputs": {
         "ayugram-desktop": "ayugram-desktop",
         "chaotic": "chaotic",
+        "easyeffects-presets": "easyeffects-presets",
+        "easyeffects-presets-loudness-equalizer": "easyeffects-presets-loudness-equalizer",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_2",
         "hypridle": "hypridle",

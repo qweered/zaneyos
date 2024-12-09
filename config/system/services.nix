@@ -8,6 +8,7 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gnome-keyring.enableGnomeKeyring = true;
 
+
   # TODO: setup gpg, vvirtualisation
   # TODO: replace sudo with doas
 

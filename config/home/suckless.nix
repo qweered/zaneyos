@@ -1,4 +1,4 @@
-{ cfg, pkgs, ... }:
+{ cfg, pkgs, inputs, ... }:
 
 {
   # TODO: configure https://tealdeer-rs.github.io/tealdeer/config_style.html
@@ -101,11 +101,14 @@
     # TODO: configure
     eza # over exa, lsd
     wget
-    # overskride
     # ranger lf nnn
     # discordchatexporter-cli;
   ];
 
+
+
   # home.file.".emoji".source = ./files/emoji;
   # home.file.".face.icon".source = ./files/face.jpg; # For SDDM
+
+
 }
