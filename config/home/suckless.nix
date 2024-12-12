@@ -1,4 +1,4 @@
-{ cfg, pkgs, inputs, ... }:
+{ cfg, pkgs, ... }:
 
 {
   # TODO: configure https://tealdeer-rs.github.io/tealdeer/config_style.html

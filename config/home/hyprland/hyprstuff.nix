@@ -1,4 +1,5 @@
 { inputs, pkgs, lib, config, ... }:
+
 let
   suspendScript = pkgs.writeShellScript "suspend-script" ''
     # check if any player has status "Playing"

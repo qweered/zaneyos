@@ -4,7 +4,7 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     # nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
@@ -12,6 +12,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ucodenix.url = "github:e-tho/ucodenix";
 
     hyprland.url = "github:hyprwm/Hyprland";
     hypridle = {
@@ -54,7 +55,7 @@
     };
   };
 
-  outputs = inputs@{ flake-parts, chaotic, nixpkgs, home-manager, easyeffects-presets-loudness-equalizer, easyeffects-presets, ... }:
+  outputs = inputs@{ flake-parts, nixpkgs, ... }:
     let
       host = "hyprnix";
       cfg = import ./hosts/${host}/options.nix;
@@ -75,17 +76,18 @@
             specialArgs = {
               inherit inputs;
               inherit cfg;
-              #              pkgs-stable = import nixpkgs-stable {
-              #                config.allowUnfree = true;
-              #              };
-              #              pkgs-master = import nixpkgs-master {
-              #                config.allowUnfree = true;
-              #              };
+              # pkgs-stable = import nixpkgs-stable {
+              #  config.allowUnfree = true;
+              # };
+              # pkgs-master = import nixpkgs-master {
+              #  config.allowUnfree = true;
+              # };
             };
             modules = [
               ./config/system
-              home-manager.nixosModules.home-manager
-              chaotic.nixosModules.default
+              inputs.home-manager.nixosModules.home-manager
+              inputs.chaotic.nixosModules.default
+              inputs.ucodenix.nixosModules.default
               {
                 home-manager = {
                   extraSpecialArgs = {

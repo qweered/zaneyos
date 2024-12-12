@@ -60,11 +60,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1733677156,
-        "narHash": "sha256-TSgU+M0Zm0PMnb6J/gOovC63wtqSbhgdmN7CucDO0oU=",
+        "lastModified": 1733839340,
+        "narHash": "sha256-aaA0XSnlqpjjMdJoQFc8knMStn3/kXxVLs3z2erhmNI=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "354bcbbadbd00f5bda884bb2c119b7de63b197e9",
+        "rev": "d3a3a98545d2ba55affa97e189e8f98b43e9da70",
         "type": "github"
       },
       "original": {
@@ -256,11 +256,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733484277,
-        "narHash": "sha256-i5ay20XsvpW91N4URET/nOc0VQWOAd4c4vbqYtcH8Rc=",
+        "lastModified": 1733873195,
+        "narHash": "sha256-dTosiZ3sZ/NKoLKQ++v8nZdEHya0eTNEsaizNp+MUPM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d00c6f6d0ad16d598bf7e2956f52c1d9d5de3c3a",
+        "rev": "f26aa4b76fb7606127032d33ac73d7d507d82758",
         "type": "github"
       },
       "original": {
@@ -403,11 +403,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1733683959,
-        "narHash": "sha256-+tHGw4fimhZ9LtGUTpXV8V1EH5AWY6FC/3u5OmZ4I5A=",
+        "lastModified": 1733864105,
+        "narHash": "sha256-WjyOigIoneQijFAHxpu2xHCRdl4PcVctx0c1miPBBIA=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "0a27af8cd190315c1f13363ebd11e83d30455d48",
+        "rev": "4d05677e8d398b6fa144eae7a98ad4f2a54acb92",
         "type": "github"
       },
       "original": {
@@ -691,11 +691,11 @@
     "nix-mineral": {
       "flake": false,
       "locked": {
-        "lastModified": 1728083548,
-        "narHash": "sha256-JlhuHYLWZgk80ug1ldt4JEsOqfNbreoTYhXxBnQqhHM=",
+        "lastModified": 1733790671,
+        "narHash": "sha256-/fE+uJlA1w9Ft3IWV1GC17sKLCaFckIT28vRQK04F50=",
         "owner": "cynicsketch",
         "repo": "nix-mineral",
-        "rev": "6c6e7886925e81b39e9d85c74d8c0b1c91889b96",
+        "rev": "f4e6437cb6fad1fdea58cfb9a77cd84fa27ff11f",
         "type": "github"
       },
       "original": {
@@ -762,11 +762,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1733581040,
-        "narHash": "sha256-Qn3nPMSopRQJgmvHzVqPcE3I03zJyl8cSbgnnltfFDY=",
+        "lastModified": 1733759999,
+        "narHash": "sha256-463SNPWmz46iLzJKRzO3Q2b0Aurff3U1n0nYItxq7jU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "22c3f2cf41a0e70184334a958e6b124fb0ce3e01",
+        "rev": "a73246e2eef4c6ed172979932bc80e1404ba2d56",
         "type": "github"
       },
       "original": {
@@ -794,11 +794,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1733581040,
-        "narHash": "sha256-Qn3nPMSopRQJgmvHzVqPcE3I03zJyl8cSbgnnltfFDY=",
+        "lastModified": 1733759999,
+        "narHash": "sha256-463SNPWmz46iLzJKRzO3Q2b0Aurff3U1n0nYItxq7jU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "22c3f2cf41a0e70184334a958e6b124fb0ce3e01",
+        "rev": "a73246e2eef4c6ed172979932bc80e1404ba2d56",
         "type": "github"
       },
       "original": {
@@ -959,6 +959,7 @@
         "plugin-tokyonight": "plugin-tokyonight",
         "plugin-trouble": "plugin-trouble",
         "plugin-ts-error-translator": "plugin-ts-error-translator",
+        "plugin-typst-preview-nvim": "plugin-typst-preview-nvim",
         "plugin-vim-dirtytalk": "plugin-vim-dirtytalk",
         "plugin-vim-fugitive": "plugin-vim-fugitive",
         "plugin-vim-illuminate": "plugin-vim-illuminate",
@@ -970,11 +971,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1733723108,
-        "narHash": "sha256-FoXp5PYqvwA256jn7cF/dBrU5T2bPf0q9oO2A6vmwo0=",
+        "lastModified": 1733864451,
+        "narHash": "sha256-gWigNPzzoi2i4sbolxPAAISTWCtNL09Mok5uRVo21kg=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "fca55e1db19eccc37c7c286cff024ed5b6f27f2d",
+        "rev": "73660af2e36e9881c6cf7d82600950785b4cd51d",
         "type": "github"
       },
       "original": {
@@ -2729,6 +2730,22 @@
         "type": "github"
       }
     },
+    "plugin-typst-preview-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733120663,
+        "narHash": "sha256-uYMZ2PONiiI3UDvCgNvyy4+jhzmUDbAyxX0phKxELXw=",
+        "owner": "chomosuke",
+        "repo": "typst-preview.nvim",
+        "rev": "0cb5f5627312f50ce089f785ec42b55a85f30ce7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chomosuke",
+        "repo": "typst-preview.nvim",
+        "type": "github"
+      }
+    },
     "plugin-vim-dirtytalk": {
       "flake": false,
       "locked": {
@@ -2899,7 +2916,8 @@
         "nix-mineral": "nix-mineral",
         "nixpkgs": "nixpkgs_4",
         "nvf": "nvf",
-        "spicetify-nix": "spicetify-nix"
+        "spicetify-nix": "spicetify-nix",
+        "ucodenix": "ucodenix"
       }
     },
     "rust-overlay": {
@@ -2932,11 +2950,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733717814,
-        "narHash": "sha256-/io+y0T0V7rDWnticOP2b5/wMFFBObP+NPw0pAPNEkQ=",
+        "lastModified": 1733890649,
+        "narHash": "sha256-hHh4lrCNK7PSj7pnIu17NPGjfq+cVzgU0Qg8G0FcAaM=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "577b6a4e513c9a8d987fb5d331a19976b391d48e",
+        "rev": "b4389ffe0af645713baf1a16a0fa69bea9c08a34",
         "type": "github"
       },
       "original": {
@@ -3017,6 +3035,21 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "ucodenix": {
+      "locked": {
+        "lastModified": 1733351763,
+        "narHash": "sha256-0VzlIIE+78t0YptH5lkkrIy8FwM1Z9Hkn75n9RTF5Hc=",
+        "owner": "e-tho",
+        "repo": "ucodenix",
+        "rev": "56c73f68361ae713be920bd221592c381f82fa23",
+        "type": "github"
+      },
+      "original": {
+        "owner": "e-tho",
+        "repo": "ucodenix",
         "type": "github"
       }
     },

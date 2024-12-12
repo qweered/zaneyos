@@ -6,8 +6,7 @@
     ./easyeffects.nix
     ./gtk-qt.nix
     ./gui.nix
-    ./hyprland.nix
-    ./hyprstuff.nix
+    ./hyprland
     ./rnnoise.nix
     ./spicetify.nix
     ./suckless.nix

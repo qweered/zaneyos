@@ -6,7 +6,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  # TODO: configure pipewire for low latency and other https://wiki.nixos.org/wiki/PipeWire
+
+  # TODO: configure pipewire for low latency and high quality https://wiki.nixos.org/wiki/PipeWire
   # All stuff at the bottom needs more research
 
 #    services.pipewire.extraConfig.pipewire-pulse."92-high-quality" = {
