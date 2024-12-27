@@ -1,7 +1,7 @@
 {
   imports = [
     ./alacritty.nix
-    ./bash.nix
+    ./fish.nix
     ./devtools.nix
     ./easyeffects.nix
     ./gtk-qt.nix

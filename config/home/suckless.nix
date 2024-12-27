@@ -1,4 +1,4 @@
-{ cfg, pkgs, ... }:
+{ cfg, inputs, pkgs, ... }:
 
 {
   # TODO: configure https://tealdeer-rs.github.io/tealdeer/config_style.html
@@ -14,6 +14,36 @@
       };
     };
   };
+
+  programs.anyrun = {
+    enable = true;
+
+    config = {
+      plugins = with inputs.anyrun.packages.${pkgs.system}; [
+        applications
+        rink
+        shell
+        symbols
+      ];
+
+      width.fraction = 0.25;
+      y.fraction = 0.3;
+      layer = "overlay";
+      hideIcons = false;
+      hidePluginInfo = true;
+      closeOnClick = true;
+    };
+
+    extraConfigFiles = {
+      "shell.ron".text = ''
+        Config(
+          prefix: ">"
+        )
+      '';
+
+    };
+  };
+
 
   # TODO: configure
   programs.neovide.enable = true;
@@ -69,8 +99,27 @@
     enable = true;
   };
 
-  # TODO: configure, and do i need mpd?
+  #  programs.walker = {
+  #    enable = true;
+  #    runAsService = true;
+  #
+  #    # All options from the config.json can be used here.
+  #    config = {
+  #      search.placeholder = "Example";
+  #      ui.fullscreen = true;
+  #      list = {
+  #        height = 200;
+  #      };
+  #      websearch.prefix = "?";
+  #      switcher.prefix = "/";
+  #    };
+  #  };
+
+  # TODO: configure
   services.playerctld.enable = true;
+  # TODO: configure
+  services.mpd.enable = true;
+
   # TODO: configure
   programs.mpv = {
     enable = true;
@@ -83,10 +132,10 @@
 
   home.packages = with pkgs; [
     # TODO: configure
-    rofi-wayland
-    # TODO: configure
+    wl-clipboard # over wl-clipboard-rs (broken)
+    grim slurp satty # over hyprshot swappy
+    clipse
     dunst # or mako? or other?
-    wl-clipboard
     brightnessctl
     # hyprpolkitagent
     # waypaper & hyprpaper in hm
@@ -101,8 +150,19 @@
     # TODO: configure
     eza # over exa, lsd
     wget
-    # ranger lf nnn
-    # discordchatexporter-cli;
+
+    # Testing
+    hyprpicker
+    activate-linux
+    wluma
+    ripgrep
+    procs # over ps aux
+    bat # over cat
+    duf duff di dfc dfrs gdu dua dust ncdu
+    # waybar? https://github.com/bjesus/wttrbar
+    # zoxide
+    # ranger lf nnn yazi
+    # discordchatexporter-cli
   ];
 
 

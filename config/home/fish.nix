@@ -1,12 +1,11 @@
 { cfg, ... }:
 
 {
-  # TODO: replace with fish
-  programs.bash = {
+  programs.fish = {
     enable = true;
-    enableCompletion = true;
-    initExtra = ''
+    interactiveShellInit = ''
       fastfetch
+      set fish_greeting
     '';
     shellAliases = {
       n-switch = "nh os switch --hostname ${cfg.hostname}";

@@ -1,14 +1,13 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, cfg, ... }:
 
 let
   ayugram-desktop = inputs.ayugram-desktop.packages.${pkgs.system}.ayugram-desktop;
 in
 {
-  # TODO: add to cfg
-  home.sessionVariables.BROWSER = "vivaldi";
+  home.sessionVariables.BROWSER = cfg.browser;
 
   home.packages = with pkgs; [
-    vivaldi
+    (pkgs.${cfg.browser})
     google-chrome
 
     qbittorrent # over deluge, transmission
@@ -19,7 +18,7 @@ in
     wpsoffice # over libreoffice, onlyoffice-desktopeditors
 
     equibop
-    ayugram-desktop
+    ayugram-desktop # TODO: replace with something other, adds 2GB to closure
     teams-for-linux
     zoom-us
   ];

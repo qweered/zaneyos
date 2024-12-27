@@ -5,6 +5,7 @@
     enable = true;
     preset = "Perfect EQ";
   };
+
   home = {
     file = {
       ".config/easyeffects/irs" = {

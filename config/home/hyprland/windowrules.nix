@@ -6,13 +6,20 @@
   wayland.windowManager.hyprland.settings = {
     windowrulev2 =
       let
-        f = regex: "float, class:^(${regex})$";
+        fc = regex: "float, class:^(${regex})$";
+        ft = regex: "float, title:^(${regex})$";
+        fct = regex1: regex2: "float, class:^(${regex1})$, title:^(${regex2})$";
       in
       [
-        (f "xdg-desktop-portal")
-        (f "com.saivert.pwvucontrol")
-        "float, title:^(Picture-in-Picture)$"
-        "float, title:^(Bitwarden - Vivaldi)$"
+        (fc "xdg-desktop-portal")
+        (fc "com.saivert.pwvucontrol")
+        (fc "com.github.wwmm.easyeffects")
+        (fc "clipse")
+
+        (fct "com.ayugram" "Media viewer")
+
+        (ft "Picture-in-Picture")
+        (ft "Bitwarden - Vivaldi")
 
         "suppressevent maximize, class:.*" # ignore maximizing requests from apps
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0" # fix dragging issues with XWayland

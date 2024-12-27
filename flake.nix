@@ -35,7 +35,12 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ayugram-desktop.url = "github:/ayugram-port/ayugram-desktop/release";
+    ayugram-desktop.url = "github:/ayugram-port/ayugram-desktop/release?submodules=1";
+    #    walker.url = "github:abenz1267/walker"; # TODO: binary caches doesn't work and package seems broken
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";

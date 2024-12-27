@@ -2,6 +2,8 @@
   programs.dconf.enable = true;
   programs.fuse.userAllowOther = true; # TODO: what is that
 
+  programs.fish.enable = true;
+
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gnome-keyring.enableGnomeKeyring = true;
 
@@ -12,7 +14,9 @@
   programs.virt-manager.enable = true;
 
   # TODO: setup gpg, snap, flatpack, distrobox, docker?
-  # TODO: replace sudo with doas
+  # https://github.com/gmodena/nix-flatpak
+  # https://github.com/GermanBread/declarative-flatpak
+  # TODO: replace sudo with sudo-rs
 
   # TODO: This is only for AMD processors. See https://github.com/e-tho/ucodenix
   services.ucodenix = {

@@ -10,7 +10,7 @@ in
     ./hyprstuff.nix
     ./windowrules.nix
     #    ./binds.nix
-    #    ./decorations.nix
+    #    ./rise.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -20,6 +20,7 @@ in
 
       exec-once = [
         "dunst"
+        "clipse -listen"
       ];
 
       env = [
@@ -105,7 +106,7 @@ in
       };
 
       misc = {
-        disable_splash_rendering = false;
+        disable_splash_rendering = true;
         force_default_wallpaper = 1;
       };
 
@@ -153,11 +154,20 @@ in
           mvactive = binding "SUPER_ALT" "moveactive";
           mvtows = binding "SUPER_SHIFT" "movetoworkspace";
           arr = [ 1 2 3 4 5 6 7 ];
+          screenshot = pkgs.writeShellScript "screenshot" ''
+            time=$(date +"%Y%m%d_%H%M%S")
+            ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | \
+            ${pkgs.satty}/bin/satty --filename - --fullscreen \
+              --output-filename "~/Pictures/Screenshots/Screenshot_$time.png" \
+              --init-tool brush --copy-command ${pkgs.wl-clipboard}/bin/wl-copy
+          '';
         in
         [
           "SUPER, Return, exec, alacritty"
+          "SUPER, V, exec, alacritty --class clipse -e 'clipse'"
           "SUPER, B, exec, vivaldi"
-          "SUPER_CTRL, RETURN, exec, rofi -show drun"
+          "SUPER_CTRL, RETURN, exec, anyrun"
+          "SUPER, Print, exec, ${screenshot}"
 
           "ALT, Tab, focuscurrentorlast"
           "CTRL_ALT, Delete, exit"
@@ -191,8 +201,6 @@ in
         ",XF86MonBrightnessDown, exec, ${brightnessctl} set  5%-"
         ",XF86AudioRaiseVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
         ",XF86AudioLowerVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-        # ",XF86KbdBrightnessUp,   exec, ${brightnessctl} -d asus::kbd_backlight set +1"
-        # ",XF86KbdBrightnessDown, exec, ${brightnessctl} -d asus::kbd_backlight set  1-"
       ];
 
       bindl = [

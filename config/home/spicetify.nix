@@ -1,4 +1,5 @@
 { inputs, pkgs, ... }:
+
 let
   spicetifyPkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
@@ -23,7 +24,7 @@ in
         betterGenres
         lastfm
         beautifulLyrics
-        oneko
+        # oneko - cat on the screen
       ];
       theme = spicetifyPkgs.themes.catppuccin;
       colorScheme = "mocha";

@@ -2,12 +2,11 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      terminal.shell = "fish"; # TODO: remove?
       window = {
         padding.x = 15;
         padding.y = 15;
         decorations = "none";
-        startup_mode = "Windowed";
-        dynamic_title = true;
         opacity = 0.6;
       };
       cursor = {
@@ -15,9 +14,6 @@
           shape = "Beam";
           blinking = "On";
         };
-      };
-      general = {
-        live_config_reload = true;
       };
       font = {
         normal.family = "JetBrainsMono NFM";

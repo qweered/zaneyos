@@ -4,6 +4,7 @@
   imports = [
     inputs.nvf.homeManagerModules.default
     inputs.spicetify-nix.homeManagerModules.default
+    inputs.anyrun.homeManagerModules.default
     ./../config/home
   ];
 
