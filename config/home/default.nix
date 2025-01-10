@@ -1,12 +1,14 @@
 {
   imports = [
-    ./alacritty.nix
+    ./clipse.nix
+    ./ghostty.nix
     ./fish.nix
     ./devtools.nix
     ./easyeffects.nix
-    ./gtk-qt.nix
+    ./theme
     ./gui.nix
     ./hyprland
+    ./hyprpanel.nix
     ./rnnoise.nix
     ./spicetify.nix
     ./suckless.nix

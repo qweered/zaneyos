@@ -1,8 +1,5 @@
 { pkgs, inputs, cfg, ... }:
 
-let
-  ayugram-desktop = inputs.ayugram-desktop.packages.${pkgs.system}.ayugram-desktop;
-in
 {
   home.sessionVariables.BROWSER = cfg.browser;
 
@@ -18,7 +15,8 @@ in
     wpsoffice # over libreoffice, onlyoffice-desktopeditors
 
     equibop
-    ayugram-desktop # TODO: replace with something other, adds 2GB to closure
+#    ayugram-desktop # TODO: replace with something other, adds 2GB to closure
+    materialgram
     teams-for-linux
     zoom-us
   ];

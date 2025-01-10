@@ -15,13 +15,10 @@
 
       ".config/easyeffects/output" = {
         recursive = true;
-
         source = pkgs.symlinkJoin {
           name = "easyeffects-output";
-
           paths = [
             "${inputs.easyeffects-presets}"
-            "${inputs.easyeffects-presets-loudness-equalizer}"
           ];
         };
 

@@ -2,7 +2,7 @@
 
 {
   security.unprivilegedUsernsClone = true; # Required for hardened kernel
-  # services.scx.enable = true; # TODO: enable in kernel 6.12+
+  services.scx.enable = true;
   # TODO: enably cachy ananicy rules
 
   boot = {
@@ -11,7 +11,7 @@
     tmp.cleanOnBoot = true;
     # initrd.systemd.enable = true; # TODO: Not feature-complete yet https://blog.decent.id/post/nixos-systemd-initrd/
 
-    kernelPackages = pkgs.linuxPackages_cachyos-hardened;
+    kernelPackages = pkgs.linuxPackages_latest; # TODO: evaluate switching to hardened when using nix-mineral
 
     plymouth = {
       enable = true;
@@ -32,6 +32,7 @@
       "rd.systemd.show_status=auto"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
+      "plymouth.use-simpledrm"
 
       "boot.shell_on_fail"
     ];

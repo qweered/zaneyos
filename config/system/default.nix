@@ -8,6 +8,7 @@
     ./bluetooth.nix
     ./boot.nix
     ./displaymanager.nix
+    ./fonts.nix
     ./keyboard.nix
     ./networking.nix
     ./nix.nix

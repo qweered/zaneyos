@@ -16,7 +16,7 @@ in
   nix = {
     # TODO: this whole nix configure makes no sense to me
 
-    # package = pkgs.lix; # TODO: don't like submodules in flake inputs
+    package = pkgs.lix; # TODO: don't like submodules in flake inputs
 
     # pin the registry to avoid downloading and evaling a new nixpkgs version every time
     registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs;
@@ -34,25 +34,20 @@ in
       flake-registry = "/etc/nix/registry.json";
 
       trusted-users = [ "root" "@wheel" ];
+      accept-flake-config = false;
 
       substituters = [
         "https://cache.nixos.org"
         "https://hyprland.cachix.org"
         "https://cache.garnix.io"
-        "https://anyrun.cachix.org"
-        "https://walker.cachix.org"
-        "https://walker-git.cachix.org"
-        # "https://nix-community.cachix.org"
+        "https://nix-community.cachix.org"
         # "https://nix-gaming.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-        "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
-        "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
-        # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         # "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       ];
     };

@@ -1,9 +1,12 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
 let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
+  app_runner = "rofi -show drun";
+  browser = "vivaldi";
+  terminal = "ghostty";
 in
 {
   imports = [
@@ -12,15 +15,15 @@ in
     #    ./binds.nix
     #    ./rise.nix
   ];
+#  xdg.dataFile."icons/${cursorName}".source = "${cursorPackage}/share/icons/${cursorName}";
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+
     settings = {
 
       exec-once = [
-        "dunst"
-        "clipse -listen"
       ];
 
       env = [
@@ -62,6 +65,7 @@ in
 
       decoration = {
         rounding = 7;
+        #        rounding_power = 3;
         active_opacity = 1.0;
         # TODO: choose between dim and opacity for inactive windows
         #        inactive_opacity = 0.7;
@@ -154,6 +158,8 @@ in
           mvactive = binding "SUPER_ALT" "moveactive";
           mvtows = binding "SUPER_SHIFT" "movetoworkspace";
           arr = [ 1 2 3 4 5 6 7 ];
+          # TODO: all pkgs.something should be declared somewhere else
+          # TODO: lib.getexe
           screenshot = pkgs.writeShellScript "screenshot" ''
             time=$(date +"%Y%m%d_%H%M%S")
             ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | \
@@ -163,10 +169,10 @@ in
           '';
         in
         [
-          "SUPER, Return, exec, alacritty"
+          "SUPER, Return, exec, ${terminal}"
           "SUPER, V, exec, alacritty --class clipse -e 'clipse'"
-          "SUPER, B, exec, vivaldi"
-          "SUPER_CTRL, RETURN, exec, anyrun"
+          "SUPER, B, exec, ${browser}"
+          "SUPER_CTRL, RETURN, exec, ${app_runner}"
           "SUPER, Print, exec, ${screenshot}"
 
           "ALT, Tab, focuscurrentorlast"

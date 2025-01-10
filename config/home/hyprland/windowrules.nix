@@ -8,7 +8,7 @@
       let
         fc = regex: "float, class:^(${regex})$";
         ft = regex: "float, title:^(${regex})$";
-        fct = regex1: regex2: "float, class:^(${regex1})$, title:^(${regex2})$";
+        fct = class: title: "float, class:^(${class})$, title:^(${title})$";
       in
       [
         (fc "xdg-desktop-portal")
@@ -16,7 +16,7 @@
         (fc "com.github.wwmm.easyeffects")
         (fc "clipse")
 
-        (fct "com.ayugram" "Media viewer")
+        (fct "com.ayugram|io.github.kukuruzka165.materialgram" "Media viewer")
 
         (ft "Picture-in-Picture")
         (ft "Bitwarden - Vivaldi")
