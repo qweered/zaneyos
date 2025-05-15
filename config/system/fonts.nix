@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  # TODO: recheck all this cause i stole from fufexan
   fonts = {
     packages = with pkgs; [
       # icon fonts

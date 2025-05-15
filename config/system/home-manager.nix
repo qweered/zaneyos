@@ -1,14 +1,17 @@
-{ inputs, cfg, ... }:
+{
+  inputs,
+  cfg,
+  pkgs-master,
+  ...
+}:
 
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   home-manager = {
     extraSpecialArgs = {
-      inherit inputs;
-      inherit cfg;
+      # WARN: if i import config it breaks, why?
+      inherit inputs cfg pkgs-master;
     };
     useGlobalPkgs = true;
     useUserPackages = true;

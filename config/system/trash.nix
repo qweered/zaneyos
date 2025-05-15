@@ -1,60 +1,51 @@
-{ inputs, pkgs, lib, cfg, ... }:
-
-# TODO: refactor into services and programs
+{
+  inputs,
+  pkgs,
+  lib,
+  cfg,
+  ...
+}:
 
 {
-  imports = [
-    inputs.ucodenix.nixosModules.default
-  ];
 
   # File management
+  # I also can generate custom menu items in thunar
   programs.thunar.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [
     thunar-archive-plugin
     thunar-volman
   ];
   programs.xfconf.enable = true; # Store preferences
+  programs.dconf.enable = true; # Needed for gnome related applications
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
+  programs.file-roller.enable = true; # over ark, gui zip manager for thunar
 
-  # CONFIG: add aliases for unzip and zip
-  programs.file-roller.enable = true; # over ark
-
-  programs.dconf.enable = true;
+  # Fish
   programs.fish.enable = true;
-  documentation.man.generateCaches = false;
+  documentation.man.generateCaches = false; # very slow for fish
 
+  # Dynamic swap file
+  services.swapspace.enable = true;
+  zramSwap.enable = true;
+
+  # Checked up to here
+  system.etc.overlay.enable = lib.mkDefault false; # TODO: needed for perlless
+  services.userborn.enable = lib.mkDefault true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gnome-keyring.enableGnomeKeyring = true;
-
-  # CONFIG: need to run
-  # sudo virsh net-autostart default
-  # on each new nixos machine, setup it in nixos way
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
-
-  # NOTE: This is only for AMD processors. See https://github.com/e-tho/ucodenix
-  services.ucodenix = {
-    enable = true;
-    cpuModelId = "00860F81"; # Run cpuid -1 -l 1 -r | sed -n 's/.*eax=0x\([0-9a-f]*\).*/\U\1/p' to retrieve processor's model ID
-  };
 
   xdg = {
     terminal-exec.enable = true;
     terminal-exec.package = pkgs.ghostty;
   };
 
-  # Remove non-required packages
-  environment.defaultPackages = lib.mkDefault [ ];
-  programs.nano.enable = false;
+  systemd.enableStrictShellChecks = true; # TODO: will become default
 
-  documentation.nixos.enable = false; # ???????
-  systemd.enableStrictShellChecks = true;
-
-  # CONFIG: Setup automatic timezone setting
+  # TODO: Setup automatic timezone setting
   time = {
     timeZone = "Europe/Vilnius";
-    hardwareClockInLocalTime = true; # fixes dualboot with Windows
+    hardwareClockInLocalTime = true; # fixes dual-boot with Windows
   };
 
   i18n.supportedLocales = [
@@ -73,8 +64,8 @@
     fwupd.enable = true; # periodically update drivers
     upower.enable = true; # power daemon, used by eg. chromium
     power-profiles-daemon.enable = true; # power daemon, for laptops mainly
-    #        devmon.enable = true; device mounting daemon
-    #        udisks2.enable = true; disk storage daemon
-    #        accounts-daemon.enable = true; accounts daemon
+    devmon.enable = true; # device mounting daemon
+    udisks2.enable = true; # disk storage daemon
+    # accounts-daemon.enable = true; accounts daemon
   };
 }

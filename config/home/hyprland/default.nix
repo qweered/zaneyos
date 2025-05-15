@@ -5,8 +5,8 @@
     ./windowrules.nix
     ./binds.nix
     ./hyprpanel.nix
-    #    ./smartgaps.nix
-    #    ./rise.nix
+    # ./smartgaps.nix
+    # ./rise.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -15,12 +15,12 @@
     portalPackage = null;
 
     settings = {
-
       env = [
         "NIXPKGS_ALLOW_UNFREE,1"
         "NIXOS_OZONE_WL,1" # use wayland in electron packages
         "MOZ_ENABLE_WAYLAND,1" # use wayland in firefox
-        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" # disable window decorations
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" # disable window decorations in qt apps
+        "EDITOR,nvim"
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "GDK_SCALE,1"
         "GDK_BACKEND,wayland,x11,*"
@@ -29,7 +29,7 @@
       ];
 
       monitor = [
-        "eDP-1, 1920x1080@65, 0x0, 1"
+        "eDP-1, 1920x1080@64, 0x0, 1"
       ];
 
       general = {
@@ -97,8 +97,8 @@
           "borderangle,1,180,liner,loop" # Rotating border animations
           "fade,1,3,smoothOut" # Fade animation with smoothOut curve
           "workspaces,1,5,overshot" # Workspace animation with overshooting curve
-          "workspacesIn,1,5,winIn,slide" # Workspace slide in
-          "workspacesOut,1,5,winOut,slide" # Workspace slide out
+          "workspacesIn,1,5,winIn,slide" # Slide in
+          "workspacesOut,1,5,winOut,slide" # Slide out
         ];
       };
 

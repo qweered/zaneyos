@@ -1,9 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  #  security.unprivilegedUsernsClone = true; # Required for hardened kernel
-    services.scx.enable = true; # Probably corrupts audio ?
-  # CONFIG: enably cachy ananicy rules
+  imports = [ inputs.chaotic.nixosModules.default ];
+  services.scx.enable = true;
+  # CONFIG: enable cachy ananicy rules https://www.nyx.chaotic.cx/
+
+  # security.unprivilegedUsernsClone = true; # Required for hardened kernel
 
   boot = {
     loader.systemd-boot.enable = true;
@@ -11,9 +13,9 @@
     tmp.cleanOnBoot = true;
 
     # CONFIG: Not feature-complete yet https://blog.decent.id/post/nixos-systemd-initrd/
-    # initrd.systemd.enable = true;
+    initrd.systemd.enable = true;
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_cachyos;
 
     plymouth = {
       enable = true;
@@ -36,6 +38,9 @@
       "udev.log_priority=3"
 
       "boot.shell_on_fail"
+      "microcode.amd_sha_check=off" # for ucodenix to work properly
+      "clocksource=tsc" # always tsc even it may be not reliable
+      "tsc=reliable"
     ];
 
     # Hide the OS choice for bootloaders.

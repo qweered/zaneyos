@@ -9,30 +9,30 @@
     hyprland.enable = true;
     overwrite.enable = true;
 
-    layout = {
-      "bar.layouts" = {
-        "0" = {
-          left = [
-            "dashboard"
-            "workspaces"
-          ];
-          middle = [
-            "media"
-            "clock"
-          ];
-          right = [
-            "volume"
-            "bluetooth"
-            "network"
-            "systray"
-            "battery"
-            "notifications"
-          ];
+    settings = {
+      layout = {
+        "bar.layouts" = {
+          "*" = {
+            left = [
+              "dashboard"
+              "workspaces"
+            ];
+            middle = [
+              "media"
+              "clock"
+            ];
+            right = [
+              "volume"
+              "bluetooth"
+              "network"
+              "systray"
+              "battery"
+              "notifications"
+            ];
+          };
         };
       };
-    };
 
-    settings = {
       bar.launcher.autoDetectIcon = true;
       bar.workspaces.show_icons = true;
 

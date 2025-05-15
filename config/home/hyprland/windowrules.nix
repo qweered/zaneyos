@@ -11,6 +11,7 @@
         (fc "com.saivert.pwvucontrol")
         (fc "com.github.wwmm.easyeffects")
         (fc "clipse")
+        (fc "io.github.kaii_lb.Overskride")
 
         (fct "com.ayugram.desktop|io.github.kukuruzka165.materialgram" "Media viewer")
 

@@ -2,15 +2,27 @@
   cfg,
   pkgs,
   inputs,
+  config,
   ...
 }:
 
 {
   imports = [
-    # TODO: enable when fixed
+    # TODO: enable
     # inputs.lix-module.nixosModules.default
-    # inputs.chaotic.nixosModules.default
   ];
+
+  # TODO: Why does this not work inside perSystem?
+  _module.args = {
+    pkgs-master = import inputs.nixpkgs-master {
+      inherit (pkgs.stdenv.hostPlatform) system;
+      inherit (config.nixpkgs) config;
+    };
+    _module.args.pkgs-stable = import inputs.nixpkgs-master {
+      inherit (pkgs.stdenv.hostPlatform) system;
+      inherit (config.nixpkgs) config;
+    };
+  };
 
   programs.nh = {
     enable = true;
@@ -21,21 +33,22 @@
 
   nixpkgs.config.allowUnfree = true;
 
-# TODO: not compatible with lix
-# environment.systemPackages = with pkgs; [ nixd ];
+  environment.systemPackages = with pkgs; [
+    nixd
+    nix-tree
+  ];
 
   nix = {
     channel.enable = false;
-
+    # TODO: Do i need NIX_PATH?
     settings = {
       auto-optimise-store = true;
-      # allow-dirty = false;
+      flake-registry = "/etc/nix/registry.json";
       experimental-features = [
         "nix-command"
         "flakes"
       ];
       builders-use-substitutes = true;
-      flake-registry = "/etc/nix/registry.json";
 
       # TODO: Put your access-token here
       # access-tokens = "github.com=github_pat_blabablablabalbaalabl";
@@ -44,10 +57,9 @@
         "root"
         "@wheel"
       ];
-      accept-flake-config = false;
 
       substituters = [
-        "https://cache.nixos.org"
+        "https://cache.nixos.org?priority=1" # lower number higher priority
         "https://hyprland.cachix.org"
         "https://cache.garnix.io"
         "https://nix-community.cachix.org"

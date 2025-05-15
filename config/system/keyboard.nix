@@ -83,6 +83,7 @@ let
 
 in
 {
+  console.useXkbConfig = true;
   services.xserver = {
     xkb = {
       layout = "canary";
@@ -98,5 +99,4 @@ in
       };
     };
   };
-  console.useXkbConfig = true;
 }

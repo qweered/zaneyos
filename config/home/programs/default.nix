@@ -1,8 +1,9 @@
 {
 
   imports = [
+    ./apps
+    ./devtools
     ./terminal
-    ./gui
   ];
 
 }

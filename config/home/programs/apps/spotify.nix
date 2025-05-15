@@ -11,9 +11,9 @@ in
     enable = true;
     theme = spicetifyPkgs.themes.catppuccin;
     colorScheme = "mocha";
-#    enabledCustomApps = with spicetifyPkgs.apps; [
-#      marketplace
-#    ];
+    #    enabledCustomApps = with spicetifyPkgs.apps; [
+    #      marketplace
+    #    ];
     enabledExtensions = with spicetifyPkgs.extensions; [
       adblock
       shuffle # shuffle+ (special characters are sanitized out of extension names)
