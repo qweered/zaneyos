@@ -1,11 +1,8 @@
 { pkgs, ... }:
-let
-  gitMinimal = pkgs.gitMinimal.override { withLibsecret = true; };
-in
 {
   programs.git = {
     enable = true;
-    package = gitMinimal; # to remove perl
+    package = pkgs.gitMinimal.override { withLibsecret = true; }; # gitMinimal to remove perl
     userName = "Aliaksandr";
     userEmail = "grubian2@gmail.com";
     delta.enable = true;
@@ -22,7 +19,6 @@ in
       unstage = "reset head --";
     };
     signing = {
-      # TODO: secret
       key = "CACB28BA93CE71A2";
       signByDefault = true;
     };
@@ -30,7 +26,7 @@ in
       color.ui = true;
       color.pager = true;
       core.editor = "nvim";
-      credential.helper = "${gitMinimal}/bin/git-credential-libsecret";
+      credential.helper = "libsecret";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;
