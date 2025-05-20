@@ -18,7 +18,7 @@
       inherit (pkgs.stdenv.hostPlatform) system;
       inherit (config.nixpkgs) config;
     };
-    _module.args.pkgs-stable = import inputs.nixpkgs-master {
+    pkgs-stable = import inputs.nixpkgs-master {
       inherit (pkgs.stdenv.hostPlatform) system;
       inherit (config.nixpkgs) config;
     };
