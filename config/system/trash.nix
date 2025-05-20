@@ -8,18 +8,22 @@
 
 {
 
-  # File management
-  # I also can generate custom menu items in thunar
-  programs.thunar.enable = true;
-  programs.thunar.plugins = with pkgs.xfce; [
-    thunar-archive-plugin
-    thunar-volman
-  ];
-  programs.xfconf.enable = true; # Store preferences
-  programs.dconf.enable = true; # Needed for gnome related applications
+  # CONFIG: I can generate custom menu items in thunar
+  programs = {
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
+    xfconf.enable = true; # Store preferences
+    dconf.enable = true; # Needed for gnome related applications
+    file-roller.enable = true; # over ark, gui zip manager for thunar
+  };
+
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
-  programs.file-roller.enable = true; # over ark, gui zip manager for thunar
 
   # Fish
   programs.fish.enable = true;
@@ -30,8 +34,8 @@
   zramSwap.enable = true;
 
   # Checked up to here
-  system.etc.overlay.enable = lib.mkDefault false; # TODO: needed for perlless
-  services.userborn.enable = lib.mkDefault true;
+  # system.etc.overlay.enable = lib.mkDefault true;
+  services.userborn.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gnome-keyring.enableGnomeKeyring = true;
 
@@ -42,16 +46,17 @@
 
   systemd.enableStrictShellChecks = true; # TODO: will become default
 
-  # TODO: Setup automatic timezone setting
+  services.automatic-timezoned.enable = true;
   time = {
-    timeZone = "Europe/Vilnius";
     hardwareClockInLocalTime = true; # fixes dual-boot with Windows
   };
+        
 
   i18n.supportedLocales = [
     "en_US.UTF-8/UTF-8"
     "ru_RU.UTF-8/UTF-8"
   ];
+
   users = {
     mutableUsers = true;
   };

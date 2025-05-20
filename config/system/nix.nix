@@ -8,8 +8,7 @@
 
 {
   imports = [
-    # TODO: enable
-    # inputs.lix-module.nixosModules.default
+    inputs.lix-module.nixosModules.default
   ];
 
   # TODO: Why does this not work inside perSystem?
@@ -59,7 +58,7 @@
       ];
 
       substituters = [
-        "https://cache.nixos.org?priority=1" # lower number higher priority
+        "https://cache.nixos.org?priority=1" # lower number means higher priority
         "https://hyprland.cachix.org"
         "https://cache.garnix.io"
         "https://nix-community.cachix.org"
