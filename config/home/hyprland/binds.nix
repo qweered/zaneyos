@@ -3,7 +3,7 @@
 let
   app_runner = "rofi -show drun";
   browser = "vivaldi";
-  terminal = "ghostty";
+  terminal = "wezterm";
 in
 {
   wayland.windowManager.hyprland.settings = {

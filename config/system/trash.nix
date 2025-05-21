@@ -39,10 +39,10 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gnome-keyring.enableGnomeKeyring = true;
 
-  xdg = {
-    terminal-exec.enable = true;
-    terminal-exec.package = pkgs.ghostty;
-  };
+  #xdg = {
+   # terminal-exec.enable = true;
+    #terminal-exec.package = pkgs.ghostty;
+  #};
 
   systemd.enableStrictShellChecks = true; # TODO: will become default
 

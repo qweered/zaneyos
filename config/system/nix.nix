@@ -34,7 +34,15 @@
 
   environment.systemPackages = with pkgs; [
     nixd
-    nix-tree
+    (nix-tree.overrideAttrs (oldAttrs: {
+    version = "0.6.3";
+    src = pkgs.fetchFromGitHub {
+      owner = "utdemir";
+      repo = "nix-tree";
+      rev = "v0.6.3";
+      sha256 = "sha256-579p1uqhICfsBl1QntcgyQwTNtbiho1cuNLDjjXQ+sM=";
+    };
+    }))
   ];
 
   nix = {
