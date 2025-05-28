@@ -33,6 +33,9 @@
   services.swapspace.enable = true;
   zramSwap.enable = true;
 
+  system.switch.enableNg = true; # will become default
+  system.rebuild.enableNg = true; # will become default
+
   # Checked up to here
   # system.etc.overlay.enable = lib.mkDefault true;
   services.userborn.enable = true;
