@@ -1,15 +1,20 @@
-{ cfg, ... }:
+{ cfg, config, ... }:
 
 {
-  networking.hostName = "${cfg.hostname}";
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.powersave = true;
-  programs.nm-applet.enable = true; # needed for autoconnect or is this powersave issue?
+  networking = {
+    hostName = "${cfg.hostname}";
+    networkmanager.enable = true;
+    networkmanager.wifi.powersave = true;
+  };
 
-  systemd.network.enable = true;
-  systemd.network.wait-online.enable = false; # if networkmanager used
+  programs.nm-applet.enable = true;
 
-  # Doesn't work ideally
-  # pcrograms.captive-browser.enable = true;
+  systemd.network = {
+    enable = true;
+    wait-online.enable = !config.programs.nm-applet.enable;
+  };
+
+  # TODO: Doesn't work ideally
+  # programs.captive-browser.enable = true;
   # programs.captive-browser.interface = "wlo1";
 }

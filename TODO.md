@@ -6,6 +6,8 @@
 fix NIX-PATH
 nixos-ex-flake ? blueprint
 
+rename network-manager-applet to nm-applet in home manager repo
+
   RELEASE TO THE PUBLIC
 
 * check logs that there are no major errors
