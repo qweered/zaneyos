@@ -25,32 +25,12 @@ in
     {
       config,
       pkgs,
-      system,
       ...
     }:
     {
-      _module.args.pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = with inputs; [
-          hyprpanel.overlay
-          lix-module.overlays.default
-          chaotic.overlays.cache-friendly
-        ];
-      };
-
-      legacyPackages = pkgs;
-
-      _module.args.pkgs-master = import inputs.nixpkgs-master {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      _module.args.pkgs-stable = import inputs.nixpkgs-master {
-        inherit system;
-        config.allowUnfree = true;
-      };
 
       # pkgsDirectory = ./pkgs;
+
       treefmt = {
         programs.nixfmt.enable = true;
         programs.nixfmt.width = 120;
@@ -64,32 +44,21 @@ in
 
   flake.nixosConfigurations = {
     hyprnix = withSystem "x86_64-linux" (
-      {
-        system,
-        pkgs,
-        pkgs-master,
-        pkgs-stable,
-        ...
-      }:
+      { system, ... }:
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit
-            inputs
-            system
-            cfg
-            pkgs
-            pkgs-master
-            pkgs-stable
-            ;
+          inherit inputs system cfg;
         };
         modules = [
-          inputs.nixpkgs.nixosModules.readOnlyPkgs
           .././config/system
           {
-            nixpkgs = { inherit pkgs; };
+            nixpkgs = {
+              hostPlatform = system;
+              overlays = with inputs; [ hyprpanel.overlay ];
+            };
           }
         ];
       }
-    );  
+    );
   };
 }

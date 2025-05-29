@@ -39,7 +39,6 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gnome-keyring.enableGnomeKeyring = true;
 
-
   systemd.enableStrictShellChecks = true; # TODO: will become default
 
   services.automatic-timezoned.enable = true;

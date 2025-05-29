@@ -1,16 +1,30 @@
 {
   cfg,
   pkgs,
+  inputs,
+  config,
   ...
 }:
 
 {
+  imports = [ inputs.lix-module.nixosModules.default ];
 
   programs.nh = {
     enable = true;
     clean.enable = true;
     clean.dates = "weekly";
     flake = "/home/${cfg.username}/zaneyos";
+  };
+
+  nixpkgs.config.allowUnfree = true;
+  
+  _module.args.pkgs-master = import inputs.nixpkgs-master {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    inherit (config.nixpkgs) config;
+  };
+  _module.args.pkgs-stable = import inputs.nixpkgs-stable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    inherit (config.nixpkgs) config;
   };
 
   environment.systemPackages = with pkgs; [

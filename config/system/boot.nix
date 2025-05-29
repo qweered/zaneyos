@@ -2,7 +2,6 @@
 
 {
   imports = [ inputs.chaotic.nixosModules.default ];
-  chaotic.nyx.overlay.enable = false; # needed for my setup
 
   services.scx.enable = true;
   # CONFIG: enable cachy ananicy rules https://www.nyx.chaotic.cx/
