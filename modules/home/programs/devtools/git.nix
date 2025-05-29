@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.git = {
     enable = true;
@@ -7,7 +7,7 @@
     userEmail = "grubian2@gmail.com";
     delta.enable = true;
     signing = {
-      key = "CACB28BA93CE71A2";
+      key = config.programs.gpg.settings.default-key;
       signByDefault = true;
     };
     aliases = {

@@ -2,6 +2,9 @@
 {
   programs.gpg = {
     enable = true;
+    settings = {
+      default-key = "CACB28BA93CE71A2";
+    };
   };
 
   services.gpg-agent = {

@@ -9,6 +9,9 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
+  # For more, see https://discourse.nixos.org/t/running-playwright-tests/25655/12
+  # and https://primamateria.github.io/blog/playwright-nixos-webdev/
+
   outputs =
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
