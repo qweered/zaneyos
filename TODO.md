@@ -18,7 +18,7 @@ rename network-manager-applet to nm-applet in home manager repo
 * Refactor assets into github repository
 * Setup portals (what application opens what file)
 * check all nix-community repos (nix-init)
-* CachyOS kernel ?
+* configure more kernel parameters
 * impermanence
 * stylix
 * disko

@@ -16,7 +16,7 @@
     # CONFIG: Not feature-complete yet https://blog.decent.id/post/nixos-systemd-initrd/
     initrd.systemd.enable = true;
 
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = pkgs.linuxPackages_zen;
 
     plymouth = {
       enable = true;
@@ -28,7 +28,6 @@
     # Silent boot
     initrd.verbose = false;
     consoleLogLevel = 0;
-    # CONFIG: configure more parameters
     kernelParams = [
       "quiet"
       "splash"
