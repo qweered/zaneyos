@@ -24,16 +24,16 @@ in
       inherit
         inputs
         vars
-        pkgs
         pkgs-master
         pkgs-stable
         ;
     };
+    verbose = true;
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
     users = {
-      "${vars.username}" = import ../home;
+      "${vars.username}" = import ../config/home;
     };
   };
 

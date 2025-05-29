@@ -1,5 +1,6 @@
 { inputs, withSystem, ... }:
 
+
 {
   imports = with inputs; [
     pkgs-by-name-for-flake-parts.flakeModule
@@ -26,8 +27,8 @@
         inherit inputs system;
       };
       modules = [
-        .././config/hosts/hyprnix
-        .././config/users/qweered.nix
+        ../hosts/hyprnix
+        ../users/qweered.nix
         .././config/system
         {
           networking.hostName = "hyprnix";
