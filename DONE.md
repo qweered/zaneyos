@@ -1,5 +1,7 @@
 In reversed-chronological and then in random order:
 
+* split flake
+* nix-tree
 * gpg, ssh
 * initrd.systemd
 * perlless (partially done)

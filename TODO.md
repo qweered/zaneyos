@@ -1,5 +1,6 @@
 * credentials, agenix
 * git hooks
+* systems = lib.systems.flakeExposed inside ./flake maybe
 * devenv + direnv
 * Remove all TODO todos
 * allow-dirty = false;

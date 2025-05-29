@@ -1,7 +1,5 @@
 {
-  inputs,
   pkgs,
-  lib,
   cfg,
   ...
 }:
@@ -33,19 +31,14 @@
   services.swapspace.enable = true;
   zramSwap.enable = true;
 
-  system.switch.enableNg = true; # will become default
   system.rebuild.enableNg = true; # will become default
 
   # Checked up to here
-  # system.etc.overlay.enable = lib.mkDefault true;
+  # system.etc.overlay.enable = lib.mkDefault true; crashes my system
   services.userborn.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gnome-keyring.enableGnomeKeyring = true;
 
-  #xdg = {
-   # terminal-exec.enable = true;
-    #terminal-exec.package = pkgs.ghostty;
-  #};
 
   systemd.enableStrictShellChecks = true; # TODO: will become default
 
@@ -53,7 +46,6 @@
   time = {
     hardwareClockInLocalTime = true; # fixes dual-boot with Windows
   };
-        
 
   i18n.supportedLocales = [
     "en_US.UTF-8/UTF-8"

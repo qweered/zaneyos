@@ -1,27 +1,10 @@
 {
   cfg,
   pkgs,
-  inputs,
-  config,
   ...
 }:
 
 {
-  imports = [
-    inputs.lix-module.nixosModules.default
-  ];
-
-  # TODO: Why does this not work inside perSystem?
-  _module.args = {
-    pkgs-master = import inputs.nixpkgs-master {
-      inherit (pkgs.stdenv.hostPlatform) system;
-      inherit (config.nixpkgs) config;
-    };
-    pkgs-stable = import inputs.nixpkgs-master {
-      inherit (pkgs.stdenv.hostPlatform) system;
-      inherit (config.nixpkgs) config;
-    };
-  };
 
   programs.nh = {
     enable = true;
@@ -30,18 +13,16 @@
     flake = "/home/${cfg.username}/zaneyos";
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
     nixd
     (nix-tree.overrideAttrs (oldAttrs: {
-    version = "0.6.3";
-    src = pkgs.fetchFromGitHub {
-      owner = "utdemir";
-      repo = "nix-tree";
-      rev = "v0.6.3";
-      sha256 = "sha256-579p1uqhICfsBl1QntcgyQwTNtbiho1cuNLDjjXQ+sM=";
-    };
+      version = "0.6.3";
+      src = pkgs.fetchFromGitHub {
+        owner = "utdemir";
+        repo = "nix-tree";
+        rev = "v0.6.3";
+        sha256 = "sha256-579p1uqhICfsBl1QntcgyQwTNtbiho1cuNLDjjXQ+sM=";
+      };
     }))
   ];
 
@@ -69,6 +50,7 @@
         "https://cache.nixos.org?priority=1" # lower number means higher priority
         "https://hyprland.cachix.org"
         "https://cache.garnix.io"
+        "https://chaotic-nyx.cachix.org"
         "https://nix-community.cachix.org"
         "https://nix-gaming.cachix.org"
       ];
@@ -76,6 +58,7 @@
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       ];

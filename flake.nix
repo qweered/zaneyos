@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # https://www.nyx.chaotic.cx
     systems.url = "github:nix-systems/default-linux";
 
@@ -46,61 +46,9 @@
   };
 
   outputs =
-    inputs:
-    let
-      cfg = {
-        username = "qweered";
-        hostname = "hyprnix";
-
-        city = "Vilnius";
-        description = "";
-
-        browser = "vivaldi";
-
-        # Change it when i read all changelogs from previous versions and make changes
-        version = "24.11";
-      };
-    in
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ ./flake ];
       systems = import inputs.systems;
-
-      imports = with inputs; [
-        pkgs-by-name-for-flake-parts.flakeModule
-        treefmt-nix.flakeModule
-        agenix-rekey.flakeModule
-      ];
-
-      perSystem =
-        {
-          config,
-          pkgs,
-          ...
-        }:
-        {
-          # pkgsDirectory = ./pkgs;
-          treefmt = {
-            programs.nixfmt.enable = true;
-            programs.nixfmt.width = 120;
-            programs.shellcheck.enable = true;
-          };
-
-          devShells.default = pkgs.mkShell {
-            nativeBuildInputs = [ config.agenix-rekey.package ];
-          };
-        };
-
-      flake = {
-        nixosConfigurations = {
-          "${cfg.hostname}" = inputs.nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs cfg;
-            };
-            modules = [
-              ./config/system
-              { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
-            ];
-          };
-        };
-      };
     };
 }
