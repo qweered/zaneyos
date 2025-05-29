@@ -1,9 +1,5 @@
-{ cfg, ... }:
-
 {
   imports = [
-    ./../hosts/${cfg.hostname}/hardware.nix
-    ./../users/qweered.nix
     ./bluetooth.nix
     ./boot.nix
     ./debloat.nix

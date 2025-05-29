@@ -44,6 +44,8 @@ in
         };
         modules = [
           .././config/system
+          .././config/hosts/hyprnix
+          .././config/users/qweered.nix
           {
             nixpkgs = {
               hostPlatform = system;
