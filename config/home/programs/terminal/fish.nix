@@ -1,4 +1,4 @@
-{ pkgs, cfg, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [ grc ];
@@ -19,9 +19,9 @@
     ];
     # TODO: for many of this i need not aliases but something that can replace installed programs
     shellAliases = {
-      sys-switch = "nh os switch --hostname ${cfg.hostname} --ask";
+      sys-switch = "nh os switch --ask";
       home-switch = "nh home switch --ask";
-      sys-update = "nh os switch --hostname ${cfg.hostname} --update";
+      sys-update = "nh os switch --update";
       sys-clean = "nh clean all";
 
       sv = "sudo neovide";

@@ -1,19 +1,5 @@
 { inputs, withSystem, ... }:
-let
-  cfg = {
-    username = "qweered";
-    hostname = "hyprnix";
 
-    city = "Vilnius";
-    description = "";
-
-    browser = "vivaldi";
-
-    # Change it when i read all changelogs from previous versions and make changes
-    version = "24.11";
-    legacyPackages = true;
-  };
-in
 {
   imports = with inputs; [
     pkgs-by-name-for-flake-parts.flakeModule
@@ -24,7 +10,6 @@ in
   perSystem =
     { ... }:
     {
-
       # pkgsDirectory = ./pkgs;
 
       treefmt = {
@@ -32,28 +17,25 @@ in
         programs.nixfmt.width = 120;
         programs.shellcheck.enable = true;
       };
-
     };
 
-  flake.nixosConfigurations = {
-    hyprnix = withSystem "x86_64-linux" (
-      { system, ... }:
-      inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs system cfg;
-        };
-        modules = [
-          .././config/system
-          .././config/hosts/hyprnix
-          .././config/users/qweered.nix
-          {
-            nixpkgs = {
-              hostPlatform = system;
-              overlays = with inputs; [ hyprpanel.overlay ];
-            };
-          }
-        ];
-      }
-    );
-  };
+  flake.nixosConfigurations.hyprnix = withSystem "x86_64-linux" (
+    { system, ... }:
+    inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs system;
+      };
+      modules = [
+        .././config/hosts/hyprnix
+        .././config/users/qweered.nix
+        .././config/system
+        {
+          networking.hostName = "hyprnix";
+          system.stateVersion = "24.11";
+          nixpkgs.hostPlatform = system;
+          nixpkgs.overlays = with inputs; [ hyprpanel.overlay ];
+        }
+      ];
+    }
+  );
 }

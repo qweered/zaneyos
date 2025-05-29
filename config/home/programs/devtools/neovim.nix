@@ -1,4 +1,4 @@
-{ cfg, ... }:
+{ vars, ... }:
 
 {
   # Neovim gui wrapper
@@ -6,7 +6,7 @@
     enable = true;
     settings = {
       # TODO: Is this true for all home-manager configurations?
-      neovim-bin = "/etc/profiles/per-user/${cfg.username}/bin/nvim";
+      neovim-bin = "/etc/profiles/per-user/${vars.username}/bin/nvim";
       font = {
         normal = [ ];
         size = 14.0;

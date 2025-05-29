@@ -1,8 +1,7 @@
-{ cfg, config, ... }:
+{ config, ... }:
 
 {
   networking = {
-    hostName = "${cfg.hostname}";
     networkmanager.enable = true;
     networkmanager.wifi.powersave = true;
   };

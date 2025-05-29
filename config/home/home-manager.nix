@@ -1,4 +1,4 @@
-{ inputs, cfg, ... }:
+{ inputs, vars, ... }:
 {
   imports = [
     inputs.nvf.homeManagerModules.default
@@ -7,9 +7,9 @@
   programs.home-manager.enable = true;
 
   home = {
-    username = cfg.username;
-    homeDirectory = "/home/${cfg.username}";
-    stateVersion = cfg.version;
+    username = vars.username;
+    homeDirectory = "/home/${vars.username}";
+    stateVersion = vars.stateVersion;
   };
 
   news.display = "show";

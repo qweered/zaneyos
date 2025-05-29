@@ -1,11 +1,12 @@
 {
   pkgs,
+  vars,
   ...
 }:
 
 {
   # TODO: is this convention or something or even needed
-  home.sessionVariables.BROWSER = "vivaldi";
+  home.sessionVariables.BROWSER = vars.browser;
 
   # CONFIG, is better than tmux?
   programs.zoxide = {

@@ -1,4 +1,4 @@
-{ inputs, cfg, ... }:
+{ inputs, vars, ... }:
 
 {
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
@@ -42,7 +42,7 @@
           hideSeconds = true;
         };
         weather.unit = "metric";
-        weather.location = cfg.city;
+        weather.location = vars.city;
       };
 
       menus.dashboard.directories.enabled = false;

@@ -1,11 +1,5 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  cfg,
-  ...
-}:
-
-{
-
   # CONFIG: I can generate custom menu items in thunar
   programs = {
     thunar = {
@@ -51,11 +45,6 @@
     "ru_RU.UTF-8/UTF-8"
   ];
 
-  users = {
-    mutableUsers = true;
-  };
-
-  system.stateVersion = cfg.version;
   services.dbus.implementation = "broker";
 
   services = {

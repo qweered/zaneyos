@@ -8,7 +8,6 @@
     ./hyprland.nix
     # ./impermanence.nix
     ./keyboard.nix
-    ./home-manager.nix
     ./networking.nix
     ./nix.nix
     ./sound.nix
