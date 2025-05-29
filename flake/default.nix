@@ -18,15 +18,11 @@ in
   imports = with inputs; [
     pkgs-by-name-for-flake-parts.flakeModule
     treefmt-nix.flakeModule
-    agenix-rekey.flakeModule
+    ./shells.nix
   ];
 
   perSystem =
-    {
-      config,
-      pkgs,
-      ...
-    }:
+    { ... }:
     {
 
       # pkgsDirectory = ./pkgs;
@@ -37,9 +33,6 @@ in
         programs.shellcheck.enable = true;
       };
 
-      devShells.default = pkgs.mkShell {
-        nativeBuildInputs = [ config.agenix-rekey.package ];
-      };
     };
 
   flake.nixosConfigurations = {

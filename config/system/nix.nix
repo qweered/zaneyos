@@ -17,7 +17,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  
+
   _module.args.pkgs-master = import inputs.nixpkgs-master {
     inherit (pkgs.stdenv.hostPlatform) system;
     inherit (config.nixpkgs) config;
