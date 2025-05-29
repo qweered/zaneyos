@@ -6,36 +6,228 @@
     userName = "Aliaksandr";
     userEmail = "grubian2@gmail.com";
     delta.enable = true;
-    aliases = {
-      ci = "commit";
-      co = "checkout";
-      b = "branch -vv";
-      s = "status --short";
-      ds = "describe --long --tags --dirty --always";
-      lg = "log --pretty=format:'%Cgreen%h%Creset %Cred%cd%Creset %Cblue%ae%Creset %s %d'";
-      sb = "submodule";
-      sbu = "submodule update --init --recursive";
-      sbp = "submodule update --remote --checkout";
-      unstage = "reset head --";
-    };
     signing = {
       key = "CACB28BA93CE71A2";
       signByDefault = true;
     };
+    aliases = {
+      # Branch operations
+      b = "branch -vv";
+      bd = "branch -d";
+      bD = "branch -D";
+      br = "branch -r"; # list remote branches
+      ba = "branch -a"; # list all branches
+      bm = "branch --merged"; # list merged branches
+      bnm = "branch --no-merged"; # list unmerged branches
+
+      # Modern checkout/switch commands
+      co = "checkout";
+      sw = "switch"; # modern alternative to checkout for branches
+      swc = "switch -c"; # create and switch to new branch
+      rs = "restore"; # modern alternative to checkout for files
+
+      # Commit operations
+      c = "commit";
+      cm = "commit -m";
+      ca = "commit --amend";
+      can = "commit --amend --no-edit";
+      cane = "commit --amend --no-edit";
+      cf = "commit --afixup";
+      cs = "commit --squash";
+
+      # Enhanced log aliases with better formatting
+      lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      ll = "log --oneline --graph --decorate --all -20";
+      ls = "log --stat";
+      lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
+
+      # Status and diff
+      s = "status --short --branch";
+      st = "status";
+      d = "diff";
+      dt = "difftool --tool=nvimdiff --no-prompt";
+
+      # Stash operations
+      sl = "stash list";
+      sp = "stash pop";
+      ss = "stash push"; # modern alternative to stash save
+      ssm = "stash push -m"; # stash with message
+      ssu = "stash push --include-untracked";
+
+      # Reset operations
+      r = "reset";
+      r1 = "reset HEAD^";
+      r2 = "reset HEAD^^";
+      rh = "reset --hard";
+      rsoft = "reset --soft";
+      unstage = "reset HEAD --";
+
+      # Remote operations
+      f = "fetch";
+      fa = "fetch --all";
+      fo = "fetch origin";
+      fp = "fetch --prune";
+      p = "push";
+      po = "push origin";
+      pu = "push -u origin HEAD";
+      pf = "push --force-with-lease"; # safer than --force
+
+      # Pull operations
+      pl = "pull";
+      plr = "pull --rebase";
+      plo = "pull origin";
+
+      # Rebase operations
+      rb = "rebase";
+      rbi = "rebase --interactive";
+      rbc = "rebase --continue";
+      rba = "rebase --abort";
+      rbs = "rebase --skip";
+
+      # Merge operations
+      m = "merge";
+      mnf = "merge --no-ff";
+      mff = "merge --ff-only";
+
+      # Add operations
+      a = "add";
+      aa = "add --all";
+      ap = "add --patch";
+
+      # Utility aliases
+      ds = "describe --long --tags --dirty --always";
+      who = "shortlog -sn";
+      alias = "config --get-regexp ^alias\\.";
+      last = "log -1 HEAD --stat";
+      visual = "!gitk";
+      today = "log --since='1 day ago' --oneline --author=$(git config user.email)";
+      yesterday = "log --since='2 days ago' --until='1 day ago' --oneline --author=$(git config user.email)";
+
+      # Cleanup aliases
+      cleanup = "!git branch --merged | grep -v '\\*\\|main\\|master\\|develop' | xargs -n 1 git branch -d";
+      prune-branches = "!git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d";
+
+      # Workflow aliases
+      wip = "commit -am 'WIP: work in progress'";
+      unwip = "reset HEAD~1";
+      assume = "update-index --assume-unchanged";
+      unassume = "update-index --no-assume-unchanged";
+      assumed = "!git ls-files -v | grep ^h | cut -c 3-";
+    };
     extraConfig = {
+      # Branch settings
+      branch.autoSetupRebase = "always";
+      branch.sort = "-committerdate";
+
+      # Blame settings
+      blame.coloring = "repeatedLines";
+      blame.markUnblamables = true;
+      blame.markIgnoredLines = true;
+      blame.date = "relative";
+
+      # Color settings
       color.ui = true;
       color.pager = true;
+      color.branch = "auto";
+      color.diff = "auto";
+      color.status = "auto";
+
+      # Core settings
+      core.untrackedCache = true;
+      core.preloadindex = true;
+      core.fscache = true; # Windows performance
       core.editor = "nvim";
+      core.autocrlf = false;
+      core.safecrlf = false;
+      core.fileMode = true;
+      core.ignorecase = false;
+
+      # Credential settings
       credential.helper = "libsecret";
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
-      pull.rebase = true;
-      # branch.autoSetupRebase = "always";
-      # push.default = "simple";
-      rerere.enable = true;
-      gc.reflogExpire = "1 year";
-      gc.rerereResolved = "1 year";
+
+      # Diff settings
+      diff.algorithm = "histogram";
+      diff.colorMoved = "default";
+      diff.colorMovedWS = "allow-indentation-change";
+      diff.mnemonicPrefix = true;
+      diff.renames = "copies";
+      diff.tool = "nvimdiff";
+
+      # Feature settings
+      feature.experimental = true;
+      feature.manyFiles = true;
+
+      # Fetch settings
+      fetch.prune = true;
+      fetch.pruneTags = true;
+      fetch.parallel = 0; # use all available cores
+
+      # GitHub settings
       github.user = "qweered";
+
+      # Init settings
+      init.defaultBranch = "main";
+
+      # Index settings
+      index.sparse = true;
+      index.threads = true;
+
+      # Log settings
+      log.date = "relative";
+      log.decorate = "short";
+      log.follow = true;
+
+      # Maintenance settings
+      maintenance.auto = true;
+
+      # Merge settings
+      merge.conflictstyle = "zdiff3"; # better than diff3
+      merge.autoStash = true;
+      merge.tool = "nvimdiff";
+      merge.ff = false; # always create merge commits for feature branches
+
+      # Pack settings for performance
+      pack.threads = 0; # use all available cores
+      pack.writeReverseIndex = true;
+
+      # Push settings
+      push.autoSetupRemote = true;
+      push.default = "simple";
+      push.followTags = true;
+      push.useForceIfIncludes = true;
+
+      # Pull settings
+      pull.rebase = true;
+      pull.twohead = "ort"; # new merge strategy
+
+      # Rebase settings
+      rebase.autoStash = true;
+      rebase.autoSquash = true;
+      rebase.updateRefs = true;
+
+      # Rerere settings
+      rerere.enable = true;
+      rerere.autoUpdate = true;
+
+      # Remote settings
+      remote.origin.fetch = "+refs/heads/*:refs/remotes/origin/*";
+      remote.origin.prune = true;
+
+      # Status settings
+      status.showUntrackedFiles = "all";
+      status.submoduleSummary = true;
+
+      # Submodule settings
+      submodule.recurse = true;
+      submodule.fetchJobs = 4;
+
+      # Tag settings
+      tag.sort = "version:refname";
+
+      # Transfer settings for performance
+      transfer.unpackLimit = 1;
+
+      # URL shortcuts
       url = {
         "https://github.com/" = {
           insteadOf = [
@@ -50,22 +242,16 @@
           ];
         };
       };
+
+      # Versionsort settings
+      versionsort.suffix = [
+        "-pre"
+        ".pre"
+        "-beta"
+        ".beta"
+        "-rc"
+        ".rc"
+      ];
     };
-  };
-
-  services.ssh-agent.enable = true;
-  programs.ssh = {
-    enable = true;
-    addKeysToAgent = "yes";
-  };
-
-  programs.gpg = {
-    enable = true;
-  };
-
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-    pinentry.package = pkgs.pinentry-qt; # gnome does not work
   };
 }
