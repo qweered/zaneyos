@@ -1,13 +1,4 @@
 {
-  imports = [
-    ./hypridle.nix
-    ./hyprlock.nix
-    ./windowrules.nix
-    ./binds.nix
-    ./hyprpanel.nix
-    # ./smartgaps.nix
-    # ./rise.nix
-  ];
 
   wayland.windowManager.hyprland = {
     enable = true;

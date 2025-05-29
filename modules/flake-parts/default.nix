@@ -1,11 +1,9 @@
 { inputs, withSystem, ... }:
 
-
 {
   imports = with inputs; [
     pkgs-by-name-for-flake-parts.flakeModule
     treefmt-nix.flakeModule
-    ./shells.nix
   ];
 
   perSystem =
@@ -22,15 +20,25 @@
 
   flake.nixosConfigurations.hyprnix = withSystem "x86_64-linux" (
     { system, ... }:
+    let
+      users = inputs.self.moduleTree.users;
+      hosts = inputs.self.moduleTree.hosts;
+      systemModules = inputs.self.moduleTree.system;
+    in
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs system;
       };
       modules = [
-        ../hosts/hyprnix
-        ../users/qweered.nix
-        .././config/system
         {
+          imports = (
+            users { qweered = true; }
+            ++ hosts { hyprnix = true; }
+            ++ systemModules {
+              impermanence = false;
+              virtualization.distrobox = false;
+            }
+          );
           networking.hostName = "hyprnix";
           system.stateVersion = "24.11";
           nixpkgs.hostPlatform = system;

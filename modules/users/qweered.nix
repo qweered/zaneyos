@@ -17,8 +17,6 @@ in
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
-  # TODO: test if multiusers work (i think it doesn't)
-
   home-manager = {
     extraSpecialArgs = {
       inherit
@@ -32,8 +30,11 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    users = {
-      "${vars.username}" = import ../config/home;
+    users."${vars.username}".imports = inputs.self.moduleTree.home {
+      programs.devtools.windsurf = false;
+      programs.apps.socials.teams = false;
+      programs.apps.socials.zoom = false;
+      hyprland.smartgaps = false;
     };
   };
 

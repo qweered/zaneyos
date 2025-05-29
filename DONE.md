@@ -1,5 +1,6 @@
 In reversed-chronological and then in random order:
 
+* moved everything to nfh
 * split flake
 * nix-tree
 * gpg, ssh

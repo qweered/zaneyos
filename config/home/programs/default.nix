@@ -1,9 +1,0 @@
-{
-
-  imports = [
-    ./apps
-    ./devtools
-    ./terminal
-  ];
-
-}

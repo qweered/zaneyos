@@ -36,7 +36,7 @@
           font_color = "rgb(354479)";
 
           fade_on_empty = false;
-          placeholder_text = ''<span foreground="##354479">Password</span>'';
+          placeholder_text = ''<span foreground="#354479">Password</span>'';
 
           dots_spacing = 0.2;
           dots_center = true;

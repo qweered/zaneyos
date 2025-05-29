@@ -6,16 +6,15 @@
 }:
 
 let
+  # TODO: this is bad and probably does
   suspendScript = pkgs.writeShellScript "suspend-script" ''
+    set -euo pipefail
     # check if any player has status "Playing"
-    ${lib.getExe pkgs.playerctl} -a status | ${lib.getExe pkgs.ripgrep} Playing -q
-    # only suspend if nothing is playing
-    if [ $? == 1 ]; then
-    # CONFIG: lib.getExe
+    if ! ${lib.getExe pkgs.playerctl} -a status 2>/dev/null | ${lib.getExe pkgs.ripgrep} -q Playing; then
+      # No media playing, safe to suspend
       ${pkgs.systemd}/bin/systemctl suspend
     fi
   '';
-
   brillo = lib.getExe pkgs.brillo;
   # timeout after which DPMS kicks in
   timeout = 900;
