@@ -1,5 +1,4 @@
 {
-  cfg,
   pkgs,
   inputs,
   config,
@@ -8,13 +7,6 @@
 
 {
   imports = [ inputs.lix-module.nixosModules.default ];
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.dates = "weekly";
-    flake = "/home/${cfg.username}/zaneyos";
-  };
 
   nixpkgs.config.allowUnfree = true;
 
