@@ -6,4 +6,5 @@
 
 ## Attributions
 
+* [Zaney](https://gitlab.com/Zaney/zaneyos) and his ZaneyOS for the solid base for my system
 * [Fufexan](https://github.com/fufexan/dotfiles) for the hyprland, hyprlock and hypridle stuff

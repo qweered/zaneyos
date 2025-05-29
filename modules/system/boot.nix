@@ -4,16 +4,13 @@
   imports = [ inputs.chaotic.nixosModules.default ];
 
   services.scx.enable = true;
-  # CONFIG: enable cachy ananicy rules https://www.nyx.chaotic.cx/
-
-  # security.unprivilegedUsernsClone = true; # Required for hardened kernel
 
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     tmp.cleanOnBoot = true;
 
-    # CONFIG: Not feature-complete yet https://blog.decent.id/post/nixos-systemd-initrd/
+    # NOTE: Not feature-complete yet https://blog.decent.id/post/nixos-systemd-initrd/
     initrd.systemd.enable = true;
 
     kernelPackages = pkgs.linuxPackages_zen;
@@ -21,7 +18,6 @@
     plymouth = {
       enable = true;
       theme = "nixos-bgrt";
-      # CONFIG: replace with my own theme
       themePackages = [ pkgs.nixos-bgrt-plymouth ];
     };
 
@@ -43,7 +39,7 @@
       "tsc=reliable"
     ];
 
-    # Hide the OS choice for bootloaders.
+    # Hide the OS choice in the bootloader menu
     # It's still possible to open the bootloader list by pressing any key
     loader.timeout = 0;
   };

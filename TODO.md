@@ -1,49 +1,52 @@
+# TODO
+
+* systems = lib.systems.flakeExposed inside ./flake maybe?
 * credentials, agenix
+* nix-init
+* steam
+* stylix
+* devenv in flake.nix or in home-manager?
+* disko
 * git hooks
-* systems = lib.systems.flakeExposed inside ./flake maybe
-* devenv + direnv
-* Remove all TODO todos
 * allow-dirty = false;
-fix NIX-PATH
-nixos-ex-flake ? blueprint
-
-rename network-manager-applet to nm-applet in home manager repo
-
-  RELEASE TO THE PUBLIC
-
+* remove all TODO todos
+* fix NIX-PATH
+* see nixos-ex-flake and blueprint
+* fix that i need to enter gpg and immediately keyring password on every boot
+* my own plymouth theme
 * check logs that there are no major errors
-* hyrpanel flake -> hyprpanel nixpkgs (or replace completely)
 * pywal -> hellwal
 * waypaper -> waytrogen
+* multiuser, multigpu [ZaneyOS](https://gitlab.com/Zaney/zaneyos)
+* denoising? [rnnoise](https://github.com/fufexan/dotfiles/blob/17939d902a780a6db459312baa40940ff2a9c149/home/programs/media/rnnoise.nix#L1C1-L41C2)
 * Refactor assets into github repository
 * Setup portals (what application opens what file)
-* check all nix-community repos (nix-init)
+* nh with support for darwin ? [nh](https://github.com/ToyVo/nh)
 * configure more kernel parameters
-* impermanence
-* stylix
-* disko
-* encrypt filesystem ?
-* lanzaboote
+* [declarative-flatpak](https://github.com/GermanBread/declarative-flatpak) or [nix-flatpak](https://github.com/gmodena/nix-flatpak)
 * snap ? appimage ?
-* flatpack (https://github.com/GermanBread/declarative-flatpak or https://github.com/gmodena/nix-flatpak)
+* zfs [chaotic](https://www.nyx.chaotic.cx)
+* remove all CONFIG todos
+* check all comments
+* check all config options of nixos and home-manager
+* check all nix-community repos
+* impermanence
+* enable cachy ananicy rules [chaotic](https://www.nyx.chaotic.cx/), apparmor?
 * nix-mineral
-* nh with support for darwin ? https://github.com/ToyVo/nh
-* docker
-* steam
-* zfs (look https://www.nyx.chaotic.cx)
-* Add attributions where possible
-* Multihost, multiuser, multigpu (https://gitlab.com/Zaney/zaneyos)
-* denoising? https://github.com/fufexan/dotfiles/blob/17939d902a780a6db459312baa40940ff2a9c149/home/programs/media/rnnoise.nix#L1C1-L41C2
-* Remove all CONFIG todos
-* Check all comments
-* Check all config options of nixos and home-manager
+* encrypt filesystem
+* lanzaboote
 
+## Blocked
 
-Software to watch
-* https://github.com/dandavison/delta
-* https://github.com/kunkunsh/kunkun
-* https://github.com/akiyosi/goneovim
+* make a PR: rename network-manager-applet to nm-applet in home manager repo
+* hyprpanel flake -> hyprpanel nixpkgs (or replace completely)
+
+## Software to watch
+
+* [delta](https://github.com/dandavison/delta)
+* [kunkun](https://github.com/kunkunsh/kunkun)
+* [goneovim](https://github.com/akiyosi/goneovim)
 * espanso
 * kando-menu
-* https://github.com/sharkdp/fd
-* https://firedragon.garudalinux.org
+* [fd](https://github.com/sharkdp/fd)
+* [firedragon](https://firedragon.garudalinux.org)

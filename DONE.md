@@ -1,8 +1,10 @@
-In reversed-chronological and then in random order:
+# In reversed-chronological and then in random order
 
+* multihost
 * moved everything to nfh
 * split flake
 * nix-tree
+* devenv + direnv
 * gpg, ssh
 * initrd.systemd
 * perlless (partially done)
@@ -16,7 +18,8 @@ In reversed-chronological and then in random order:
 * plymouth w/ theme
 * sddm w/ theme
 
-Better apps:
+## Better apps
+
 * spotify -> spicetify
 * discord -> equibop
 * telegram -> ayugram

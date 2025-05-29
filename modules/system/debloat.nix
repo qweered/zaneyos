@@ -4,8 +4,7 @@
   programs.nano.enable = lib.mkDefault false;
   programs.command-not-found.enable = lib.mkDefault false;
 
-  # Remove perl remnants
-  # See https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/profiles/perlless.nix for updates
+  # Remove perl remnants https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/profiles/perlless.nix
   system.tools.nixos-generate-config.enable = lib.mkDefault false;
   programs.less.lessopen = lib.mkDefault null;
   boot.enableContainers = lib.mkDefault false;
