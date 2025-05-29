@@ -1,41 +1,30 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }:
 
 let
-  # TODO: this is bad and probably does
-  suspendScript = pkgs.writeShellScript "suspend-script" ''
-    set -euo pipefail
-    # check if any player has status "Playing"
-    if ! ${lib.getExe pkgs.playerctl} -a status 2>/dev/null | ${lib.getExe pkgs.ripgrep} -q Playing; then
-      # No media playing, safe to suspend
-      ${pkgs.systemd}/bin/systemctl suspend
-    fi
-  '';
   brillo = lib.getExe pkgs.brillo;
-  # timeout after which DPMS kicks in
-  timeout = 900;
+  timeout = 30 * 60; # timeout in seconds after which DPMS kicks in
 in
 {
   services.hypridle = {
     enable = true;
     settings = {
       general = {
-        lock_cmd = lib.getExe config.programs.hyprlock.package;
-        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        lock_cmd = "hyprlock";
       };
 
       listener = [
         {
           timeout = timeout - 10;
-          # save the current brightness and dim the screen over a period of
-          # 1 second
-          on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 10";
-          # brighten the screen over a period of 500ms to the saved value
-          on-resume = "${brillo} -I -u 500000";
+          # save the current brightness and dim the screen over a period of 500ms
+          on-timeout = "${brillo} -O; ${brillo} -u 500000 -S 10";
+          # brighten the screen over a period of 250ms to the saved value
+          on-resume = "${brillo} -I -u 250000";
         }
         {
           inherit timeout;
@@ -44,7 +33,7 @@ in
         }
         {
           timeout = timeout + 10;
-          on-timeout = suspendScript.outPath;
+          on-timeout = "loginctl lock-session";
         }
       ];
     };
