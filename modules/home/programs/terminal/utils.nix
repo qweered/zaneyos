@@ -17,5 +17,15 @@
     hyperfine # speed benchmarks
     lazyjournal # over dmesg, journalctl
     hyprpicker # color picker
+    wget # download files, over curl
+    bat # cat alternative
+    yt-dlp # download videos
+    lazydocker # docker in terminal
+    # zathura imv # pdf/image viewer
+    # wluma # automatic brightness control
+    # unzip zip rar unrar # over 7z
+    # mc superfile xplr ranger lf nnn yazi broot # over ranger
+    # walker anyrun # over rofi
+    # activate-linux # fun windows watermark
   ];
 }
