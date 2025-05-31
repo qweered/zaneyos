@@ -1,9 +1,9 @@
 { inputs, pkgs, ... }:
 let
-  spicetifyPkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  spicetifyPkgs = inputs.spicetify.legacyPackages.${pkgs.system};
 in
 {
-  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
+  imports = [ inputs.spicetify.homeManagerModules.default ];
 
   programs.spicetify = {
     enable = true;
