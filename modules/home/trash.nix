@@ -4,9 +4,7 @@
   programs.zoxide = {
     enable = true;
   };
-  # CONFIG
   services.playerctld.enable = true;
-  # CONFIG
   services.mpd.enable = true;
 
   home.packages = with pkgs; [
@@ -18,12 +16,9 @@
     satty # over hyprshot swappy
 
     # cleaned up to here
-    playerctl
     hyperfine
     lazyjournal
     hyprpicker
-    pulseaudio
-
 
     # try lazydocker
 

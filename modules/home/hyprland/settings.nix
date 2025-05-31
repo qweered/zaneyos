@@ -1,5 +1,5 @@
+{ vars, ... }:
 {
-
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
@@ -12,11 +12,16 @@
         "MOZ_ENABLE_WAYLAND,1" # use wayland in firefox
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" # disable window decorations in qt apps
         "EDITOR,nvim"
+        "BROWSER,${vars.browser}"
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "GDK_SCALE,1"
         "GDK_BACKEND,wayland,x11,*"
         "CLUTTER_BACKEND,wayland"
         "SDL_VIDEODRIVER,wayland" # QUIRK: Some games require it to be x11
+      ];
+
+      exec-once = [
+        "waytrogen --restore"
       ];
 
       monitor = [
@@ -95,7 +100,7 @@
 
       misc = {
         disable_splash_rendering = true;
-        force_default_wallpaper = 1;
+        force_default_wallpaper = -1;
       };
 
       input = {

@@ -3,6 +3,7 @@
 * systems = lib.systems.flakeExposed inside ./flake maybe?
 * configure cursor through [home-manager](https://home-manager-options.extranix.com/?query=programs.vscode&release=master)
 * credentials, agenix
+* uwsm
 * nix-init
 * sort (imports, something else)
 * steam
@@ -49,5 +50,7 @@
 * [goneovim](https://github.com/akiyosi/goneovim)
 * espanso
 * kando-menu
+* clight
+* ddcutil
 * [fd](https://github.com/sharkdp/fd)
 * [firedragon](https://firedragon.garudalinux.org)

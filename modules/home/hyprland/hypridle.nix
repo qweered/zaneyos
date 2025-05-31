@@ -1,4 +1,3 @@
-{ ... }:
 let
   timeout = 30 * 60; # timeout in seconds after which DPMS kicks in
 in
