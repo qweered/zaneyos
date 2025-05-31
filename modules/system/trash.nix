@@ -29,6 +29,7 @@
 
   # Checked up to here
   # system.etc.overlay.enable = lib.mkDefault true; crashes my system
+  hardware.brillo.enable = true; # over brightnessctl (smooth transitions)
   services.userborn.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gnome-keyring.enableGnomeKeyring = true;
