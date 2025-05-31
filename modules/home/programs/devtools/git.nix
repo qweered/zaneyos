@@ -1,5 +1,7 @@
 { pkgs, config, ... }:
 {
+  home.packages = with pkgs; [ lazygit ];
+
   programs.git = {
     enable = true;
     package = pkgs.gitMinimal.override { withLibsecret = true; }; # gitMinimal to remove perl

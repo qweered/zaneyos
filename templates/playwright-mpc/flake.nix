@@ -29,8 +29,8 @@
           ...
         }:
         let
-          browsers = (builtins.fromJSON (builtins.readFile "${pkgs.playwright-driver}/browsers.json")).browsers;
-          chromium-rev = (builtins.head (builtins.filter (x: x.name == "chromium") browsers)).revision;
+          browsers = (lib.fromJSON (lib.readFile "${pkgs.playwright-driver}/browsers.json")).browsers;
+          chromium-rev = (lib.head (lib.filter (x: x.name == "chromium") browsers)).revision;
         in
         {
           treefmt = {

@@ -8,7 +8,7 @@
 let
   inherit (config.wayland.windowManager.hyprland.settings.general) gaps_in gaps_out border_size;
   inherit (config.wayland.windowManager.hyprland.settings.decoration) rounding;
-  inherit (builtins) concatStringsSep;
+  inherit (lib) concatStringsSep;
 
   workspaceSelectors = [
     "w[t1]"

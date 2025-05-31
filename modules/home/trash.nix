@@ -1,13 +1,5 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  vars,
-  ...
-}:
-
-{
-  # TODO: is this convention or something or even needed
-  home.sessionVariables.BROWSER = vars.browser;
-
   # CONFIG, is better than tmux?
   programs.zoxide = {
     enable = true;
@@ -18,27 +10,25 @@
   services.mpd.enable = true;
 
   home.packages = with pkgs; [
-    wl-clipboard # over wl-clipboard-rs (broken)
+    wl-clipboard # over wl-clipboard-rs (conflicts with hyprpanel probably)
     libnotify # send notifications programmatically
 
     grim
     slurp
     satty # over hyprshot swappy
 
-    brightnessctl
+    # cleaned up to here
     playerctl
     hyperfine
-    lazygit
     lazyjournal
     hyprpicker
     pulseaudio
 
-    # Checked up to here
 
     # try lazydocker
 
+    # yt-dlp
     # hyprpolkitagent
-    # swww? waypaper & hyprpaper in hm
 
     # Testing
 

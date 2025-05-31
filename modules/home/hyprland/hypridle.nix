@@ -1,11 +1,5 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
-
+{ ... }:
 let
-  brillo = lib.getExe pkgs.brillo;
   timeout = 30 * 60; # timeout in seconds after which DPMS kicks in
 in
 {
@@ -22,9 +16,9 @@ in
         {
           timeout = timeout - 10;
           # save the current brightness and dim the screen over a period of 500ms
-          on-timeout = "${brillo} -O; ${brillo} -u 500000 -S 10";
+          on-timeout = "brillo -O; brillo -u 500000 -S 10";
           # brighten the screen over a period of 250ms to the saved value
-          on-resume = "${brillo} -I -u 250000";
+          on-resume = "brillo -I -u 250000";
         }
         {
           inherit timeout;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # TODO: recheck all this cause i stole from fufexan
@@ -31,7 +31,7 @@
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts =
       let
-        addAll = builtins.mapAttrs (_: v: v ++ [ "Noto Color Emoji" ]);
+        addAll = lib.mapAttrs (_: v: v ++ [ "Noto Color Emoji" ]);
       in
       addAll {
         serif = [ "Libertinus Serif" ];

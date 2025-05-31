@@ -834,7 +834,7 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nvf": "nvf",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts",
-        "spicetify-nix": "spicetify-nix",
+        "spicetify": "spicetify",
         "systems": "systems_6",
         "treefmt-nix": "treefmt-nix_2",
         "ucodenix": "ucodenix"
@@ -879,7 +879,7 @@
         "type": "github"
       }
     },
-    "spicetify-nix": {
+    "spicetify": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
