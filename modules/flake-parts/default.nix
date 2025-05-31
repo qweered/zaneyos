@@ -18,17 +18,18 @@
 
   flake.nixosConfigurations.hyprnix = withSystem "x86_64-linux" (
     { system, ... }:
-    let
-      moduleTree = inputs.self.moduleTree;
-    in
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs system; };
       modules =
-        moduleTree.users { qweered = true; }
-        ++ moduleTree.hosts { hyprnix = true; }
-        ++ moduleTree.system {
-          impermanence = false;
-          virtualization.distrobox = false;
+        inputs.self.moduleTree {
+          _defaultsRecursive = false;
+          users.qweered = true;
+          hosts.hyprnix = true;
+          system = {
+            _defaultsRecursive = true;
+            impermanence = false;
+            virtualization.distrobox = false;
+          };
         }
         ++ [
           {
