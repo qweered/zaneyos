@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   # CONFIG, is better than tmux?
   programs.zoxide = {
@@ -6,39 +5,23 @@
   };
   services.playerctld.enable = true;
   services.mpd.enable = true;
+  services.hyprpolkitagent.enable = true; # + 90mb if no other kde packages, am i need it?
+  # lazydocker
 
-  home.packages = with pkgs; [
-    wl-clipboard # over wl-clipboard-rs (conflicts with hyprpanel probably)
-    libnotify # send notifications programmatically
+  # yt-dlp
 
-    grim
-    slurp
-    satty # over hyprshot swappy
+  # Testing
 
-    # cleaned up to here
-    hyperfine
-    lazyjournal
-    hyprpicker
+  # programs.imv.enable = true; - image viewer, loupe?
+  # programs.zathura.enable = true; - pdf viewer
+  # wget
+  #    wluma
+  #    bat # over cat
+  #    unzip zip rar unrar ?
+  # mc superfile xplr ranger lf nnn yazi broot
+  # walker anyrun
 
-    # try lazydocker
+  # Testing finished
 
-    # yt-dlp
-    # hyprpolkitagent
-
-    # Testing
-
-    # programs.imv.enable = true; - image viewer, loupe?
-    # programs.zathura.enable = true; - pdf viewer
-    # wget
-    #    wluma
-    #    ripgrep
-    #    bat # over cat
-    #    unzip zip rar unrar ?
-    # mc superfile xplr ranger lf nnn yazi broot
-    # walker anyrun
-
-    # Testing finished
-
-    # activate-linux # windows watermark
-  ];
+  # activate-linux # windows watermark
 }

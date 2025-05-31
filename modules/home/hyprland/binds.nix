@@ -1,4 +1,9 @@
-{ lib, pkgs, hostname, ... }:
+{
+  lib,
+  pkgs,
+  hostname,
+  ...
+}:
 
 let
   app_runner = "rofi -show drun";

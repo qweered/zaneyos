@@ -1,11 +1,21 @@
 { pkgs, ... }:
 {
-  # CONFIG: look and configure them all
+  # CONFIG: look and configure them all if needed
   home.packages = with pkgs; [
+    btop # over htop, mission-center
     gdu # du alternative, over dua dust dutree pdu godu ncdu duc diskus
     eza # ls alternative, over exa, lsd
     duf # df alternative, over dysk (2 best) pydf di dfc dfrs
-    procs # over ps aux
-    ripgrep # over grep, ack
+    procs # process viewer, over ps aux
+    ripgrep # grep/ack alternative
+    wl-clipboard # clipboard in shell, over wl-clipboard-rs (conflicts with hyprpanel probably)
+    libnotify # notifications in shell
+    ffmpeg # video/audio converter
+    grim
+    slurp
+    satty # screenshot tools, over hyprshot swappy
+    hyperfine # speed benchmarks
+    lazyjournal # over dmesg, journalctl
+    hyprpicker # color picker
   ];
 }

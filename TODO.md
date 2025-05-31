@@ -50,7 +50,7 @@
 * [goneovim](https://github.com/akiyosi/goneovim)
 * espanso
 * kando-menu
-* clight
+* clight, hyprsunset
 * ddcutil
 * [fd](https://github.com/sharkdp/fd)
 * [firedragon](https://firedragon.garudalinux.org)
