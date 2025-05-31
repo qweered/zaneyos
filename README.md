@@ -1,8 +1,8 @@
 # How to use
 
-* Replace credentials in `config/home/git.nix`
-* Add your system configuration to `config/hosts` (see my in `config/hosts/hyprnix`)
-* Add access-token in `config/system/nix.nix`
+* Replace credentials in `modules/home/devtools/git.nix`
+* Add your system configuration to `config/hosts` (see my in `modules/hosts/hyprnix`)
+* Add access-token in `modules/system/nix.nix`
 
 ## Attributions
 

@@ -1,8 +1,10 @@
 # TODO
 
 * systems = lib.systems.flakeExposed inside ./flake maybe?
+* configure cursor through [home-manager](https://home-manager-options.extranix.com/?query=programs.vscode&release=master)
 * credentials, agenix
 * nix-init
+* sort (imports, something else)
 * steam
 * stylix
 * devenv in flake.nix or in home-manager?
@@ -16,7 +18,6 @@
 * my own plymouth theme
 * check logs that there are no major errors
 * pywal -> hellwal
-* waypaper -> waytrogen
 * multiuser, multigpu [ZaneyOS](https://gitlab.com/Zaney/zaneyos)
 * denoising? [rnnoise](https://github.com/fufexan/dotfiles/blob/17939d902a780a6db459312baa40940ff2a9c149/home/programs/media/rnnoise.nix#L1C1-L41C2)
 * Refactor assets into github repository
