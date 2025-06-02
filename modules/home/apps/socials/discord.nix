@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 {
-  # CONFIG: is this possible in nix?
-  home.packages = with pkgs; [ equibop ];
+  imports = [ inputs.nixcord.homeModules.nixcord ];
+
+  # CONFIG
+  programs.nixcord.enable = true;
+
 }
