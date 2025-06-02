@@ -1,9 +1,5 @@
-{ inputs, vars, ... }:
+{ vars, ... }:
 {
-  imports = [
-    inputs.nvf.homeManagerModules.default
-  ];
-
   programs.home-manager.enable = true;
 
   home = {

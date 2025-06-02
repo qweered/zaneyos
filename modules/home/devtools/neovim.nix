@@ -1,6 +1,9 @@
-{ vars, ... }:
+{ vars, inputs, ... }:
 
 {
+
+  imports = [ inputs.nvf.homeManagerModules.default ];
+
   # Neovim gui wrapper
   programs.neovide = {
     enable = true;
