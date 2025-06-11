@@ -1,13 +1,11 @@
 {
   pkgs,
   inputs,
-  config,
   pkgs-master,
   pkgs-stable,
   ...
 }:
 let
-  hostname = config.networking.hostName;
   vars = {
     username = "qweered";
     city = "Vilnius"; # TODO: found a way to get this based on location
@@ -26,7 +24,6 @@ in
         vars
         pkgs-master
         pkgs-stable
-        hostname # TODO: maybe there is a better way to do this
         ;
     };
     verbose = true;

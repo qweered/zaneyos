@@ -1,7 +1,7 @@
 {
   lib,
   pkgs,
-  hostname,
+  osConfig,
   ...
 }:
 
@@ -9,7 +9,7 @@ let
   app_runner = "rofi -show drun";
   terminal = "wezterm";
   toggle = app: "pkill ${lib.head (lib.split " " app)} || ${app}";
-  mic_instead_of_speaker = "${if hostname == "hyprnix" then "@DEFAULT_AUDIO_SOURCE@" else "@DEFAULT_AUDIO_SINK@"}";
+  mic_instead_of_speaker = "${if osConfig.networking.hostName == "hyprnix" then "@DEFAULT_AUDIO_SOURCE@" else "@DEFAULT_AUDIO_SINK@"}";
 in
 {
   wayland.windowManager.hyprland.settings = {
