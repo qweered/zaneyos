@@ -1,4 +1,4 @@
-{ pkgs-master, ... }:
+{ pkgs-review, ... }:
 {
-  home.packages = with pkgs-master; [ code-cursor ];
+  home.packages = with pkgs-review; [ code-cursor ];
 }

@@ -764,6 +764,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-review": {
+      "locked": {
+        "lastModified": 1749374944,
+        "narHash": "sha256-X8pzW/DIA4RhmNeXI2g7IahME4R4k10L/gcSnKhCiI8=",
+        "owner": "Zaczero",
+        "repo": "nixpkgs",
+        "rev": "8f156e3a5c4df23218c2ebffd9e4ba8735a4e0e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Zaczero",
+        "ref": "code-cursor-generic-package",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1749494155,
@@ -937,6 +953,7 @@
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-review": "nixpkgs-review",
         "nixpkgs-stable": "nixpkgs-stable",
         "nvf": "nvf",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts",

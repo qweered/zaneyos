@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-review.url = "github:Zaczero/nixpkgs/code-cursor-generic-package"; # for pull requests
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     systems.url = "github:nix-systems/default-linux";
 
