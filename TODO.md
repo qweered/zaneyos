@@ -1,5 +1,7 @@
 # TODO
 
+* add overlays to separate place
+* right now users can't influence anything in system, only in home-manager
 * systems = lib.systems.flakeExposed inside ./flake maybe?
 * configure cursor through [home-manager](https://home-manager-options.extranix.com/?query=programs.vscode&release=master)
 * credentials, agenix

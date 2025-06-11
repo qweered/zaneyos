@@ -1,5 +1,6 @@
 # In reversed-chronological and then in random order
 
+* moved hyprland to uwsm
 * multihost
 * moved everything to nfh
 * split flake

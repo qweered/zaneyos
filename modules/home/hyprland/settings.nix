@@ -1,7 +1,10 @@
-{ vars, ... }:
+{ vars, osConfig, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enable = !osConfig.programs.hyprland.withUWSM;
+
+    # Use the ones from the NixOS module
     package = null;
     portalPackage = null;
 
@@ -21,7 +24,8 @@
       ];
 
       exec-once = [
-        "waytrogen --restore"
+        "uwsm finalize" # TODO: check if this is needed
+        "uwsm -s b -- waytrogen --restore"
       ];
 
       monitor = [

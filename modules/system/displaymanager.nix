@@ -11,15 +11,15 @@ let
 in
 
 {
-  services = {
-    displayManager.sddm = {
+  services.displayManager = {
+    defaultSession = "hyprland-uwsm";
+    sddm = {
       enable = true;
       wayland.enable = true;
       package = pkgs.kdePackages.sddm;
       theme = "sddm-astronaut-theme"; # name of theme package
       extraPackages = [ sddm-astronaut ];
     };
-    displayManager.defaultSession = "hyprland";
   };
 
   environment.systemPackages = [ sddm-astronaut ];

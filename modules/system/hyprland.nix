@@ -1,4 +1,7 @@
 {
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
   security.pam.services.hyprlock = { }; # Needed for hyprlock
 }
