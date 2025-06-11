@@ -36,7 +36,15 @@
             networking.hostName = "hyprnix";
             system.stateVersion = "24.11";
             nixpkgs.hostPlatform = system;
-            nixpkgs.overlays = with inputs; [ hyprpanel.overlay ];
+            nixpkgs.overlays = with inputs; [
+              hyprpanel.overlay
+              # TODO: OH, i need to rethink overlays now, cause if i want to overlay eg nixpkgs-master it would be pain
+              #  (self: super: {
+              #    code-cursor = super.code-cursor-generic-package.overrideAttrs (old: {
+              #      src = inputs.nixpkgs-review.outPath;
+              #    });
+              #  })
+            ];
           }
         ];
     }

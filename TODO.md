@@ -26,7 +26,7 @@
 * denoising? [rnnoise](https://github.com/fufexan/dotfiles/blob/17939d902a780a6db459312baa40940ff2a9c149/home/programs/media/rnnoise.nix#L1C1-L41C2)
 * Refactor assets into github repository
 * Setup portals (what application opens what file)
-* nh with support for darwin ? [nh](https://github.com/ToyVo/nh)
+* nh with darwin module ? [nh](https://github.com/ToyVo/nh)
 * configure more kernel parameters
 * [declarative-flatpak](https://github.com/GermanBread/declarative-flatpak) or [nix-flatpak](https://github.com/gmodena/nix-flatpak)
 * snap ? appimage ?
@@ -41,9 +41,13 @@
 * encrypt filesystem
 * lanzaboote
 
+## Nixpkgs contributions
+
+* why the fuck i need to have exact length for hash to it start building and showing me actual hash?
+* rename network-manager-applet to nm-applet in home manager repo
+
 ## Blocked
 
-* make a PR: rename network-manager-applet to nm-applet in home manager repo
 * hyprpanel flake -> hyprpanel nixpkgs (or replace completely)
 
 ## Software to watch

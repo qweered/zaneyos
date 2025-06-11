@@ -6,12 +6,14 @@
 }:
 
 let
-  app_runner = "rofi -show drun";
+  app_runner = ''rofi -show drun -run-command "uwsm app -- {cmd}"'';
   terminal = "wezterm";
   toggle = app: "pkill ${lib.head (lib.split " " app)} || uwsm app -- ${app}";
   runOnce = app: "pgrep ${app} || uwsm app -- ${app}";
   run = app: "uwsm app -- ${if app == "" then " " else app}";
-  mic_instead_of_speaker = "${if osConfig.networking.hostName == "hyprnix" then "@DEFAULT_AUDIO_SOURCE@" else "@DEFAULT_AUDIO_SINK@"}";
+  mic_instead_of_speaker = "${
+    if osConfig.networking.hostName == "hyprnix" then "@DEFAULT_AUDIO_SOURCE@" else "@DEFAULT_AUDIO_SINK@"
+  }";
 in
 {
   wayland.windowManager.hyprland.settings = {
