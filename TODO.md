@@ -7,6 +7,7 @@
 * nix-init
 * sort (imports, something else)
 * steam
+* jj - git replacement
 * stylix
 * devenv in flake.nix or in home-manager?
 * disko
