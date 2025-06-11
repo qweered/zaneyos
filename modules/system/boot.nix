@@ -23,20 +23,21 @@
 
     # Silent boot
     initrd.verbose = false;
-    consoleLogLevel = 0;
+    consoleLogLevel = 3;
     kernelParams = [
       "quiet"
-      "splash"
       "vt.global_cursor_default=0"
-      "loglevel=3"
       "rd.systemd.show_status=auto"
       "rd.udev.log_level=3"
-      "udev.log_priority=3"
+      "udev.log_priority=3" 
+      "plymouth.use-simpledrm" # https://github.com/NixOS/nixpkgs/issues/32556#issuecomment-2315814669
 
       "boot.shell_on_fail"
       "microcode.amd_sha_check=off" # for ucodenix to work properly
-      "clocksource=tsc" # always tsc even it may be not reliable
-      "tsc=reliable"
+      
+      # may cause issues, disable for now
+      # "clocksource=tsc" # always tsc even it may be not reliable
+      # "tsc=reliable"
     ];
 
     # Hide the OS choice in the bootloader menu
