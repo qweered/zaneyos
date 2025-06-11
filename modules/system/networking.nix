@@ -3,6 +3,7 @@
 {
   networking = {
     networkmanager.enable = true;
+    networkmanager.settings.connectivity.uri = "http://nmcheck.gnome.org/check_network_status.txt"; # for captive portals, TODO: contribute to nixpkgs https://wiki.archlinux.org/title/NetworkManager#Checking_connectivity
     networkmanager.wifi.powersave = true;
   };
 
@@ -12,8 +13,4 @@
     enable = true;
     wait-online.enable = !config.programs.nm-applet.enable;
   };
-
-  # TODO: Doesn't work ideally
-  # programs.captive-browser.enable = true;
-  # programs.captive-browser.interface = "wlo1";
 }
