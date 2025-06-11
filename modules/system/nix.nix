@@ -1,4 +1,4 @@
-{
+{ lib,
   pkgs,
   inputs,
   config,
@@ -32,17 +32,30 @@
     }))
   ];
 
-  nix = {
-    channel.enable = false;
-    # TODO: Do i need NIX_PATH?
+  nix = let
+    flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
+  in {
+    # TODO: should it be disabled?
+    # channel.enable = false;
+
+    # pin the registry to avoid downloading and evaling a new nixpkgs version every time
+    registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs;
+    # set the path for channels compat
+    nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
+
     settings = {
+      builders-use-substitutes = true;
       auto-optimise-store = true;
       flake-registry = "/etc/nix/registry.json";
+      
+      # for direnv GC roots
+      keep-derivations = true;
+      keep-outputs = true;
+
       experimental-features = [
         "nix-command"
         "flakes"
       ];
-      builders-use-substitutes = true;
 
       # TODO: Put your access-token here
       # access-tokens = "github.com=github_pat_blabablablabalbaalabl";
