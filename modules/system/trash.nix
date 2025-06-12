@@ -48,6 +48,12 @@
 
   services.dbus.implementation = "broker";
 
+  environment.systemPackages = with pkgs; [
+    uutils-findutils
+    uutils-diffutils
+    uutils-coreutils-noprefix
+  ];
+
   services = {
     fstrim.enable = true; # periodically trim ssd
     fwupd.enable = true; # periodically update drivers
