@@ -59,5 +59,6 @@
 * kando-menu
 * clight, hyprsunset
 * ddcutil
+* diffoscope
 * [fd](https://github.com/sharkdp/fd)
 * [firedragon](https://firedragon.garudalinux.org)
