@@ -9,7 +9,6 @@ let
   app_runner = ''rofi -show drun -run-command "uwsm app -- {cmd}"'';
   terminal = "wezterm";
   toggle = app: "pkill ${lib.head (lib.split " " app)} || uwsm app -- ${app}";
-  runOnce = app: "pgrep ${app} || uwsm app -- ${app}";
   run = app: "uwsm app -- ${if app == "" then " " else app}";
   mic_instead_of_speaker = "${
     if osConfig.networking.hostName == "hyprnix" then "@DEFAULT_AUDIO_SOURCE@" else "@DEFAULT_AUDIO_SINK@"
@@ -50,20 +49,19 @@ in
           7
         ];
         # CONFIG: all pkgs.something should be declared somewhere else, lib.getexe?
-        # TODO: is it overkill to use so many runOnce?
         screenshot = pkgs.writeShellScript "screenshot" ''
-          ${runOnce "grim"} -g "$(${runOnce "slurp"} -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | \
-          ${runOnce "satty"} --filename - --fullscreen \
+          grim -g "$(slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | \
+          satty --filename - --fullscreen \
             --output-filename ~/Pictures/Screenshots/Screenshot_$(date +"%Y%m%d_%H%M%S").png \
             --init-tool brush --copy-command wl-copy
         '';
       in
       [
         "SUPER, Return, exec, ${run terminal}"
-        "SUPER, V, exec, ${run terminal} --class clipse -e 'clipse'"
+        # FIXME: "SUPER, V, exec, ${run terminal} --class clipse -e 'clipse'"
         "SUPER, B, exec, ${run ""} $BROWSER"
         "SUPER_CTRL, RETURN, exec, ${toggle app_runner}"
-        "SUPER, Print, exec, ${runOnce screenshot}"
+        "SUPER, Print, exec, ${screenshot}"
 
         "ALT, Tab, focuscurrentorlast"
         "CTRL_ALT, Delete, exit"

@@ -103,8 +103,8 @@
       };
 
       misc = {
-        disable_splash_rendering = true;
-        force_default_wallpaper = -1;
+        disable_hyprland_logo = true; # no default wallpaper
+        disable_splash_rendering = true; # no funny text from vaxry
       };
 
       input = {
