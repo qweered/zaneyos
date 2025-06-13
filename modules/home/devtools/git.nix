@@ -212,7 +212,6 @@
       rerere.autoUpdate = true;
 
       # Remote settings
-      remote.origin.fetch = "+refs/heads/*:refs/remotes/origin/*";
       remote.origin.prune = true;
 
       # Status settings
