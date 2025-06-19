@@ -25,10 +25,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    agenix.url = "github:ryantm/agenix";
-    agenix-rekey.url = "github:oddlama/agenix-rekey";
-    agenix-rekey.inputs.nixpkgs.follows = "nixpkgs";
+    
     ucodenix.url = "github:e-tho/ucodenix";
     nixcord.url = "github:kaylorben/nixcord";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
