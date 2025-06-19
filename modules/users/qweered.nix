@@ -9,7 +9,7 @@
 let
   vars = {
     username = "qweered";
-    city = "Vilnius"; # TODO: found a way to get this based on location
+    city = "Vilnius"; # TODO: find a way to get this based on location
     description = "The only and the greatest admin";
     browser = "vivaldi";
     stateVersion = "24.11"; # Change it when i read all changelogs from previous versions and make changes

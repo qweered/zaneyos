@@ -23,8 +23,6 @@
     lazydocker # docker in terminal
 
     jq
-    azure-cli
-    azure-cli-extensions.application-insights
     # zathura imv # pdf/image viewer
     # wluma # automatic brightness control
     # unzip zip rar unrar # over 7z
