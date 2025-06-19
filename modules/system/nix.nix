@@ -42,8 +42,8 @@
       flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
     in
     {
-      # TODO: should it be disabled?
-      # channel.enable = false;
+      # TODO: should it be enabled?
+      channel.enable = false;
 
       # pin the registry to avoid downloading and evaling a new nixpkgs version every time
       registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs;
@@ -58,6 +58,9 @@
         # for direnv GC roots
         keep-derivations = true;
         keep-outputs = true;
+
+        allow-import-from-derivation = false;
+        accept-flake-config = false;
 
         experimental-features = [
           "nix-command"
