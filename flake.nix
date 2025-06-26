@@ -28,8 +28,6 @@
     
     ucodenix.url = "github:e-tho/ucodenix";
     nixcord.url = "github:kaylorben/nixcord";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";

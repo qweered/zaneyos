@@ -48,8 +48,6 @@
 
 ## Blocked
 
-* hyprpanel flake -> hyprpanel nixpkgs (or replace completely)
-
 ## Software to watch
 
 * [delta](https://github.com/dandavison/delta)
