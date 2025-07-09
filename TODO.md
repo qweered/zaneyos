@@ -46,8 +46,6 @@
 * why the fuck i need to have exact length for hash to it start building and showing me actual hash?
 * rename network-manager-applet to nm-applet in home manager repo
 
-## Blocked
-
 ## Software to watch
 
 * [delta](https://github.com/dandavison/delta)
