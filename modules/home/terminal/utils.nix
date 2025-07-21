@@ -1,33 +1,34 @@
 { pkgs, ... }:
 {
   # CONFIG: look and configure them all if needed
-  home.packages = with pkgs; [
-    btop # over htop, mission-center
-    gdu # du alternative, over dua dust dutree pdu godu ncdu duc diskus
-    eza # ls alternative, over exa, lsd
-    duf # df alternative, over dysk (2 best) pydf di dfc dfrs
-    procs # process viewer, over ps aux
-    ripgrep # grep/ack alternative
-    wl-clipboard # clipboard in shell, over wl-clipboard-rs (conflicts with hyprpanel probably)
-    libnotify # notifications in shell
-    ffmpeg # video/audio converter
-    grim
-    slurp
-    satty # screenshot tools, over hyprshot swappy
-    hyperfine # speed benchmarks
-    lazyjournal # over dmesg, journalctl
-    hyprpicker # color picker
-    wget # download files, over curl
-    bat # cat alternative
-    yt-dlp # download videos
-    lazydocker # docker in terminal
+  home.packages = [
+    pkgs.btop # over htop, mission-center
+    pkgs.gdu # du alternative, over dua dust dutree pdu godu ncdu duc diskus
+    pkgs.eza # ls alternative, over exa, lsd
+    pkgs.duf # df alternative, over dysk (2 best) pydf di dfc dfrs
+    pkgs.procs # process viewer, over ps aux
+    pkgs.ripgrep # grep/ack alternative
+    pkgs.wl-clipboard # clipboard in shell, over wl-clipboard-rs (conflicts with hyprpanel probably)
+    pkgs.libnotify # notifications in shell
+    pkgs.ffmpeg # video/audio converter
+    pkgs.grim
+    pkgs.slurp
+    pkgs.satty # screenshot tools, over hyprshot swappy
+    pkgs.hyperfine # speed benchmarks
+    pkgs.lazyjournal # over dmesg, journalctl
+    pkgs.hyprpicker # color picker
+    pkgs.wget # download files, over curl
+    pkgs.bat # cat alternative
+    pkgs.yt-dlp # download videos
+    pkgs.lazydocker # docker in terminal
 
-    jq
-    # zathura imv # pdf/image viewer
-    # wluma # automatic brightness control
-    # unzip zip rar unrar # over 7z
-    # mc superfile xplr ranger lf nnn yazi broot # over ranger
-    # walker anyrun # over rofi
-    # activate-linux # fun windows watermark
+    pkgs.jq
+    # Additional packages to consider:
+    # pkgs.zathura pkgs.imv # pdf/image viewer
+    # pkgs.wluma # automatic brightness control
+    # pkgs.unzip pkgs.zip pkgs.rar pkgs.unrar # over 7z
+    # pkgs.mc pkgs.superfile pkgs.xplr pkgs.ranger pkgs.lf pkgs.nnn pkgs.yazi pkgs.broot # over ranger
+    # pkgs.walker pkgs.anyrun # over rofi
+    # pkgs.activate-linux # fun windows watermark
   ];
 }

@@ -1,4 +1,4 @@
-{ vars, inputs, ... }:
+{ vars, inputs, config, ... }:
 
 {
 
@@ -8,8 +8,8 @@
   programs.neovide = {
     enable = true;
     settings = {
-      # TODO: Is this true for all home-manager configurations?
-      neovim-bin = "/etc/profiles/per-user/${vars.username}/bin/nvim";
+      # Use the nvim from the home-manager profile instead of hardcoded path
+      neovim-bin = "${config.programs.nvf.finalPackage}/bin/nvim";
       font = {
         normal = [ ];
         size = 14.0;

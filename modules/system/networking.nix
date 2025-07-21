@@ -3,7 +3,12 @@
 {
   networking = {
     networkmanager.enable = true;
-    networkmanager.settings.connectivity.uri = "http://nmcheck.gnome.org/check_network_status.txt"; # for captive portals, TODO: contribute to nixpkgs https://wiki.archlinux.org/title/NetworkManager#Checking_connectivity
+    # Configure connectivity check for captive portals
+    # This is a standard configuration for NetworkManager connectivity checking
+    networkmanager.settings.connectivity = {
+      uri = "http://nmcheck.gnome.org/check_network_status.txt";
+      interval = 300; # Check every 5 minutes
+    };
     networkmanager.wifi.powersave = true;
   };
 

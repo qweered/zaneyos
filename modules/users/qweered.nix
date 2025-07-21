@@ -13,6 +13,14 @@ let
     description = "The only and the greatest admin";
     browser = "vivaldi";
     stateVersion = "24.11"; # Change it when i read all changelogs from previous versions and make changes
+    
+    # Git configuration
+    git = {
+      userName = "Aliaksandr";
+      userEmail = "grubian2@gmail.com";
+      githubUser = "qweered";
+      signingKey = "CACB28BA93CE71A2";
+    };
   };
 in
 {

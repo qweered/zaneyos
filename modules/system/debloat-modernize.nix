@@ -8,18 +8,20 @@
   programs.less.lessopen = lib.mkDefault null;
   boot.enableContainers = lib.mkDefault false;
 
-  # TODO: Check that the system does not contain a Nix store path that contains the string "perl".
-  # system.forbiddenDependenciesRegexes = [ "perl" ];
+  # Note: system.forbiddenDependenciesRegexes can cause build issues
+  # Check for perl dependencies manually if needed with: nix path-info -r /run/current-system | grep perl
 
-  # Replace coreutils with uutils
-  environment.systemPackages = with pkgs; [
-    uutils-findutils
-    uutils-diffutils
-    uutils-coreutils-noprefix
+  # Replace coreutils with uutils for better performance and memory usage
+  environment.systemPackages = [
+    pkgs.uutils-findutils
+    pkgs.uutils-diffutils
+    pkgs.uutils-coreutils-noprefix
   ];
 
-  services.dbus.implementation = "broker"; # modern
-  programs.command-not-found.enable = lib.mkDefault false; # will be false in a couple of days https://nixpk.gs/pr-tracker.html?pr=416425
+  services.dbus.implementation = "broker"; # modern dbus implementation
+  programs.command-not-found.enable = lib.mkDefault false; # will be false by default soon
   systemd.enableStrictShellChecks = true; # will become default
-  # system.etc.overlay.enable = lib.mkDefault true; crashes my system
+  
+  # Note: system.etc.overlay.enable can cause system instability on some configurations
+  # Enable manually if needed: system.etc.overlay.enable = true;
 }

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ grc ];
+  home.packages = [ pkgs.grc ];
 
   # CONFIG: https://www.reddit.com/r/NixOS/comments/1d174ds/how_can_i_get_colorful_man_pages/
 
@@ -17,17 +17,22 @@
         src = pkgs.fishPlugins.grc.src;
       }
     ];
-    # TODO: for many of this i need not aliases but something that can replace installed programs
+    # Using proper shell functions for better integration than aliases
+    functions = {
+      # System management functions
+      sys-switch = "nh os switch --ask $argv";
+      home-switch = "nh home switch --ask $argv";
+      sys-update = "nh os switch --update $argv";
+      sys-clean = "nh clean all $argv";
+      
+      # Editor functions that properly handle arguments
+      sv = "sudo neovide $argv";
+      v = "neovide $argv";
+      vim = "neovide $argv";
+      nvim = "neovide $argv";
+    };
     shellAliases = {
-      sys-switch = "nh os switch --ask";
-      home-switch = "nh home switch --ask";
-      sys-update = "nh os switch --update";
-      sys-clean = "nh clean all";
-
-      sv = "sudo neovide";
-      v = "neovide";
-      vim = "neovide";
-      nvim = "neovide";
+      # File listing aliases (these work well as simple aliases)
       exa = "eza";
       ls = "eza";
       ll = "eza -l";
@@ -36,12 +41,12 @@
       ".." = "cd ..";
       "..." = "cd ../..";
 
+      # System monitoring aliases
       df = "duf";
       du = "gdu";
       ncdu = "gdu";
       htop = "btop";
       top = "btop";
-      # "ps aux" = "procs";
     };
   };
 }

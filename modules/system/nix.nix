@@ -67,8 +67,10 @@
           "flakes"
         ];
 
-        # TODO: Put your access-token here
-        # access-tokens = "github.com=github_pat_blabablablabalbaalabl";
+        # GitHub access token for private repositories
+        # Set this in your local configuration or environment if needed:
+        # access-tokens = "github.com=github_pat_your_token_here";
+        # Alternatively, use a file: access-tokens = "github.com=@/path/to/token/file";
 
         trusted-users = [
           "root"

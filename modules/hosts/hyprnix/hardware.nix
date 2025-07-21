@@ -15,7 +15,9 @@
   imports = [ inputs.ucodenix.nixosModules.default ];
   services.ucodenix = {
     enable = true;
-    cpuModelId = "00860F81"; # TODO: Run cpuid -1 -l 1 -r | sed -n 's/.*eax=0x\([0-9a-f]*\).*/\U\1/p' to retrieve processor's model ID
+    # To get your CPU model ID, run: cpuid -1 -l 1 -r | sed -n 's/.*eax=0x\([0-9a-f]*\).*/\U\1/p'
+    # Or check /proc/cpuinfo for the "model" field
+    cpuModelId = "00860F81"; # AMD Ryzen CPU model ID - update this for your specific CPU
   };
 
   fileSystems."/" = {

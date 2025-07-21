@@ -1,14 +1,14 @@
-{ pkgs, config, ... }:
+{ pkgs, config, vars, ... }:
 {
-  home.packages = with pkgs; [ lazygit ];
+  home.packages = [ pkgs.lazygit ];
 
   programs.gh.enable = true;
 
   programs.git = {
     enable = true;
     package = pkgs.gitMinimal.override { withLibsecret = true; }; # gitMinimal to remove perl
-    userName = "Aliaksandr";
-    userEmail = "grubian2@gmail.com";
+    userName = vars.git.userName;
+    userEmail = vars.git.userEmail;
     delta.enable = true;
     signing = {
       key = config.programs.gpg.settings.default-key;
@@ -167,7 +167,7 @@
       fetch.parallel = 0; # use all available cores
 
       # GitHub settings
-      github.user = "qweered";
+      github.user = vars.git.githubUser;
 
       # Init settings
       init.defaultBranch = "main";
