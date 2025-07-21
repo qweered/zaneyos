@@ -1,3 +1,12 @@
+# NixOS System Configuration
+# 
+# Code Style Guidelines:
+# - Use explicit package references (pkgs.packageName) instead of `with pkgs;`
+# - Parameterize hardcoded values through vars or module options
+# - Add assertions for critical configuration validation
+# - Document complex configuration decisions with comments
+# - Group related configurations logically
+#
 {
   lib,
   pkgs,
@@ -24,9 +33,9 @@
     inherit (config.nixpkgs) config;
   };
 
-  environment.systemPackages = with pkgs; [
-    nixd
-    (nix-tree.overrideAttrs (oldAttrs: {
+  environment.systemPackages = [
+    pkgs.nixd
+    (pkgs.nix-tree.overrideAttrs (oldAttrs: {
       version = "0.6.3";
       src = pkgs.fetchFromGitHub {
         owner = "utdemir";

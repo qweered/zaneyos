@@ -1,26 +1,26 @@
 { pkgs, lib, ... }:
 
 {
-  # TODO: recheck all this cause i stole from fufexan
+  # Font configuration for the system
   fonts = {
-    packages = with pkgs; [
+    packages = [
       # icon fonts
-      material-symbols
+      pkgs.material-symbols
 
       # Sans(Serif) fonts
-      libertinus
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      roboto
-      (google-fonts.override { fonts = [ "Inter" ]; })
+      pkgs.libertinus
+      pkgs.noto-fonts
+      pkgs.noto-fonts-cjk-sans
+      pkgs.noto-fonts-emoji
+      pkgs.roboto
+      (pkgs.google-fonts.override { fonts = [ "Inter" ]; })
 
       # monospace fonts
-      jetbrains-mono
+      pkgs.jetbrains-mono
 
       # nerdfonts
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.symbols-only
+      pkgs.nerd-fonts.jetbrains-mono
+      pkgs.nerd-fonts.symbols-only
     ];
 
     # causes more issues than it solves

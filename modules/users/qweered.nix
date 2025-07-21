@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   pkgs-master,
   pkgs-stable,
   pkgs-review,
@@ -24,6 +25,21 @@ let
   };
 in
 {
+  # Basic validation
+  assertions = [
+    {
+      assertion = vars.git.userEmail != "" && lib.hasInfix "@" vars.git.userEmail;
+      message = "Git email must be a valid email address";
+    }
+    {
+      assertion = vars.git.signingKey != "";
+      message = "Git signing key must be provided";
+    }
+    {
+      assertion = vars.username != "";
+      message = "Username cannot be empty";
+    }
+  ];
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   home-manager = {
