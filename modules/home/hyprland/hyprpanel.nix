@@ -1,4 +1,4 @@
-{  vars, ... }:
+{ vars, ... }:
 
 {
   programs.hyprpanel = {

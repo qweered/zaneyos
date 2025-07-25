@@ -3,7 +3,10 @@
   # CONFIG: I can generate custom menu items in thunar
   programs.thunar = {
     enable = true;
-    plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
   };
   services.gvfs.enable = true; # mount, trash, and other functionalities
   services.tumbler.enable = true; # thumbnail support for images
@@ -26,6 +29,10 @@
   services.swapspace.enable = true;
   zramSwap.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    youtube-music
+  ];
+
   # Checked up to here
   services.userborn.enable = true;
   services.gnome.gnome-keyring.enable = true;
@@ -33,7 +40,7 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [oxlint];
+    libraries = with pkgs; [ oxlint ];
   };
 
   i18n.supportedLocales = [
