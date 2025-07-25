@@ -4,8 +4,7 @@
 result
 result-*
 
-.direnv/*
-
-/.idea/
+.direnv
+.idea
 
 credentials.md
