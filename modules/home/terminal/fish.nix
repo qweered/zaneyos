@@ -24,10 +24,10 @@
       sys-update = "nh os switch --update";
       sys-clean = "nh clean all";
 
-      sv = "sudo neovide";
-      v = "neovide";
-      vim = "neovide";
-      nvim = "neovide";
+      # sv = "sudo neovide";
+      # v = "neovide";
+      # vim = "neovide";
+      # nvim = "neovide";
       exa = "eza";
       ls = "eza";
       ll = "eza -l";
