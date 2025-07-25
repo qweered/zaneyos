@@ -8,6 +8,7 @@
     duf # df alternative, over dysk (2 best) pydf di dfc dfrs
     procs # process viewer, over ps aux
     ripgrep # grep/ack alternative
+    fzf # fuzzy finder
     wl-clipboard # clipboard in shell, over wl-clipboard-rs (conflicts with hyprpanel probably)
     libnotify # notifications in shell
     ffmpeg # video/audio converter
