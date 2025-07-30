@@ -3,7 +3,6 @@
   inputs,
   pkgs-master,
   pkgs-stable,
-  pkgs-review,
   ...
 }:
 let
@@ -25,7 +24,6 @@ in
         vars
         pkgs-master
         pkgs-stable
-        pkgs-review
         ;
     };
     verbose = true;
