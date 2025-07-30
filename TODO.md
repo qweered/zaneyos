@@ -1,6 +1,7 @@
 # TODO
 
 * add overlays to separate place
+* deadnix
 * matrix client
 * right now users can't influence anything in system, only in home-manager
 * systems = lib.systems.flakeExposed inside ./flake maybe?

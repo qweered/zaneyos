@@ -1,21 +1,13 @@
 # In reversed-chronological and then in random order
 
-* moved hyprland to uwsm
-* multihost
-* moved everything to nfh
-* split flake
-* nix-tree
-* devenv + direnv
-* gpg, ssh
-* initrd.systemd
-* perlless (partially done)
+* hyprland with UWSM
+* multihost, multiuser (partially)
+* nix stuff configured: nh, devenv, direnv, nix-tree, nixd, nix-index
+* git w/ gpg + ssh
 * swapspace + zram
-* nix-index + nix-index-database
-* nix -> lix
-* nix fmt (treefmt-nix)
-* nh
-* flake-parts + plugins
-* distrobox, virt-manager
+* lix instead of nix
+* nix formatter (treefmt-nix)
+* flake-parts + plugins + autoload module trees (nfh)
 * plymouth w/ theme
 * sddm w/ theme
 
