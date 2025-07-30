@@ -11,17 +11,16 @@ in
 {
   imports = [ inputs.lix-module.nixosModules.default ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowAliases = false;
+  };
 
   _module.args.pkgs-master = import inputs.nixpkgs-master {
     inherit (pkgs.stdenv.hostPlatform) system;
     inherit (config.nixpkgs) config;
   };
   _module.args.pkgs-stable = import inputs.nixpkgs-stable {
-    inherit (pkgs.stdenv.hostPlatform) system;
-    inherit (config.nixpkgs) config;
-  };
-  _module.args.pkgs-review = import inputs.nixpkgs-review {
     inherit (pkgs.stdenv.hostPlatform) system;
     inherit (config.nixpkgs) config;
   };
