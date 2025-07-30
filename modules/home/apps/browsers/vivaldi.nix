@@ -1,10 +1,10 @@
-{ pkgs-master, ... }:
+{ pkgs, ... }:
 {
-  home.packages = with pkgs-master; [
+  home.packages = with pkgs; [
     (vivaldi.override {
       enableWidevine = true;
       inherit widevine-cdm;
-      # Proprietary codecs are broken
+      # Proprietary codecs are broken now
       # proprietaryCodecs = true;
       # inherit vivaldi-ffmpeg-codecs;
     })
