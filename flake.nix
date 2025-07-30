@@ -45,9 +45,12 @@
 
   outputs =
     inputs@{ nfh, flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } rec {
-      flake.moduleTree = nfh ./modules;
-      imports = flake.moduleTree.flake-parts { };
+    let
+      moduleTree = nfh ./modules;
+    in
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      flake.moduleTree = moduleTree;
+      imports = moduleTree.flake-parts { };
       systems = import inputs.systems;
     };
 }
