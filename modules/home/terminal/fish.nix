@@ -17,31 +17,25 @@
         src = pkgs.fishPlugins.grc.src;
       }
     ];
-    # TODO: for many of this i need not aliases but something that can replace installed programs
     shellAliases = {
-      sys-switch = "nh os switch --ask";
-      home-switch = "nh home switch --ask";
-      sys-update = "nh os switch --update";
-      sys-clean = "nh clean all";
+      nh-switch = "nh os switch --ask";
+      nh-update = "nh os switch --update --ask";
 
-      # sv = "sudo neovide";
-      # v = "neovide";
-      # vim = "neovide";
-      # nvim = "neovide";
-      exa = "eza";
+      svi = "sudo nvim";
       ls = "eza";
       ll = "eza -l";
       la = "eza -a";
       lal = "eza -al";
+
       ".." = "cd ..";
       "..." = "cd ../..";
+      "...." = "cd ../../..";
 
       df = "duf";
       du = "gdu";
-      ncdu = "gdu";
       htop = "btop";
       top = "btop";
-      # "ps aux" = "procs";
+      # "ps aux" = "procs"; TODO: add this
     };
   };
 }
