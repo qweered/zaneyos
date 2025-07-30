@@ -16,30 +16,29 @@
     };
     aliases = {
       # Branch operations
-      b = "branch -vv";
-      bd = "branch -d";
-      bD = "branch -D";
-      br = "branch -r"; # list remote branches
-      ba = "branch -a"; # list all branches
-      bm = "branch --merged"; # list merged branches
-      bnm = "branch --no-merged"; # list unmerged branches
+      b = "branch --verbose";
+      bd = "branch --delete";
+      bD = "branch --delete --force";
+      br = "branch --remote";
+      ba = "branch --all";
+      bm = "branch --merged";
+      bnm = "branch --no-merged";
 
       # Modern checkout/switch commands
-      co = "checkout";
-      sw = "switch"; # modern alternative to checkout for branches
-      swc = "switch -c"; # create and switch to new branch
-      rs = "restore"; # modern alternative to checkout for files
+      sw = "switch";
+      swc = "switch --create";
+      rs = "restore";
 
       # Commit operations
       c = "commit";
-      cm = "commit -m";
+      cm = "commit --message";
       ca = "commit --amend";
       can = "commit --amend --no-edit";
-      cane = "commit --amend --no-edit";
-      cf = "commit --afixup";
+      cf = "commit --fixup";
       cs = "commit --squash";
 
       # Enhanced log aliases with better formatting
+      # TODO: reverse order of logs
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       ll = "log --oneline --graph --decorate --all -20";
       ls = "log --stat";
@@ -62,7 +61,7 @@
       r = "reset";
       r1 = "reset HEAD^";
       r2 = "reset HEAD^^";
-      rh = "reset --hard";
+      rhard = "reset --hard";
       rsoft = "reset --soft";
       unstage = "reset HEAD --";
 
@@ -73,7 +72,7 @@
       fp = "fetch --prune";
       p = "push";
       po = "push origin";
-      pu = "push -u origin HEAD";
+      pu = "push --set-upstream origin HEAD";
       pf = "push --force-with-lease"; # safer than --force
 
       # Pull operations
@@ -88,10 +87,10 @@
       rba = "rebase --abort";
       rbs = "rebase --skip";
 
-      # Merge operations
-      m = "merge";
-      mnf = "merge --no-ff";
-      mff = "merge --ff-only";
+      # Merge operations (I don't use merge)
+      # m = "merge";
+      # mnf = "merge --no-ff";
+      # mff = "merge --ff-only";
 
       # Add operations
       a = "add";
@@ -100,9 +99,9 @@
 
       # Utility aliases
       ds = "describe --long --tags --dirty --always";
-      who = "shortlog -sn";
-      alias = "config --get-regexp ^alias\\.";
-      last = "log -1 HEAD --stat";
+      who = "shortlog --summary";
+      alias = "config --get-regexp ^alias\\. | cut -d' ' -f2-";
+      last = "log --oneline --stat HEAD";
       visual = "!gitk";
       today = "log --since='1 day ago' --oneline --author=$(git config user.email)";
       yesterday = "log --since='2 days ago' --until='1 day ago' --oneline --author=$(git config user.email)";
