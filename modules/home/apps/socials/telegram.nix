@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ ayugram-desktop ];
+  home.packages = [ pkgs.ayugram-desktop ];
 }

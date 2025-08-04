@@ -1,4 +1,4 @@
 { pkgs-master, ... }:
 {
-  home.packages = with pkgs-master; [ windsurf ];
+  home.packages = [ pkgs-master.windsurf ];
 }

@@ -30,6 +30,11 @@ in
     nix-tree
   ];
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [ oxlint ];
+  };
+
   nix = {
     # TODO: should it be enabled?
     channel.enable = false;

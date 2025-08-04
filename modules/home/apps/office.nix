@@ -2,5 +2,5 @@
 {
   # over libreoffice, onlyoffice-desktopeditors
   # TODO: should be wpsoffice cause libreoffice adds 1.7 gb to storage
-  home.packages = with pkgs; [ libreoffice ];
+  home.packages = [ pkgs.libreoffice ];
 }

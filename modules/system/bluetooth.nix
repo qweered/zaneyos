@@ -6,5 +6,5 @@
     enable = true;
     settings.General.Experimental = true;
   };
-  environment.systemPackages = with pkgs; [ overskride ]; # over blueman, bluetuith
+  environment.systemPackages = [ pkgs.overskride ]; # over blueman, bluetuith
 }

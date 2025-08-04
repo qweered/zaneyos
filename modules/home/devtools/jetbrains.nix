@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ jetbrains-toolbox ];
+  home.packages = [ pkgs.jetbrains-toolbox ];
 }

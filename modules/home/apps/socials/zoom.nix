@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ zoom-us ];
+  home.packages = [ pkgs.zoom-us ];
 }

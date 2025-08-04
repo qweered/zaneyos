@@ -1,5 +1,5 @@
 { pkgs, ... }:
 {
   # over pavucontrol, pulsemixer
-  home.packages = with pkgs; [ pwvucontrol ];
+  home.packages = [ pkgs.pwvucontrol ];
 }

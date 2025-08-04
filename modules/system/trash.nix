@@ -29,19 +29,10 @@
   services.swapspace.enable = true;
   zramSwap.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    youtube-music
-  ];
-
   # Checked up to here
   services.userborn.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gnome-keyring.enableGnomeKeyring = true;
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [ oxlint ];
-  };
 
   i18n.supportedLocales = [
     "en_US.UTF-8/UTF-8"
