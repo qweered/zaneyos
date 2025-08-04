@@ -28,6 +28,7 @@ in
   environment.systemPackages = with pkgs; [
     nixd
     nix-tree
+    nix-init # TODO: home-manager
   ];
 
   programs.nix-ld = {
