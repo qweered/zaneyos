@@ -8,11 +8,11 @@
 * configure cursor through [home-manager](https://home-manager-options.extranix.com/?query=programs.vscode&release=master)
 * credentials, agenix
 * uwsm
-* nix-init
 * sort (imports, something else)
 * steam
 * jj - git replacement
 * stylix
+* check if anything in system have home-manager stuff (for example podman)
 * devenv in flake.nix or in home-manager?
 * disko
 * git hooks
