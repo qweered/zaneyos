@@ -3,7 +3,7 @@
   programs.nh = {
     enable = true;
     clean.enable = true;
-    clean.dates = "weekly";
+    clean.dates = "monthly";
     flake = "/home/${vars.username}/zaneyos";
   };
 }
