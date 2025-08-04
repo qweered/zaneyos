@@ -52,7 +52,7 @@ in
           "libvirtd"
           "audio"
           "video"
-          "docker"
+          "podman"
         ];
       };
     };

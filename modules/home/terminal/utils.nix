@@ -21,7 +21,6 @@
     wget # download files, over curl
     bat # cat alternative
     yt-dlp # download videos
-    lazydocker # docker in terminal
 
     jq
     # zathura imv # pdf/image viewer

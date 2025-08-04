@@ -32,7 +32,6 @@
         system = {
           _defaultsRecursive = true;
           impermanence = false;
-          virtualization.distrobox = false;
         };
       }
       ++ [
