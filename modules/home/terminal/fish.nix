@@ -24,8 +24,7 @@
       svi = "sudo nvim";
       ls = "eza";
       ll = "eza -l";
-      la = "eza -a";
-      lal = "eza -al";
+      la = "eza -la";
 
       ".." = "cd ..";
       "..." = "cd ../..";
