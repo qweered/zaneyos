@@ -108,7 +108,7 @@
       };
 
       input = {
-        kb_layout = "canary";
+        kb_layout = "canary,ru";
         kb_options = "grp:alt_shift_toggle";
         follow_mouse = 1;
         touchpad = {
