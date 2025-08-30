@@ -26,9 +26,15 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    nixd
-    nix-tree
-    nix-init # TODO: home-manager
+    nixd # lsp
+    nix-tree # inspect nix store
+    nix-inspect # inspect flake
+    manix # search nix docs
+    nix-output-monitor # pretty rebuild output
+
+    nixpkgs-review # review nix packages
+    nix-update # update nix packages
+    nix-init # init nix packages TODO: home-manager
   ];
 
   programs.nix-ld = {
