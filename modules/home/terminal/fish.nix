@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [ grc ];
-
   # CONFIG: https://www.reddit.com/r/NixOS/comments/1d174ds/how_can_i_get_colorful_man_pages/
 
   programs.fish = {
@@ -32,6 +31,7 @@
 
       df = "duf";
       du = "gdu";
+      rm = "rip";
       htop = "btop";
       top = "btop";
       # "ps aux" = "procs"; TODO: add this

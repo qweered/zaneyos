@@ -6,6 +6,7 @@
     gdu # du alternative, over dua dust dutree pdu godu ncdu duc diskus
     eza # ls alternative, over exa, lsd
     duf # df alternative, over dysk (2 best) pydf di dfc dfrs
+    rip2 # rm alternative
     procs # process viewer, over ps aux
     ripgrep # grep/ack alternative
     fzf # fuzzy finder
@@ -21,6 +22,7 @@
     wget # download files, over curl
     bat # cat alternative
     yt-dlp # download videos
+    popsicle # burn drives
 
     jq
     # zathura imv # pdf/image viewer
