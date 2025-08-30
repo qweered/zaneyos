@@ -11,8 +11,7 @@
   zramSwap.enable = true; # swap in zram
 
   # NOTE: a lot of mess comes from here https://github.com/NixOS/nixpkgs/blob/103ac534018bbc99254a1e0b043f423b855b55b6/nixos/modules/hardware/all-firmware.nix
-  # hardware.enableRedistributableFirmware = true;
-
+  hardware.enableRedistributableFirmware = false;
   hardware.firmware = with pkgs; [
     linux-firmware
     # intel2200BGFirmware
@@ -30,8 +29,8 @@
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
+    "kvm-amd"
   ];
-  boot.kernelModules = [ "kvm-amd" ];
   hardware.cpu.amd.updateMicrocode = true;
 
   fileSystems."/" = {
