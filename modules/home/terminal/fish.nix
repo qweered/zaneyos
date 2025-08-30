@@ -28,11 +28,13 @@
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
+      "....." = "cd ../../../..";
 
+      ff = "fastfetch";
       df = "duf";
       du = "gdu";
-      rm = "rip";
       htop = "btop";
+      rm = "rip";
       top = "btop";
       # "ps aux" = "procs"; TODO: add this
     };
