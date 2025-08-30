@@ -15,8 +15,6 @@
   services.userborn.enable = true; # declarative users
   programs.file-roller.enable = true; # over ark, gui zip manager for 
   programs.fish.enable = true; # best shell
-  services.swapspace.enable = true; # dynamic swap file
-  zramSwap.enable = true; # swap in zram
   services.gnome.gnome-keyring.enable = true; # store secrets
   security.pam.services.gnome-keyring.enableGnomeKeyring = true; # needed for gnome keyring
 }
