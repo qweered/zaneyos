@@ -31,7 +31,6 @@
         hosts.hyprnix = true;
         system = {
           _defaultsRecursive = true;
-          impermanence = false;
         };
       }
       ++ [
