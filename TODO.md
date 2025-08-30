@@ -1,7 +1,10 @@
 # TODO
 
+Window 1e4b40b0 -> File Operation Progress title in thunar make floating
 * add overlays to separate place
 * deadnix
+* trash-cli
+* https://github.com/3timeslazy/nix-search-tv
 * matrix client
 * right now users can't influence anything in system, only in home-manager
 * systems = lib.systems.flakeExposed inside ./flake maybe?
@@ -14,6 +17,7 @@
 * stylix
 * check if anything in system have home-manager stuff (for example podman)
 * devenv in flake.nix or in home-manager?
+* make lazydocker work with podman
 * disko
 * git hooks
 * allow-dirty = false;
