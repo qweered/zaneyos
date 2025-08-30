@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ inputs, ... }:
 
 {
   # NOTE: a lot of mess comes from here https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/hardware/all-firmware.nix
@@ -23,7 +23,7 @@
     fsType = "xfs";
   };
 
-  fileSystems."/boot" = lib.mkForce {
+  fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/C848-2DE0";
     fsType = "vfat";
     options = [
@@ -32,5 +32,5 @@
     ];
   };
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault true;
+  hardware.cpu.amd.updateMicrocode = true;
 }
