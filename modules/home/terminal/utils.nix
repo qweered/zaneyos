@@ -22,7 +22,8 @@
     wget # download files, over curl
     bat # cat alternative
     yt-dlp # download videos
-    popsicle # burn drives
+    xxh # transfer shell config over ssh
+    sshpass # needed for xxh
 
     jq
     # zathura imv # pdf/image viewer
