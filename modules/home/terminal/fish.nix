@@ -20,6 +20,10 @@
       nh-switch = "nh os switch --ask";
       nh-update = "nh os switch --update --ask";
 
+      nix-develop = "nom develop";
+      nix-build = "nom-build";
+      nix-shell = "nom-shell";
+
       svi = "sudo nvim";
       ls = "eza";
       ll = "eza -l";
@@ -34,7 +38,7 @@
       df = "duf";
       du = "gdu";
       htop = "btop";
-      rm = "rip";
+      rm = "rip --graveyard ~/.local/share/Trash";
       top = "btop";
       # "ps aux" = "procs"; TODO: add this
     };
