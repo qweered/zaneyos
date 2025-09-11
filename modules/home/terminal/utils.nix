@@ -10,6 +10,7 @@
     procs # process viewer, over ps aux
     ripgrep # grep/ack alternative
     fzf # fuzzy finder
+    fd # fuzzy finder in lazyvim currently TODO
     wl-clipboard # clipboard in shell, over wl-clipboard-rs (conflicts with hyprpanel probably)
     libnotify # notifications in shell
     ffmpeg # video/audio converter
