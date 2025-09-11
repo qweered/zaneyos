@@ -1,6 +1,7 @@
 # TODO
 
 Window 1e4b40b0 -> File Operation Progress title in thunar make floating
+* do not prune by default for every fetch
 * add overlays to separate place
 * deadnix
 * trash-cli
