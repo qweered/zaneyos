@@ -1,54 +1,83 @@
 { pkgs, config, ... }:
 {
-  home.packages = [ pkgs.lazygit ];
+  home.packages = with pkgs; [ lazygit graphite-cli jujutsu ];
 
   programs.gh.enable = true;
 
   programs.git = {
     enable = true;
     package = pkgs.gitMinimal.override { withLibsecret = true; }; # gitMinimal to remove perl
+    delta.enable = true;
     userName = "Aliaksandr";
     userEmail = "grubian2@gmail.com";
-    delta.enable = true;
     signing = {
       key = config.programs.gpg.settings.default-key;
       signByDefault = true;
     };
+    attributes = [
+      # CONFIG: Add some diff configs if diff will annoy me
+      "* text=auto"
+      # Lock files – avoid conflicts
+      "bun.lock          merge=ours"
+      "package-lock.json merge=ours"
+      "pnpm-lock.yaml    merge=ours"
+      "yarn.lock         merge=ours"
+      "Cargo.lock        merge=ours"
+    ];
     aliases = {
-      # Branch operations
-      b = "branch --verbose";
+      # Add / delete files
+      aa = "add --all";
+      ap = "add --patch";
+      unstage = "reset HEAD --";
+      unwip = "reset HEAD~1";
+      rhard = "reset --hard";
+      rsoft = "reset --soft";
+      r2 = "reset HEAD^^";
+      r3 = "reset HEAD^^^";
+      # TODO: stash aliases
+      # TODO: migrate to jj? Map jj to gg for comfort
+
+      # Commits
+      c = "commit";
+      ca = "commit --amend";
+      caan = "commit --all --amend --no-edit";
+      can = "commit --amend --no-edit"; # less popular so longer
+      wip = "commit --amend --message 'WIP: work in progress'";
+      caf = "commit --all --fixup HEAD";
+
+      # Work with branches
+      b = "branch -vv";
       bd = "branch --delete";
       bD = "branch --delete --force";
       br = "branch --remote";
       ba = "branch --all";
       bm = "branch --merged";
       bnm = "branch --no-merged";
-
-      # Modern checkout/switch commands
       sw = "switch";
       swc = "switch --create";
-      rs = "restore";
+      pf = "push --force-with-lease"; # safer than --force
 
-      # Commit operations
-      c = "commit";
-      cm = "commit --message";
-      ca = "commit --amend";
-      can = "commit --amend --no-edit";
-      cf = "commit --fixup";
-      cs = "commit --squash";
+      # delete local merged branches
+      cleanup = "!git branch --merged | grep -v '\\*\\|main\\|master\\|develop\\|stable' | xargs -r -n 1 git branch -d";
+      # delete remote merged branches, VERY DANGEROUS
+      cleanup-remote = "!git branch -r --merged | grep -v -E '\\*\\s|main|master|develop|stable' | sed -e 's/origin\\///' | xargs -r -n 1 git push origin --delete";
+      # delete local removed branches
+      prune-branches = "!git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs -r -n 1 git branch -d";
+      full-cleanup = "!git cleanup && git prune-branches";
 
-      # Enhanced log aliases with better formatting
+      # TODO: checked up to here
       # TODO: reverse order of logs
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       ll = "log --oneline --graph --decorate --all -20";
       ls = "log --stat";
       lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
 
-      # Status and diff
       s = "status --short --branch";
       st = "status";
-      d = "diff";
-      dt = "difftool --tool=nvimdiff --no-prompt";
+      dc = "diff HEAD"; # current staged diff
+      dp = "diff HEAD~1 HEAD"; # previous commit diff
+      dcv = "difftool HEAD --tool=nvimdiff --no-prompt";
+      dpv = "difftool HEAD~1 HEAD --tool=nvimdiff --no-prompt";
 
       # Stash operations
       sl = "stash list";
@@ -57,25 +86,14 @@
       ssm = "stash push -m"; # stash with message
       ssu = "stash push --include-untracked";
 
-      # Reset operations
-      r = "reset";
-      r1 = "reset HEAD^";
-      r2 = "reset HEAD^^";
-      rhard = "reset --hard";
-      rsoft = "reset --soft";
-      unstage = "reset HEAD --";
-
       # Remote operations
       f = "fetch";
       fa = "fetch --all";
       fo = "fetch origin";
-      fp = "fetch --prune";
       p = "push";
       po = "push origin";
+      pod = "push origin --delete";
       pu = "push --set-upstream origin HEAD";
-      pf = "push --force-with-lease"; # safer than --force
-
-      # Pull operations
       pl = "pull";
       plr = "pull --rebase";
       plo = "pull origin";
@@ -86,150 +104,66 @@
       rbc = "rebase --continue";
       rba = "rebase --abort";
       rbs = "rebase --skip";
+      rs = "restore";
 
       # Merge operations (I don't use merge)
       # m = "merge";
       # mnf = "merge --no-ff";
-      # mff = "merge --ff-only";
-
-      # Add operations
-      a = "add";
-      aa = "add --all";
-      ap = "add --patch";
 
       # Utility aliases
       ds = "describe --long --tags --dirty --always";
       who = "shortlog --summary";
-      alias = "config --get-regexp ^alias\\. | cut -d' ' -f2-";
       last = "log --oneline --stat HEAD";
       visual = "!gitk";
       today = "log --since='1 day ago' --oneline --author=$(git config user.email)";
       yesterday = "log --since='2 days ago' --until='1 day ago' --oneline --author=$(git config user.email)";
 
-      # Cleanup aliases
-      cleanup = "!git branch --merged | grep -v '\\*\\|main\\|master\\|develop' | xargs -n 1 git branch -d";
-      prune-branches = "!git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d";
-
       # Workflow aliases
-      wip = "commit -am 'WIP: work in progress'";
-      unwip = "reset HEAD~1";
       assume = "update-index --assume-unchanged";
       unassume = "update-index --no-assume-unchanged";
       assumed = "!git ls-files -v | grep ^h | cut -c 3-";
     };
     extraConfig = {
-      # Branch settings
-      branch.autoSetupRebase = "always";
-      branch.sort = "-committerdate";
-
-      # Blame settings
-      blame.coloring = "repeatedLines";
-      blame.markUnblamables = true;
-      blame.markIgnoredLines = true;
-      blame.date = "relative";
-
-      # Color settings
-      color.ui = true;
-      color.pager = true;
-      color.branch = "auto";
-      color.diff = "auto";
-      color.status = "auto";
-
-      # Core settings
-      core.untrackedCache = true;
-      core.preloadindex = true;
-      core.fscache = true; # Windows performance
+      github.user = "qweered";
       core.editor = "nvim";
-      core.autocrlf = false;
-      core.safecrlf = false;
-      core.fileMode = true;
-      core.ignorecase = false;
-
-      # Credential settings
+      feature.experimental = true;
       credential.helper = "libsecret";
 
-      # Diff settings
+      # Auto prune # TODO: slow for eg nixpkgs
+      # fetch.prune = true;
+      # fetch.pruneTags = true;
+      # remote.origin.prune = true;
+
+      # Performance
+      core.fsmonitor = true; # will benefit when support linux
+      feature.manyFiles = true;
+      fetch.writeCommitGraph = true;
+      fetch.parallel = 0; # use all available cores
+
+      blame.coloring = "repeatedLines";
+      blame.date = "relative";
+      blame.markUnblamables = true;
+      blame.markIgnoredLines = true;
+      branch.autoSetupRebase = "always";
+      branch.sort = "-committerdate";
+      checkout.defaultRemote = "origin";
+      color.ui = "auto"; # always breaks some aliases
+      column.ui = "auto";
       diff.algorithm = "histogram";
-      diff.colorMoved = "default";
-      diff.colorMovedWS = "allow-indentation-change";
+      diff.colorMoved = "plain";
       diff.mnemonicPrefix = true;
       diff.renames = "copies";
       diff.tool = "nvimdiff";
-
-      # Feature settings
-      feature.experimental = true;
-      feature.manyFiles = true;
-
-      # Fetch settings
-      fetch.prune = true;
-      fetch.pruneTags = true;
-      fetch.parallel = 0; # use all available cores
-
-      # GitHub settings
-      github.user = "qweered";
-
-      # Init settings
+      fetch.all = "true";
       init.defaultBranch = "main";
-
-      # Index settings
-      index.sparse = true;
-      index.threads = true;
-
-      # Log settings
       log.date = "relative";
-      log.decorate = "short";
+      log.decorate = "auto";
       log.follow = true;
-
-      # Maintenance settings
-      maintenance.auto = true;
-
-      # Merge settings
       merge.conflictstyle = "zdiff3"; # better than diff3
       merge.autoStash = true;
       merge.tool = "nvimdiff";
-      merge.ff = false; # always create merge commits for feature branches
+      merge.ff = "only"; # try to not crate merge commits
 
-      # Pack settings for performance
-      pack.threads = 0; # use all available cores
-      pack.writeReverseIndex = true;
-
-      # Push settings
-      push.autoSetupRemote = true;
-      push.default = "simple";
-      push.followTags = true;
-      push.useForceIfIncludes = true;
-
-      # Pull settings
-      pull.rebase = true;
-      pull.twohead = "ort"; # new merge strategy
-
-      # Rebase settings
-      rebase.autoStash = true;
-      rebase.autoSquash = true;
-      rebase.updateRefs = true;
-
-      # Rerere settings
-      rerere.enable = true;
-      rerere.autoUpdate = true;
-
-      # Remote settings
-      remote.origin.prune = true;
-
-      # Status settings
-      status.showUntrackedFiles = "all";
-      status.submoduleSummary = true;
-
-      # Submodule settings
-      submodule.recurse = true;
-      submodule.fetchJobs = 4;
-
-      # Tag settings
-      tag.sort = "version:refname";
-
-      # Transfer settings for performance
-      transfer.unpackLimit = 1;
-
-      # URL shortcuts
       url = {
         "https://github.com/" = {
           insteadOf = [
@@ -245,6 +179,38 @@
         };
       };
 
+      # TODO: check everything below https://git-scm.com/docs/git-config#Documentation/git-config.txt-pullff
+
+      # Push settings
+      push.autoSetupRemote = true;
+      push.default = "simple";
+      push.followTags = true;
+      push.useForceIfIncludes = true;
+
+      # Pull settings
+      pull.rebase = true;
+
+      # Rebase settings
+      rebase.autoStash = true;
+      rebase.autoSquash = true;
+      rebase.updateRefs = true;
+
+      # Rerere settings
+      rerere.enable = true;
+      rerere.autoUpdate = true;
+
+      # Remote settings
+
+      # Status settings
+      status.showUntrackedFiles = "all";
+      status.submoduleSummary = true;
+
+      # Submodule settings
+      submodule.recurse = true;
+      submodule.fetchJobs = 4;
+
+      # Tag settings
+      tag.sort = "version:refname";
       # Versionsort settings
       versionsort.suffix = [
         "-pre"
