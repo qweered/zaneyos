@@ -6,21 +6,21 @@
     treefmt-nix.flakeModule
   ];
 
-  perSystem =
-    { pkgs, ... }:
-    {
-      devShells.default = pkgs.mkShell {
-        packages = [
-          pkgs.nixpkgs-review
-        ];
-      };
-
-      treefmt = {
-        programs.nixfmt.enable = true;
-        programs.nixfmt.width = 120;
-        programs.shellcheck.enable = true;
-      };
-    };
+  # perSystem =
+    # { pkgs, ... }:
+    # {
+    #   devShells.default = pkgs.mkShell {
+    #     packages = [
+    #       pkgs.nixpkgs-review
+    #     ];
+    #   };
+    #
+    #   treefmt = {
+    #     programs.nixfmt.enable = true;
+    #     programs.nixfmt.width = 120;
+    #     programs.shellcheck.enable = true;
+    #   };
+    # };
 
   flake.nixosConfigurations.hyprnix = inputs.nixpkgs.lib.nixosSystem {
     specialArgs = { inherit inputs; };
