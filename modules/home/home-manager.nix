@@ -1,11 +1,12 @@
 { vars, ... }:
+
 {
   programs.home-manager.enable = true;
 
   home = {
-    username = vars.username;
-    homeDirectory = "/home/${vars.username}";
-    stateVersion = vars.stateVersion;
+    inherit (vars) username;
+    inherit (vars) stateVersion;
+    inherit (vars) homeDirectory;
   };
 
   news.display = "show";

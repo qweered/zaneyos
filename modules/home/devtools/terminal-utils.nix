@@ -1,31 +1,33 @@
 { pkgs, ... }:
+
 {
   # CONFIG: look and configure them all if needed
   home.packages = with pkgs; [
-    btop # over htop, mission-center
+    btop # process viewer, over htop, mission-center
     gdu # du alternative, over dua dust dutree pdu godu ncdu duc diskus
     eza # ls alternative, over exa, lsd
+    bat # cat alternative
+    lazyjournal # over dmesg, journalctl
     duf # df alternative, over dysk (2 best) pydf di dfc dfrs
-    rip2 # rm alternative
+    rip2 # rm, trash-cli alternative
     procs # process viewer, over ps aux
     ripgrep # grep/ack alternative
     fzf # fuzzy finder
-    fd # fuzzy finder in lazyvim currently TODO
+    hyperfine # speed benchmarks
+    ffmpeg # video/audio converter
+
     wl-clipboard # clipboard in shell, over wl-clipboard-rs (conflicts with hyprpanel probably)
     libnotify # notifications in shell
-    ffmpeg # video/audio converter
     grim
     slurp
     satty # screenshot tools, over hyprshot swappy
-    hyperfine # speed benchmarks
-    lazyjournal # over dmesg, journalctl
     hyprpicker # color picker
     wget # download files, over curl
-    bat # cat alternative
     yt-dlp # download videos
     xxh # transfer shell config over ssh
     sshpass # needed for xxh
 
+    fd # fuzzy finder in lazyvim currently TODO remove
     jq
     # zathura imv # pdf/image viewer
     # wluma # automatic brightness control

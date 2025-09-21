@@ -1,26 +1,19 @@
 # TODO
 
-Window 1e4b40b0 -> File Operation Progress title in thunar make floating
-* do not prune by default for every fetch
-* add overlays to separate place
-* deadnix
-* trash-cli
-* https://github.com/3timeslazy/nix-search-tv
+* Window 1e4b40b0 -> File Operation Progress title in thunar make floating
+* make lazydocker work with podman
+* add devenv, in flake.nix or in home-manager?
 * matrix client
+* deduplicate all flake inputs like fufexan did
+* https://github.com/3timeslazy/nix-search-tv
 * right now users can't influence anything in system, only in home-manager
-* systems = lib.systems.flakeExposed inside ./flake maybe?
-* configure cursor through [home-manager](https://home-manager-options.extranix.com/?query=programs.vscode&release=master)
 * credentials, agenix
-* uwsm
 * sort (imports, something else)
-* steam
 * jj - git replacement
 * stylix
 * check if anything in system have home-manager stuff (for example podman)
-* devenv in flake.nix or in home-manager?
-* make lazydocker work with podman
 * disko
-* git hooks
+* add overlays to separate place
 * allow-dirty = false;
 * remove all TODO todos
 * fix NIX-PATH
@@ -31,9 +24,8 @@ Window 1e4b40b0 -> File Operation Progress title in thunar make floating
 * pywal -> hellwal
 * multiuser, multigpu [ZaneyOS](https://gitlab.com/Zaney/zaneyos)
 * denoising? [rnnoise](https://github.com/fufexan/dotfiles/blob/17939d902a780a6db459312baa40940ff2a9c149/home/programs/media/rnnoise.nix#L1C1-L41C2)
-* Refactor assets into github repository
-* Setup portals (what application opens what file)
-* nh with darwin module ? [nh](https://github.com/ToyVo/nh)
+* refactor assets into github repository
+* setup portals (what application opens what file)
 * configure more kernel parameters
 * [declarative-flatpak](https://github.com/GermanBread/declarative-flatpak) or [nix-flatpak](https://github.com/gmodena/nix-flatpak)
 * snap ? appimage ?
@@ -55,7 +47,6 @@ Window 1e4b40b0 -> File Operation Progress title in thunar make floating
 
 ## Software to watch
 
-* [delta](https://github.com/dandavison/delta)
 * [kunkun](https://github.com/kunkunsh/kunkun)
 * [goneovim](https://github.com/akiyosi/goneovim)
 * espanso

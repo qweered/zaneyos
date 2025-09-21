@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }:
 
 {
-
   # TODO: move to assets github
   services.easyeffects = {
     enable = true;
@@ -19,9 +18,7 @@
         recursive = true;
         source = pkgs.symlinkJoin {
           name = "easyeffects-output";
-          paths = [
-            "${inputs.easyeffects-presets}"
-          ];
+          paths = [ "${inputs.easyeffects-presets}" ];
         };
 
         # Remove extra files present in the presets repos

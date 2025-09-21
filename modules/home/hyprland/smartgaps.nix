@@ -1,7 +1,7 @@
 {
-  config,
-  pkgs,
   lib,
+  pkgs,
+  config,
   ...
 }:
 
@@ -52,8 +52,6 @@ in
     #      ]) workspaceSelectors
     #    );
 
-    bind = [
-      "Super, M, exec, ${toggleSmartGaps}"
-    ];
+    bind = [ "Super, M, exec, ${toggleSmartGaps}" ];
   };
 }

@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    systems.url = "github:nix-systems/default-linux";
     devenv.url = "github:cachix/devenv";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
@@ -13,9 +12,9 @@
   # and https://primamateria.github.io/blog/playwright-nixos-webdev/
 
   outputs =
-    inputs@{ flake-parts, ... }:
+    inputs@{ flake-parts, nixpkgs, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = import inputs.systems;
+      systems = nixpkgs.lib.systems.flakeExposed;
 
       imports = with inputs; [
         treefmt-nix.flakeModule
@@ -23,13 +22,9 @@
       ];
 
       perSystem =
-        {
-          lib,
-          pkgs,
-          ...
-        }:
+        { lib, pkgs, ... }:
         let
-          browsers = (lib.fromJSON (lib.readFile "${pkgs.playwright-driver}/browsers.json")).browsers;
+          inherit ((lib.fromJSON (lib.readFile "${pkgs.playwright-driver}/browsers.json"))) browsers;
           chromium-rev = (lib.head (lib.filter (x: x.name == "chromium") browsers)).revision;
         in
         {

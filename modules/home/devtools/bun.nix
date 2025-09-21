@@ -1,3 +1,1 @@
-{
-  programs.bun.enable = true;
-}
+{ programs.bun.enable = true; }

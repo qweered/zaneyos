@@ -1,4 +1,5 @@
 { vars, osConfig, ... }:
+
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -28,9 +29,7 @@
         "uwsm -s b -- waytrogen --restore"
       ];
 
-      monitor = [
-        "eDP-1, 1920x1080@60, 0x0, 1"
-      ];
+      monitor = [ "eDP-1, 1920x1080@60, 0x0, 1" ];
 
       general = {
         border_size = 5;

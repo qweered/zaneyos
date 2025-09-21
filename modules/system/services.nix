@@ -13,7 +13,7 @@
   services.gvfs.enable = true; # mount, trash, etc in file managers
   services.tumbler.enable = true; # thumbnails in file managers
   services.userborn.enable = true; # declarative users
-  programs.file-roller.enable = true; # over ark, gui zip manager for 
+  programs.file-roller.enable = true; # over ark, gui zip manager for
   programs.fish.enable = true; # best shell
   services.gnome.gnome-keyring.enable = true; # store secrets
   security.pam.services.gnome-keyring.enableGnomeKeyring = true; # needed for gnome keyring

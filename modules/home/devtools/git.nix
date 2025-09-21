@@ -7,7 +7,7 @@
     jujutsu.enable = true;
     git = {
       enable = true;
-      delta.enable = true;
+      delta.enable = true; # CONFIG forgrep and other stuff
       userName = "Aliaksandr";
       userEmail = "grubian2@gmail.com";
       signing = {

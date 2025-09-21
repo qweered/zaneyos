@@ -5,15 +5,18 @@
   pkgs-stable,
   ...
 }:
+
 let
   vars = {
     username = "qweered";
-    city = "Vilnius"; # TODO: find a way to get this based on location
+    homeDirectory = "/home/qweered";
+    city = "Vilnius"; # TODO: find a way to get this based on location, also does not work currently
     description = "The only and the greatest admin";
     browser = "vivaldi";
     stateVersion = "24.11"; # Change it when i read all changelogs from previous versions and make changes
   };
 in
+
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
@@ -30,9 +33,7 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    users."${vars.username}".imports = inputs.self.moduleTree.home {
-      hyprland.smartgaps = false;
-    };
+    users."${vars.username}".imports = inputs.self.moduleTree.home { hyprland.smartgaps = false; };
   };
 
   users = {
@@ -42,7 +43,7 @@ in
       "${vars.username}" = {
         isNormalUser = true;
         initialPassword = "password";
-        description = vars.description;
+        inherit (vars) description;
         extraGroups = [
           "networkmanager"
           "wheel"

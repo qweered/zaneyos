@@ -1,8 +1,5 @@
-{
-  pkgs,
-  config,
-  ...
-}:
+{ pkgs, config, ... }:
+
 {
   # home.file.".face.icon".source = ./files/face.jpg; # For SDDM
   # CONFIG: add HYPRCURSOR_SIZE, XCURSOR_SIZE to hyprland
