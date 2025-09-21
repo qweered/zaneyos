@@ -1,4 +1,8 @@
 { pkgs-master, ... }:
 {
-  home.packages = [ pkgs-master.code-cursor ];
+  # CONFIG
+  programs.vscode = {
+    enable = true;
+    package = pkgs-master.code-cursor;
+  };
 }
