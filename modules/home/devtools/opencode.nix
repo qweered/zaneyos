@@ -1,4 +1,9 @@
 { pkgs-master, ... }:
+
 {
-  home.packages = [ pkgs-master.opencode ];
+  # CONFIG
+  programs.opencode = {
+    enable = true;
+    package = pkgs-master.opencode;
+  };
 }
