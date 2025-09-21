@@ -7,7 +7,7 @@
 
 let
   app_runner = ''rofi -show drun -run-command "uwsm app -- {cmd}"'';
-  terminal = "wezterm";
+  terminal = "ghostty";
   toggle = app: "pkill ${lib.head (lib.split " " app)} || uwsm app -- ${app}";
   run = app: "uwsm app -- ${if app == "" then " " else app}";
   mic_instead_of_speaker = "${
