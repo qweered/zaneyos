@@ -31,9 +31,6 @@ in
     useUserPackages = true;
     backupFileExtension = "backup";
     users."${vars.username}".imports = inputs.self.moduleTree.home {
-      apps.socials.teams = false;
-      apps.socials.zoom = false;
-      devtools.windsurf = false;
       hyprland.smartgaps = false;
     };
   };
