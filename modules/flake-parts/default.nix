@@ -2,25 +2,40 @@
 
 {
   imports = with inputs; [
-    pkgs-by-name-for-flake-parts.flakeModule
     treefmt-nix.flakeModule
+    git-hooks.flakeModule
+    # pkgs-by-name-for-flake-parts.flakeModule
   ];
 
-  # perSystem =
-    # { pkgs, ... }:
-    # {
-    #   devShells.default = pkgs.mkShell {
-    #     packages = [
-    #       pkgs.nixpkgs-review
-    #     ];
-    #   };
-    #
-    #   treefmt = {
-    #     programs.nixfmt.enable = true;
-    #     programs.nixfmt.width = 120;
-    #     programs.shellcheck.enable = true;
-    #   };
-    # };
+  perSystem =
+    { pkgs, config, ... }:
+    {
+
+      devShells.default = pkgs.mkShell {
+        name = "hyprnixos";
+        shellHook = ''
+          ${config.pre-commit.installationScript}
+        '';
+      };
+
+      pre-commit.settings = {
+        excludes = [ "flake.lock" ];
+        hooks.treefmt.enable = true;
+      };
+
+      treefmt.programs = {
+        nixfmt = {
+          enable = true;
+          strict = true;
+          width = 120;
+        };
+        statix.enable = true;
+        deadnix.enable = true;
+        shellcheck.enable = true;
+        # keep-sorted.enable = true; CONFIG
+        # nixf-diagnose.enable = true; CONFIG
+      };
+    };
 
   flake.nixosConfigurations.hyprnix = inputs.nixpkgs.lib.nixosSystem {
     specialArgs = { inherit inputs; };
