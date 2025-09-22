@@ -5,5 +5,12 @@
 
   programs.ghostty = {
     enable = true;
+    settings = {
+      theme = "Wez";
+      cursor-style = "block";
+      cursor-style-blink = true;
+      confirm-close-surface = false;
+      gtk-titlebar-hide-when-maximized = true;
+    };
   };
 }
