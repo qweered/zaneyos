@@ -30,17 +30,18 @@
       bar.launcher.autoDetectIcon = true;
       bar.workspaces.show_icons = true;
 
-      menus.clock = {
-        time = {
-          military = true;
-          hideSeconds = true;
+      menus = {
+        dashboard.directories.enabled = true;
+        dashboard.stats.enable_gpu = false;
+        clock = {
+          time = {
+            military = true;
+            hideSeconds = true;
+          };
         };
         weather.unit = "metric";
-        weather.location = vars.city;
+        weather.location = toString vars.city;
       };
-
-      menus.dashboard.directories.enabled = false;
-      menus.dashboard.stats.enable_gpu = true;
 
       theme.bar.transparent = true;
 
