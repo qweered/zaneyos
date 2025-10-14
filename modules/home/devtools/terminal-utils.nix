@@ -13,6 +13,7 @@
     procs # process viewer, over ps aux
     ripgrep # grep/ack alternative
     fzf # fuzzy finder
+    fd # find alternative
     hyperfine # speed benchmarks
     ffmpeg # video/audio converter
 
@@ -27,7 +28,6 @@
     xxh # transfer shell config over ssh
     sshpass # needed for xxh
 
-    fd # fuzzy finder in lazyvim currently TODO remove
     jq
     # zathura imv # pdf/image viewer
     # wluma # automatic brightness control
