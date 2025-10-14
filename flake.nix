@@ -2,12 +2,14 @@
   description = "HyprNixOS";
 
   inputs = rec {
+    # This is a dirty hack until better solution is developed, 2 days behind
+    # nixpkgs.url = "github:numtide/nixpkgs-unfree?ref=nixpkgs-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Try pull request
     # nixpkgs.url = "github:nixos/nixpkgs?ref=pull/379731/merge";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-stable = nixpkgs;
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     nfh.url = "github:name-snrl/nfh";
