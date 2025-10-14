@@ -37,41 +37,39 @@ in
     nix-init # init nix packages TODO: home-manager
   ];
 
+  # For nix shell, nix run https://github.com/NixOS/nix/issues/9875
+  environment.variables = {
+    NIXPKGS_ALLOW_UNFREE = "1";
+  };
+
   nix = {
-    # TODO: should it be enabled?
     channel.enable = false;
 
-    registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs; # pin the registry to avoid downloading and evaluating a new nixpkgs version every time
+    # TODO: i don't need all the flakes in registry and path, nixpkgs is set by default nixpkgs.flake.setFlakeRegistry
+    registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs; # pin the registry
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry; # set the path for channels compatibility
 
     settings = {
-      builders-use-substitutes = true;
       auto-optimise-store = true;
+      allow-import-from-derivation = false;
+      builders-use-substitutes = true;
       flake-registry = "/etc/nix/registry.json";
 
       # for direnv GC roots
       keep-derivations = true;
       keep-outputs = true;
 
-      allow-import-from-derivation = false;
-      accept-flake-config = false;
-
       experimental-features = [
         "nix-command"
         "flakes"
       ];
 
-      # TODO: Put your access-token here
-      # access-tokens = "github.com=github_pat_blabablablabalbaalabl";
-
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
+      trusted-users = [ "@wheel" ];
 
       substituters = [
         "https://cache.nixos.org?priority=1" # lower number means higher priority
-        "https://nix-community.cachix.org"
+        "https://nix-community.cachix.org" # mirror
+        "https://nixos-cache-proxy.cofob.dev" # mirror 2
         "https://hyprland.cachix.org"
         "https://cache.garnix.io"
         "https://chaotic-nyx.cachix.org"
