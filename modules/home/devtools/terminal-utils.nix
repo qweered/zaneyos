@@ -25,12 +25,11 @@
     hyprpicker # color picker
     wget # download files, over curl
     yt-dlp # download videos
-    xxh # transfer shell config over ssh
-    sshpass # needed for xxh
 
     jq
     # zathura imv # pdf/image viewer
     # wluma # automatic brightness control
+    # xxh + sshpass # transfer shell config over ssh
     # unzip zip rar unrar # over 7z
     # mc superfile xplr ranger lf nnn yazi broot # over ranger
     # walker anyrun # over rofi
