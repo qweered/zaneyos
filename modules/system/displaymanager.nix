@@ -16,7 +16,7 @@ in
     sddm = {
       enable = true;
       wayland.enable = true;
-      package = pkgs.kdePackages.sddm;
+      wayland.compositor = "weston"; # lighter than kwin
       theme = "sddm-astronaut-theme"; # name of theme package
       extraPackages = [ sddm-astronaut ];
     };
