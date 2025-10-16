@@ -1,8 +1,8 @@
 { pkgs, lib, ... }:
 
 {
-  # TODO: recheck all this cause i stole from fufexan
   fonts = {
+    enableDefaultPackages = false;
     packages = with pkgs; [
       # icon fonts
       material-symbols
@@ -22,9 +22,6 @@
       nerd-fonts.jetbrains-mono
       nerd-fonts.symbols-only
     ];
-
-    # causes more issues than it solves
-    enableDefaultPackages = false;
 
     # user defined fonts
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
