@@ -16,5 +16,6 @@
   programs.file-roller.enable = true; # over ark, gui zip manager for
   programs.fish.enable = true; # best shell
   services.gnome.gnome-keyring.enable = true; # store secrets
-  security.pam.services.gnome-keyring.enableGnomeKeyring = true; # needed for gnome keyring
+  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services.sddm.enableGnomeKeyring = true; # does not work https://github.com/NixOS/nixpkgs/issues/86884
 }
