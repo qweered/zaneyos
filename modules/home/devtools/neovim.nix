@@ -1,12 +1,6 @@
-{ inputs, ... }:
+_:
 
 {
-  imports = [ inputs.lazyvim.homeManagerModules.default ];
-
-  programs.lazyvim = {
-    enable = true;
-  };
-
   # imports = [ inputs.nvf.homeManagerModules.default ];
 
   # Neovim gui wrapper
@@ -21,6 +15,10 @@
   #     };
   #   };
   # };
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   # CONFIG: https://notashelf.github.io/nvf/options
   # Neovim config framework
