@@ -101,10 +101,7 @@ in
       };
       rus_canary = {
         description = "Russian menemonic of canary layout";
-        languages = [
-          "eng"
-          "rus"
-        ];
+        languages = [ "rus" ];
         symbolsFile = canary_rus;
       };
     };

@@ -4,7 +4,6 @@
 * make lazydocker work with podman
 * add devenv, in flake.nix or in home-manager?
 * matrix client
-* deduplicate all flake inputs like fufexan did
 * https://github.com/3timeslazy/nix-search-tv
 * right now users can't influence anything in system, only in home-manager
 * credentials, agenix
@@ -17,6 +16,7 @@
 * allow-dirty = false;
 * remove all TODO todos
 * fix NIX-PATH
+* home-manager.sharedModules
 * see nixos-ex-flake and blueprint
 * fix that i need to enter gpg and immediately keyring password on every boot
 * my own plymouth theme
@@ -29,7 +29,6 @@
 * configure more kernel parameters
 * [declarative-flatpak](https://github.com/GermanBread/declarative-flatpak) or [nix-flatpak](https://github.com/gmodena/nix-flatpak)
 * snap ? appimage ?
-* zfs [chaotic](https://www.nyx.chaotic.cx)
 * remove all CONFIG todos
 * check all comments
 * check all config options of nixos and home-manager
@@ -39,6 +38,11 @@
 * nix-mineral
 * encrypt filesystem
 * lanzaboote
+
+## No longer want
+
+* deduplicate all flake inputs like fufexan did - no point saves few megabytes and can invalidate cache
+* zfs [chaotic](https://www.nyx.chaotic.cx) - don't need its features
 
 ## Nixpkgs contributions
 

@@ -1,10 +1,8 @@
 # Known bugs
 
 - error: cannot find flake 'flake:zaneyos' in the flake registries
-- plymouth animation is broken on cachyos kernel
 - normal commands from fish are syntax highlighted, but with sudo not
 - nix-tree spicetfy: error: cannot find flake 'flake:spicetify' in the flake registries
-- sddm theme is glitchy
 - how to paste to neovide without keyboard?
 
 ## Annoyances
