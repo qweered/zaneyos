@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   # home.file.".face.icon".source = ./files/face.jpg; # For SDDM
@@ -6,39 +11,31 @@
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
-    size = 24;
-    hyprcursor.size = 24;
+    size = 22;
     gtk.enable = true;
-    hyprcursor.enable = true;
-    # CONFIG: remove when x11 die (maybe now?)
     x11.enable = true;
   };
 
-  # gtk = {
-  #   enable = true;
-  #   gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+  xdg.configFile."gtk-4.0/gtk.css".enable = lib.mkForce false;
 
-  #   font = {
-  #     name = "Inter";
-  #     package = pkgs.google-fonts.override { fonts = [ "Inter" ]; };
-  #     size = 12;
-  #   };
+  gtk = {
+    enable = true;
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
-  #   iconTheme = {
-  #     name = "Adwaita";
-  #     package = pkgs.adwaita-icon-theme;
-  #   };
+    font = {
+      name = "Noto Sans";
+      package = pkgs.noto-fonts-cjk-sans;
+      size = 12;
+    };
 
-  #   theme = {
-  #     name = "adw-gtk3-dark";
-  #     package = pkgs.adw-gtk3;
-  #   };
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
 
-  #    gtk2.extraConfig = {};
-  #    gtk3.bookmarks = [];
-  #    gtk3.extraConfig = {};
-  #    gtk4.extraConfig = {};
-  #    gtk4.extraCSS = "";
-
-  # };
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
+  };
 }

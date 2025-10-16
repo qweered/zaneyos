@@ -1,9 +1,9 @@
 # Known bugs
 
+- some icons are not visible in hyprpanel, this is theme problem
 - error: cannot find flake 'flake:zaneyos' in the flake registries
 - normal commands from fish are syntax highlighted, but with sudo not
 - nix-tree spicetfy: error: cannot find flake 'flake:spicetify' in the flake registries
-- how to paste to neovide without keyboard?
 
 ## Annoyances
 
