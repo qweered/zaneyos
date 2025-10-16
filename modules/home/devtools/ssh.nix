@@ -1,8 +1,18 @@
 {
-  # CONFIG: https://github.com/pjones/tilde/blob/4dc50f423d289c61784dbb4e8db6657229cc84ba/home/programs/ssh.nix#L4
-  services.ssh-agent.enable = true;
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    enableDefaultConfig = false;
+    matchBlocks."*" = {
+      forwardAgent = false;
+      addKeysToAgent = "no"; # uses gpg-agent instead
+      compression = false;
+      serverAliveInterval = 0;
+      serverAliveCountMax = 3;
+      hashKnownHosts = false;
+      userKnownHostsFile = "~/.ssh/known_hosts";
+      controlMaster = "no";
+      controlPath = "~/.ssh/master-%r@%n:%p";
+      controlPersist = "no";
+    };
   };
 }
