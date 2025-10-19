@@ -50,7 +50,7 @@ in
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry; # set the path for channels compatibility
 
     settings = {
-      auto-optimise-store = true;
+      auto-optimise-store = false; # optimized with nh instead, faster build
       allow-import-from-derivation = false;
       builders-use-substitutes = true;
       flake-registry = "/etc/nix/registry.json";
