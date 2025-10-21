@@ -37,7 +37,7 @@ in
   };
 
   users = {
-    mutableUsers = true;
+    mutableUsers = false;
     defaultUserShell = pkgs.fish;
     users = {
       "${vars.username}" = {
