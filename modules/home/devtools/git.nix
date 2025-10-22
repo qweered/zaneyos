@@ -1,6 +1,7 @@
 { config, ... }:
 
 {
+  # TODO: migrate to jj? Map jj to gg for comfort
   programs = {
     gh.enable = true;
     lazygit.enable = true;
@@ -124,24 +125,47 @@
           # Add / delete files
           aa = "add --all";
           ap = "add --patch";
+          rs = "restore";
           unstage = "reset HEAD --";
           unwip = "reset HEAD~1";
           rhard = "reset --hard";
           rsoft = "reset --soft";
-          r2 = "reset HEAD^^";
-          r3 = "reset HEAD^^^";
-          # TODO: stash aliases
-          # TODO: migrate to jj? Map jj to gg for comfort
+          r2 = "reset HEAD~2";
+          r3 = "reset HEAD~3";
+
+          # Stash operations
+          sl = "stash list";
+          sp = "stash pop";
+          ss = "stash push"; # modern alternative to stash save
+          ssm = "stash push -m"; # stash with message
+          ssu = "stash push --include-untracked";
 
           # Commits
           c = "commit";
           ca = "commit --amend";
           caan = "commit --all --amend --no-edit";
-          can = "commit --amend --no-edit"; # less popular so longer
+          can = "commit --amend --no-edit";
           wip = "commit --amend --message 'WIP: work in progress'";
           caf = "commit --all --fixup HEAD";
 
           # Work with branches
+          f = "fetch";
+          p = "push";
+          po = "push origin";
+          pf = "push --force-with-lease"; # safer than --force
+          pff = "push --force";
+          pu = "push --set-upstream origin HEAD"; # push to remote branch and set upstream
+          pl = "pull";
+          plo = "pull origin";
+          sw = "switch";
+          swc = "switch --create";
+
+          rb = "rebase";
+          rbi = "rebase --interactive";
+          rbc = "rebase --continue";
+          rba = "rebase --abort";
+          rbs = "rebase --skip";
+
           b = "branch -vv";
           bd = "branch --delete";
           bD = "branch --delete --force";
@@ -149,9 +173,6 @@
           ba = "branch --all";
           bm = "branch --merged";
           bnm = "branch --no-merged";
-          sw = "switch";
-          swc = "switch --create";
-          pf = "push --force-with-lease"; # safer than --force
 
           # delete local merged branches
           cleanup = "!git branch --merged | grep -v '\\*\\|main\\|master\\|develop\\|stable' | xargs -r -n 1 git branch -d";
@@ -174,33 +195,6 @@
           dp = "diff HEAD~1 HEAD"; # previous commit diff
           dcv = "difftool HEAD --tool=nvimdiff --no-prompt";
           dpv = "difftool HEAD~1 HEAD --tool=nvimdiff --no-prompt";
-
-          # Stash operations
-          sl = "stash list";
-          sp = "stash pop";
-          ss = "stash push"; # modern alternative to stash save
-          ssm = "stash push -m"; # stash with message
-          ssu = "stash push --include-untracked";
-
-          # Remote operations
-          f = "fetch";
-          fa = "fetch --all";
-          fo = "fetch origin";
-          p = "push";
-          po = "push origin";
-          pod = "push origin --delete";
-          pu = "push --set-upstream origin HEAD";
-          pl = "pull";
-          plr = "pull --rebase";
-          plo = "pull origin";
-
-          # Rebase operations
-          rb = "rebase";
-          rbi = "rebase --interactive";
-          rbc = "rebase --continue";
-          rba = "rebase --abort";
-          rbs = "rebase --skip";
-          rs = "restore";
 
           # Merge operations (I don't use merge)
           # m = "merge";
