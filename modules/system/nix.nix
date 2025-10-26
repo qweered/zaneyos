@@ -9,8 +9,6 @@ let
   flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
 in
 {
-  imports = [ inputs.lix-module.nixosModules.default ];
-
   nixpkgs.config = {
     allowUnfree = true;
     allowAliases = false;
@@ -44,6 +42,7 @@ in
 
   nix = {
     channel.enable = false;
+    package = pkgs.lixPackageSets.git.lix;
 
     # TODO: i don't need all the flakes in registry and path, nixpkgs is set by default nixpkgs.flake.setFlakeRegistry
     registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs; # pin the registry
