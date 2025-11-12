@@ -31,6 +31,7 @@
     "xhci_pci"
     "kvm-amd"
   ];
+  boot.initrd.kernelModules = [ "amdgpu" ]; # always load early for no plymouth fleek
   hardware.cpu.amd.updateMicrocode = true;
 
   fileSystems."/" = {
