@@ -1,0 +1,1 @@
+{ programs.yazi.enable = true; }
