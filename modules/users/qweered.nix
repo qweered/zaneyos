@@ -37,7 +37,7 @@ in
   };
 
   users = {
-    mutableUsers = false;
+    mutableUsers = true; # need agenix password for false
     defaultUserShell = pkgs.fish;
     users = {
       "${vars.username}" = {
