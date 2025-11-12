@@ -23,6 +23,11 @@ in
     inherit (config.nixpkgs) config;
   };
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [ oxlint ];
+  };
+
   environment.systemPackages = with pkgs; [
     nixd # lsp
     nix-tree # inspect nix store
