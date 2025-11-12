@@ -35,9 +35,9 @@
       "boot.shell_on_fail"
       "microcode.amd_sha_check=off" # for ucodenix to work properly
 
-      # may cause issues, disable for now
-      # "clocksource=tsc" # always tsc even it may be not reliable
-      # "tsc=reliable"
+      # may cause issues
+      "clocksource=tsc" # always tsc even it may be not reliable
+      "tsc=reliable"
     ];
 
     # Hide the OS choice in the bootloader menu
