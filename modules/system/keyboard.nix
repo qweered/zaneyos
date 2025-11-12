@@ -100,7 +100,7 @@ in
         symbolsFile = canary_eng;
       };
       rus_canary = {
-        description = "Russian menemonic of canary layout";
+        description = "Russian mnemonic of canary layout";
         languages = [ "rus" ];
         symbolsFile = canary_rus;
       };

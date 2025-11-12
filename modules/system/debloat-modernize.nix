@@ -31,7 +31,10 @@
 
   services.dbus.implementation = "broker"; # modern
   systemd.enableStrictShellChecks = true; # CONFIG: will become default
-  # system.etc.overlay.enable = true; # TODO: enable, but currently crashes my system
+  # system.etc.overlay = {
+  #   enable = true;
+  #   mutable = false; # TODO: crashes my system
+  # };
 
   # Man-db cache generation cause it's very slow for fish
   # Stolen from https://github.com/MidAutumnMoon/TaysiTsuki/blob/025509df115b5d589f10d5c0d6d11d56ae74c4a2/nixos/documentation/module.nix
