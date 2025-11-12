@@ -8,9 +8,32 @@
     # Try pull request
     # nixpkgs.url = "github:nixos/nixpkgs?ref=pull/379731/merge";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    # nixpkgs-testing.url = "git+file:///home/qweered/Projects/nixpkgs";
     nixpkgs-stable = nixpkgs;
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
+    illogical-flake = {
+      url = "git+file:///home/qweered/hyprnixos/illogical-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dms-cli = {
+      url = "github:AvengeMedia/danklinux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.dgop.follows = "dgop";
+      inputs.dms-cli.follows = "dms-cli";
+    };
 
     nfh.url = "github:name-snrl/nfh";
     flake-parts.url = "github:hercules-ci/flake-parts";

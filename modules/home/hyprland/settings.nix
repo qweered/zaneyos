@@ -26,7 +26,8 @@
 
       exec-once = [
         "uwsm finalize" # TODO: check if this is needed
-        "uwsm -s b -- waytrogen --restore"
+        # "qs -p /home/qweered/hyprnixos/illogical-flake/quickshell"
+        # "uwsm -s b -- waytrogen --restore"
       ];
 
       monitor = [ "eDP-1, 1920x1080@60, 0x0, 1" ];
