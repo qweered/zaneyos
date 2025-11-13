@@ -50,6 +50,7 @@ in
           "libvirtd"
           "audio"
           "video"
+          "input"
           "podman"
         ];
       };
