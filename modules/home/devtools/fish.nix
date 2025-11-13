@@ -23,9 +23,9 @@
       manix = "manix \"\" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --preview=\"manix '{}'\" | xargs manix";
 
       svi = "sudo nvim";
-      ls = "eza";
-      ll = "eza -l";
-      la = "eza -la";
+      ls = "eza --icons";
+      ll = "eza -l --icons";
+      la = "eza -la --icons";
 
       ".." = "cd ..";
       "..." = "cd ../..";
