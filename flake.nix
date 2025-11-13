@@ -3,7 +3,7 @@
 
   inputs = rec {
     # This is a dirty hack until better solution is developed, 2 days behind
-    # nixpkgs.url = "github:numtide/nixpkgs-unfree?ref=nixpkgs-unstable";
+    # nixpkgs.url = "github:numtide/nixpkgs-unfree/nixpkgs-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Try pull request
     # nixpkgs.url = "github:nixos/nixpkgs?ref=pull/379731/merge";
@@ -13,18 +13,8 @@
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
-    illogical-flake = {
-      url = "git+file:///home/qweered/hyprnixos/illogical-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     dgop = {
       url = "github:AvengeMedia/dgop";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dms-cli = {
-      url = "github:AvengeMedia/danklinux";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -32,7 +22,6 @@
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.dgop.follows = "dgop";
-      inputs.dms-cli.follows = "dms-cli";
     };
 
     nfh.url = "github:name-snrl/nfh";
