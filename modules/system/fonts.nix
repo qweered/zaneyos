@@ -1,15 +1,13 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ kdePackages.breeze-icons ];
-
   fonts = {
-    enableDefaultPackages = false;
+    enableDefaultPackages = false; # TODO:
     packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
-      jetbrains-mono
+      jetbrains-mono # TODO: use correct name for jetbrains mono
       nerd-fonts.jetbrains-mono
 
       material-symbols

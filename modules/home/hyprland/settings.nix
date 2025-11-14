@@ -11,7 +11,8 @@
 
     settings = {
       env = [
-        "NIXPKGS_ALLOW_UNFREE,1"
+        "QT_QPA_PLATFORMTHEME,qt6ct"
+
         "NIXOS_OZONE_WL,1" # use wayland in electron packages
         "MOZ_ENABLE_WAYLAND,1" # use wayland in firefox
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" # disable window decorations in qt apps
@@ -26,11 +27,9 @@
 
       exec-once = [
         "uwsm finalize" # TODO: check if this is needed
-        # "qs -p /home/qweered/hyprnixos/illogical-flake/quickshell"
-        # "uwsm -s b -- waytrogen --restore"
       ];
 
-      monitor = [ "eDP-1, 1920x1080@60, 0x0, 1" ];
+      monitor = [ "eDP-1, 1920x1080@64, 0x0, 1" ];
 
       general = {
         border_size = 5;
