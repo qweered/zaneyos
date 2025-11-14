@@ -53,14 +53,6 @@
           networking.hostName = "hyprnix";
           system.stateVersion = "24.11";
           nixpkgs.hostPlatform = "x86_64-linux";
-          # nixpkgs.overlays = with inputs; [
-          # TODO: OH, i need to rethink overlays now, cause if i want to overlay eg nixpkgs-master it would be pain
-          #  (self: super: {
-          #    code-cursor = super.code-cursor-generic-package.overrideAttrs (old: {
-          #      src = inputs.nixpkgs-review.outPath;
-          #    });
-          #  })
-          # ];
         }
       ];
   };

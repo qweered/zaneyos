@@ -7,6 +7,15 @@
 }:
 let
   flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
+  nixpkgs-review = pkgs.nixpkgs-review.override { nix = pkgs.lixPackageSets.git.lix; };
+  nix-update = pkgs.nix-update.override {
+    nix = pkgs.lixPackageSets.git.lix;
+    inherit nixpkgs-review;
+  };
+  nix-init = pkgs.nix-init.override {
+    nix = pkgs.lixPackageSets.git.lix;
+    nurl = pkgs.nurl.override { nix = pkgs.lixPackageSets.git.lix; };
+  };
 in
 {
   nixpkgs.config = {
@@ -28,12 +37,12 @@ in
     libraries = with pkgs; [ oxlint ];
   };
 
-  environment.systemPackages = with pkgs; [
-    nixd # lsp
-    nix-tree # inspect nix store
-    nix-inspect # inspect flake
-    manix # search nix docs
-    nix-output-monitor # pretty rebuild output
+  environment.systemPackages = [
+    pkgs.nixd # lsp
+    pkgs.nix-tree # inspect nix store
+    pkgs.nix-inspect # inspect flake
+    pkgs.manix # search nix docs
+    pkgs.nix-output-monitor # pretty rebuild output
 
     nixpkgs-review # review nix packages
     nix-update # update nix packages
