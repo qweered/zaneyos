@@ -12,10 +12,6 @@ let
     nix = pkgs.lixPackageSets.git.lix;
     inherit nixpkgs-review;
   };
-  nix-init = pkgs.nix-init.override {
-    nix = pkgs.lixPackageSets.git.lix;
-    nurl = pkgs.nurl.override { nix = pkgs.lixPackageSets.git.lix; };
-  };
 in
 {
   nixpkgs.config = {
@@ -23,7 +19,7 @@ in
     allowAliases = false;
   };
 
-  _module.args.pkgs-master = import inputs.nixpkgs-master {
+  _module.args.pkgs-unstable = import inputs.nixpkgs-unstable {
     inherit (pkgs.stdenv.hostPlatform) system;
     inherit (config.nixpkgs) config;
   };
@@ -46,7 +42,7 @@ in
 
     nixpkgs-review # review nix packages
     nix-update # update nix packages
-    nix-init # init nix packages TODO: home-manager
+    pkgs.nix-init # init nix packages TODO: home-manager
   ];
 
   # For nix shell, nix run https://github.com/NixOS/nix/issues/9875

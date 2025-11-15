@@ -1,9 +1,9 @@
-{ pkgs-master, ... }:
+{ pkgs, ... }:
 
 {
   # CONFIG
   programs.opencode = {
     enable = true;
-    package = pkgs-master.opencode;
+    package = pkgs.opencode;
   };
 }
