@@ -42,7 +42,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    ayugram-desktop.url = "github:ndfined-crp/ayugram-desktop/release";
+    # ayugram-desktop.url = "github:ndfined-crp/ayugram-desktop/release";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
