@@ -4,9 +4,7 @@
   programs.home-manager.enable = true;
 
   home = {
-    inherit (vars) username;
-    inherit (vars) stateVersion;
-    inherit (vars) homeDirectory;
+    inherit (vars) username stateVersion homeDirectory;
     sessionVariables = {
       NIXPKGS_ALLOW_UNFREE = "1"; # for nix shell, nix run https://github.com/NixOS/nix/issues/9875
       EDITOR = "${vars.editor}";
