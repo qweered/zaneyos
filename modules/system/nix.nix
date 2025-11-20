@@ -42,7 +42,7 @@ in
 
     nixpkgs-review # review nix packages
     nix-update # update nix packages
-    pkgs.nix-init # init nix packages TODO: home-manager
+    pkgs.nix-init # init nix packages TODO: can override lix here too but 20 mins rebuild
   ];
 
   # For nix shell, nix run https://github.com/NixOS/nix/issues/9875
@@ -77,8 +77,8 @@ in
 
       substituters = [
         "https://cache.nixos.org?priority=1" # lower number means higher priority
-        "https://nix-community.cachix.org" # mirror
-        "https://nixos-cache-proxy.cofob.dev" # mirror 2
+        "https://nixos-cache-proxy.cofob.dev" # mirror
+        "https://nix-community.cachix.org" # cache for unfree packages
         "https://hyprland.cachix.org"
         "https://cache.garnix.io"
         "https://chaotic-nyx.cachix.org"
