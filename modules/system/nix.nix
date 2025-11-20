@@ -45,11 +45,6 @@ in
     pkgs.nix-init # init nix packages TODO: can override lix here too but 20 mins rebuild
   ];
 
-  # For nix shell, nix run https://github.com/NixOS/nix/issues/9875
-  environment.variables = {
-    NIXPKGS_ALLOW_UNFREE = "1";
-  };
-
   nix = {
     channel.enable = false;
     package = pkgs.lixPackageSets.git.lix;

@@ -1,4 +1,4 @@
-{ vars, osConfig, ... }:
+{ osConfig, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -10,25 +10,6 @@
     portalPackage = null;
 
     settings = {
-      env = [
-        "QT_QPA_PLATFORMTHEME,qt6ct"
-
-        "NIXOS_OZONE_WL,1" # use wayland in electron packages
-        "MOZ_ENABLE_WAYLAND,1" # use wayland in firefox
-        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" # disable window decorations in qt apps
-        "EDITOR,nvim"
-        "BROWSER,${vars.browser}"
-        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-        "GDK_SCALE,1"
-        "GDK_BACKEND,wayland,x11,*"
-        "CLUTTER_BACKEND,wayland"
-        "SDL_VIDEODRIVER,wayland" # QUIRK: Some games require it to be x11
-      ];
-
-      exec-once = [
-        "uwsm finalize" # TODO: check if this is needed
-      ];
-
       monitor = [ "eDP-1, 1920x1080@64, 0x0, 1" ];
 
       general = {

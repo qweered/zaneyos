@@ -7,12 +7,12 @@
 }:
 
 let
-  vars = {
+  vars = rec {
     username = "qweered";
-    homeDirectory = "/home/qweered";
-    city = "Vilnius"; # TODO: find a way to get this based on location, also does not work currently
+    homeDirectory = "/home/${username}";
     description = "The only and the greatest admin";
     browser = "vivaldi";
+    editor = "nvim";
     stateVersion = "24.11"; # Change it when i read all changelogs from previous versions and make changes
   };
 in
