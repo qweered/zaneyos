@@ -23,8 +23,6 @@
     };
   };
 
-  news.display = "show";
-
   xdg = {
     userDirs = {
       enable = true;
