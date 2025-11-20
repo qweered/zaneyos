@@ -80,7 +80,7 @@ let
           key <AB05> {[ Cyrillic_shorti, Cyrillic_SHORTI ]}; // q -> й
           key <AB06> {[ Cyrillic_em, Cyrillic_EM ]};         // m -> м
           key <AB07> {[ Cyrillic_ha, Cyrillic_HA ]};         // h -> х
-          key <AB08> {[ Cyrillic_softsign, question, Cyrillic_hardsign, Cyrillic_HARDSIGN ]}; // ь, ?, ъ
+          key <AB08> {[ Cyrillic_softsign, question, Cyrillic_hardsign ]}; // ь, ?, ъ
           key <AB09> {[ comma, less ]};
           key <AB10> {[ period, greater ]};
       };
