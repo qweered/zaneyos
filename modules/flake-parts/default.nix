@@ -47,10 +47,6 @@
       in
       {
         inherit inputs hostPlatform;
-        pkgs-unstable = import inputs.nixpkgs-unstable {
-          system = hostPlatform;
-          inherit config;
-        };
         pkgs-stable = import inputs.nixpkgs-stable {
           system = hostPlatform;
           inherit config;

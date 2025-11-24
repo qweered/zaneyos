@@ -1,17 +1,13 @@
 {
   description = "HyprNixOS";
 
-  inputs = rec {
-    # This is a dirty hack until better solution is developed, 2 days behind
-    # nixpkgs.url = "github:numtide/nixpkgs-unfree/nixpkgs-unstable";
+  inputs = {
+    # nixpkgs-unstable-with-unfree.url = "github:numtide/nixpkgs-unfree/nixpkgs-unstable";
+    # nixpkgs-try-pr.url = "github:nixos/nixpkgs?ref=pull/379731/merge";
+    # nixpkgs-local-testing.url = "git+file:///home/qweered/Projects/nixpkgs";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/master";
-
-    # Try pull request
-    # nixpkgs.url = "github:nixos/nixpkgs?ref=pull/379731/merge";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs-testing.url = "git+file:///home/qweered/Projects/nixpkgs";
-    nixpkgs-stable = nixpkgs-unstable;
-    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     dgop = {
@@ -41,8 +37,6 @@
     #   url = "github:matadaniel/LazyVim-module";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-
-    # ayugram-desktop.url = "github:ndfined-crp/ayugram-desktop/release";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
