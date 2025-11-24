@@ -31,7 +31,7 @@
           nixfmt = {
             enable = true;
             strict = true;
-            width = 120;
+            width = 140;
           };
           statix.enable = true;
           deadnix.enable = true;
