@@ -1,8 +1,7 @@
 {
-  pkgs,
   inputs,
-  pkgs-master,
-  pkgs-stable,
+  specialArgs,
+  pkgs,
   ...
 }:
 
@@ -21,13 +20,8 @@ in
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   home-manager = {
-    extraSpecialArgs = {
-      inherit
-        inputs
-        vars
-        pkgs-master
-        pkgs-stable
-        ;
+    extraSpecialArgs = specialArgs // {
+      inherit vars;
     };
     verbose = true;
     useGlobalPkgs = true;
