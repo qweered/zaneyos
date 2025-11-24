@@ -52,6 +52,7 @@ in
           "video"
           "input"
           "podman"
+          "adbusers"
         ];
       };
     };
