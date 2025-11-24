@@ -25,17 +25,20 @@
         hooks.treefmt.enable = true;
       };
 
-      treefmt.programs = {
-        nixfmt = {
-          enable = true;
-          strict = true;
-          width = 120;
+      treefmt = {
+        projectRootFile = "TODO.md";
+        programs = {
+          nixfmt = {
+            enable = true;
+            strict = true;
+            width = 120;
+          };
+          statix.enable = true;
+          deadnix.enable = true;
+          shellcheck.enable = true;
+          # keep-sorted.enable = true; CONFIG
+          # nixf-diagnose.enable = true; CONFIG
         };
-        statix.enable = true;
-        deadnix.enable = true;
-        shellcheck.enable = true;
-        # keep-sorted.enable = true; CONFIG
-        # nixf-diagnose.enable = true; CONFIG
       };
     };
 
