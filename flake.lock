@@ -83,22 +83,6 @@
         "type": "github"
       }
     },
-    "easyeffects-presets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1735809067,
-        "narHash": "sha256-nXVtX0ju+Ckauo0o30Y+sfNZ/wrx3HXNCK05z7dLaFc=",
-        "owner": "jackhack96",
-        "repo": "easyeffects-presets",
-        "rev": "069195c4e73d5ce94a87acb45903d18e05bffdcc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jackhack96",
-        "repo": "easyeffects-presets",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -511,7 +495,6 @@
         "chaotic": "chaotic",
         "dankMaterialShell": "dankMaterialShell",
         "dgop": "dgop",
-        "easyeffects-presets": "easyeffects-presets",
         "flake-parts": "flake-parts",
         "git-hooks": "git-hooks",
         "home-manager": "home-manager_2",
