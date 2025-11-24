@@ -1,14 +1,28 @@
+let
+  # use cloudflare, quad9 (slower) and adguard with DNS over TLS
+  nameservers = [
+    "1.1.1.2#security.cloudflare-dns.com"
+    "9.9.9.9#dns.quad9.net"
+    "94.140.14.14#dns.adguard-dns.com"
+  ];
+in
 {
   networking = {
+    inherit nameservers;
     firewall.enable = false; # CONFIG
     networkmanager = {
       enable = true;
       wifi.powersave = true;
       # for captive portals but don't work it seems
-      # TODO: contribute to nixpkgs https://wiki.archlinux.org/title/NetworkManager#Checking_connectivity
-      settings.connectivity.uri = "http://nmcheck.gnome.org/check_network_status.txt";
+      # contribute to nixpkgs https://wiki.archlinux.org/title/NetworkManager#Checking_connectivity
+      # settings.connectivity.uri = "http://nmcheck.gnome.org/check_network_status.txt";
     };
   };
 
-  # programs.nm-applet.enable = true;
+  services.resolved = {
+    enable = true;
+    dnssec = "allow-downgrade";
+    dnsovertls = "opportunistic";
+    fallbackDns = nameservers;
+  };
 }
