@@ -6,13 +6,43 @@
 }:
 
 let
-  app_runner = ''rofi -show drun -run-command "uwsm app -- {cmd}"'';
-  terminal = "ghostty";
-  toggle = app: "pkill ${lib.head (lib.split " " app)} || uwsm app -- ${app}";
-  run = app: "uwsm app -- ${if app == "" then " " else app}";
-  mic_instead_of_speaker = "${
-    if osConfig.networking.hostName == "hyprnix" then "@DEFAULT_AUDIO_SOURCE@" else "@DEFAULT_AUDIO_SINK@"
-  }";
+  inherit (lib)
+    getExe'
+    getExe
+    head
+    split
+    ;
+  inherit (pkgs)
+    writeShellScriptBin
+    wireplumber
+    playerctl
+    rofi
+    uwsm
+    ghostty
+    brillo
+    clipse
+    grim # screenshot
+    slurp # screenshot
+    satty # screenshot, over hyprshot swappy
+    wl-clipboard # copy-paste in shell, over wl-clipboard-rs
+    ;
+  wpctl = getExe' wireplumber "wpctl";
+  wlCopy = getExe' wl-clipboard "wl-copy";
+  appRunner = "${getExe rofi} -show drun -run-command \"${getExe uwsm} app -- {cmd}\"";
+  terminal = "${getExe ghostty}";
+  brightnessUp = "${getExe brillo} -q -u 300000 -A 5";
+  brightnessDown = "${getExe brillo} -q -u 300000 -U 5";
+  volumeUp = "${wpctl} set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
+  volumeDown = "${wpctl} set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-";
+  toggle = app: "pkill ${head (split " " app)} || ${getExe uwsm} app -- ${app}";
+  run = app: "${getExe uwsm} app -- ${app}";
+  micInsteadOfSpeaker = if osConfig.networking.hostName == "hyprnix" then "@DEFAULT_AUDIO_SOURCE@" else "@DEFAULT_AUDIO_SINK@";
+  screenshot = writeShellScriptBin "screenshot" ''
+    ${getExe grim} -g "$(${getExe slurp} -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | \
+    ${getExe satty} --filename - --fullscreen \
+      --output-filename ~/Pictures/Screenshots/Screenshot_$(date +"%Y%m%d_%H%M%S").png \
+      --init-tool brush --copy-command ${wlCopy}
+  '';
 in
 {
   wayland.windowManager.hyprland.settings = {
@@ -34,11 +64,11 @@ in
         binding =
           mod: cmd: key: arg:
           "${mod}, ${key}, ${cmd}, ${arg}";
-        mvfocus = binding "SUPER" "movefocus";
-        ws = binding "SUPER" "workspace";
-        resizeactive = binding "SUPER_CTRL" "resizeactive";
-        mvactive = binding "SUPER_ALT" "moveactive";
-        mvtows = binding "SUPER_SHIFT" "movetoworkspace";
+        moveFocus = binding "SUPER" "movefocus";
+        workspace = binding "SUPER" "workspace";
+        resizeActive = binding "SUPER_CTRL" "resizeactive";
+        moveActive = binding "SUPER_ALT" "moveactive";
+        moveToWorkspace = binding "SUPER_SHIFT" "movetoworkspace";
         arr = [
           1
           2
@@ -48,19 +78,12 @@ in
           6
           7
         ];
-        # CONFIG: all pkgs.something should be declared somewhere else, lib.getexe?
-        screenshot = pkgs.writeShellScript "screenshot" ''
-          grim -g "$(slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | \
-          satty --filename - --fullscreen \
-            --output-filename ~/Pictures/Screenshots/Screenshot_$(date +"%Y%m%d_%H%M%S").png \
-            --init-tool brush --copy-command wl-copy
-        '';
       in
       [
         "SUPER, Return, exec, ${run terminal}"
-        # FIXME: "SUPER, V, exec, ${run terminal} --class clipse -e 'clipse'"
-        "SUPER, B, exec, ${run ""} $BROWSER"
-        "SUPER_CTRL, RETURN, exec, ${toggle app_runner}"
+        "SUPER, V, exec, ${run terminal} --class=clipse.app -e ${getExe clipse}"
+        "SUPER, B, exec, ${run "$BROWSER"}"
+        "SUPER_CTRL, RETURN, exec, ${toggle appRunner}"
         "SUPER, Print, exec, ${screenshot}"
 
         "ALT, Tab, focuscurrentorlast"
@@ -70,40 +93,39 @@ in
         "SUPER, F, fullscreen"
         "SUPER, S, togglesplit"
 
-        (mvfocus "k" "u")
-        (mvfocus "j" "d")
-        (mvfocus "l" "r")
-        (mvfocus "h" "l")
-        (ws "left" "e-1")
-        (ws "right" "e+1")
-        (mvtows "left" "e-1")
-        (mvtows "right" "e+1")
-        (resizeactive "k" "0 -20")
-        (resizeactive "j" "0 20")
-        (resizeactive "l" "20 0")
-        (resizeactive "h" "-20 0")
-        (mvactive "k" "0 -20")
-        (mvactive "j" "0 20")
-        (mvactive "l" "20 0")
-        (mvactive "h" "-20 0")
+        (moveFocus "k" "u")
+        (moveFocus "j" "d")
+        (moveFocus "l" "r")
+        (moveFocus "h" "l")
+        (workspace "left" "-1")
+        (workspace "right" "+1")
+        (moveToWorkspace "left" "-1")
+        (moveToWorkspace "right" "+1")
+        (resizeActive "k" "0 -20")
+        (resizeActive "j" "0 20")
+        (resizeActive "l" "20 0")
+        (resizeActive "h" "-20 0")
+        (moveActive "k" "0 -20")
+        (moveActive "j" "0 20")
+        (moveActive "l" "20 0")
+        (moveActive "h" "-20 0")
       ]
-      ++ (map (i: ws (toString i) (toString i)) arr)
-      ++ (map (i: mvtows (toString i) (toString i)) arr);
+      ++ (map (i: workspace (toString i) (toString i)) arr)
+      ++ (map (i: moveToWorkspace (toString i) (toString i)) arr);
 
     bindle = [
-      ",XF86MonBrightnessUp,   exec, brillo -q -u 300000 -A 5"
-      ",XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
-      ",XF86AudioRaiseVolume,  exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-      ",XF86AudioLowerVolume,  exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
+      ",XF86MonBrightnessUp,   exec, ${brightnessUp}"
+      ",XF86MonBrightnessDown, exec, ${brightnessDown}"
+      ",XF86AudioRaiseVolume,  exec, ${volumeUp}"
+      ",XF86AudioLowerVolume,  exec, ${volumeDown}"
     ];
 
     bindl = [
-      ",XF86AudioPlay,  exec, playerctl play-pause"
-      ",XF86AudioPrev,  exec, playerctl previous"
-      ",XF86AudioNext,  exec, playerctl next"
-
-      ",XF86AudioMute,    exec, wpctl set-mute ${mic_instead_of_speaker} toggle"
-      ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      ",XF86AudioPlay,  exec, ${getExe playerctl} play-pause"
+      ",XF86AudioPrev,  exec, ${getExe playerctl} previous"
+      ",XF86AudioNext,  exec, ${getExe playerctl} next"
+      ",XF86AudioMute,    exec, ${wpctl} set-mute ${micInsteadOfSpeaker} toggle"
+      ",XF86AudioMicMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
     ];
 
     bindm = [

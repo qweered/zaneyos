@@ -1,9 +1,7 @@
-{ osConfig, ... }:
-
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = !osConfig.programs.hyprland.withUWSM;
+    systemd.enable = false; # handled by uwsm
 
     # Use the ones from the NixOS module
     package = null;
@@ -14,11 +12,11 @@
 
       general = {
         border_size = 5;
-        # no_border_on_floating = true;
+        no_border_on_floating = false;
 
         gaps_in = 10;
-        gaps_out = 20;
-        # gaps_workspaces = 3;
+        gaps_out = 10;
+        gaps_workspaces = 5;
 
         # CONFIG: color based on wallpaper
         "col.inactive_border" =
@@ -105,7 +103,13 @@
       };
 
       gestures = {
-        gesture = "3, horizontal, workspace";
+        workspace_swipe_forever = false; # swipe multiple workspaces at once
+        gesture = [
+          "3, horizontal, workspace"
+          "4, left, dispatcher, movetoworkspace, -1" # or monitor when i have more than one
+          "4, right, dispatcher, movetoworkspace, +1"
+          "4, pinch, fullscreen"
+        ];
       };
     };
   };

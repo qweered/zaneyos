@@ -17,22 +17,11 @@
     hyperfine # speed benchmarks
     ffmpeg # video/audio converter
 
-    wl-clipboard # clipboard in shell, over wl-clipboard-rs (conflicts with hyprpanel probably)
     libnotify # notifications in shell
-    grim
-    slurp
-    satty # screenshot tools, over hyprshot swappy
     hyprpicker # color picker
     wget # download files, over curl
     yt-dlp # download videos
 
     jq
-    # zathura imv # pdf/image viewer
-    # wluma # automatic brightness control
-    # xxh + sshpass # transfer shell config over ssh
-    # unzip zip rar unrar # over 7z
-    # mc superfile xplr ranger lf nnn yazi broot # over ranger
-    # walker anyrun # over rofi
-    # activate-linux # fun windows watermark
   ];
 }
