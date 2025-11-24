@@ -37,24 +37,32 @@
     };
 
   flake.nixosConfigurations.hyprnix = inputs.nixpkgs.lib.nixosSystem {
-    specialArgs = {
-      inherit inputs;
-      hostPlatform = "x86_64-linux";
-    };
-    modules =
-      inputs.self.moduleTree {
-        _defaultsRecursive = false;
-        users.qweered = true;
-        hosts.hyprnix = true;
-        system = {
-          _defaultsRecursive = true;
+    specialArgs =
+      let
+        hostPlatform = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+          allowAliases = false;
         };
-      }
-      ++ [
-        {
-          networking.hostName = "hyprnix";
-          system.stateVersion = "24.11";
-        }
-      ];
+      in
+      {
+        inherit inputs hostPlatform;
+        pkgs-unstable = import inputs.nixpkgs-unstable {
+          system = hostPlatform;
+          inherit config;
+        };
+        pkgs-stable = import inputs.nixpkgs-stable {
+          system = hostPlatform;
+          inherit config;
+        };
+      };
+    modules = inputs.self.moduleTree {
+      _defaultsRecursive = false;
+      users.qweered = true;
+      hosts.hyprnix = true;
+      system = {
+        _defaultsRecursive = true;
+      };
+    };
   };
 }

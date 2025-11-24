@@ -3,7 +3,6 @@
   pkgs,
   inputs,
   config,
-  hostPlatform,
   ...
 }:
 let
@@ -19,15 +18,6 @@ in
   nixpkgs.config = {
     allowUnfree = true;
     allowAliases = false;
-  };
-
-  _module.args.pkgs-unstable = import inputs.nixpkgs-unstable {
-    inherit hostPlatform;
-    inherit (config.nixpkgs) config;
-  };
-  _module.args.pkgs-stable = import inputs.nixpkgs-stable {
-    inherit hostPlatform;
-    inherit (config.nixpkgs) config;
   };
 
   programs.nix-ld = {
