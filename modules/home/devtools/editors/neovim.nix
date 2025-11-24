@@ -1,7 +1,7 @@
-_:
+{ homeModulesPath, ... }:
 
 {
-  # imports = [ inputs.nvf.homeManagerModules.default ];
+  imports = [ "${homeModulesPath}/programs/neovim.nix" ];
 
   # Neovim gui wrapper
   # programs.neovide = {

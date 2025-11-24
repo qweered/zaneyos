@@ -1,4 +1,7 @@
+{ homeModulesPath, ... }:
 {
+  imports = [ "${homeModulesPath}/services/window-managers/hyprland.nix" ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; # handled by uwsm

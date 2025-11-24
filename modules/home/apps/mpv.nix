@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, homeModulesPath, ... }:
 {
+  imports = [ "${homeModulesPath}/programs/mpv.nix" ];
+
   # CONFIG
   programs.mpv = {
     enable = true;

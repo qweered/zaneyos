@@ -24,7 +24,9 @@ in
   home-manager = {
     extraSpecialArgs = specialArgs // {
       inherit vars;
+      homeModulesPath = inputs.home-manager.outPath + "/modules";
     };
+    minimal = true;
     verbose = true;
     useGlobalPkgs = true;
     useUserPackages = true;

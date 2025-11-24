@@ -1,6 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, homeModulesPath, ... }:
 
 {
+  imports = [
+    "${homeModulesPath}/programs/gpg.nix"
+    "${homeModulesPath}/services/gpg-agent.nix"
+  ];
+
   programs.gpg = {
     enable = true;
     mutableKeys = false;

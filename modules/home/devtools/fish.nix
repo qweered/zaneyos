@@ -1,6 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, homeModulesPath, ... }:
 
 {
+  imports = [
+    "${homeModulesPath}/programs/fish.nix"
+    "${homeModulesPath}/programs/man.nix"
+  ];
+
   home.packages = with pkgs; [
     grc
     fishPlugins.grc

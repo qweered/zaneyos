@@ -1,1 +1,6 @@
-{ programs.uv.enable = true; }
+{ homeModulesPath, ... }:
+{
+  imports = [ "${homeModulesPath}/programs/uv.nix" ];
+
+  programs.uv.enable = true;
+}

@@ -1,1 +1,5 @@
-{ programs.bun.enable = true; }
+{ homeModulesPath, ... }:
+{
+  imports = [ "${homeModulesPath}/programs/bun.nix" ];
+  programs.bun.enable = true;
+}

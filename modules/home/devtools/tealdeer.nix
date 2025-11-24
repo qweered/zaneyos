@@ -1,4 +1,10 @@
+{ homeModulesPath, ... }:
 {
+  imports = [
+    "${homeModulesPath}/programs/tealdeer.nix"
+    "${homeModulesPath}/services/tldr-update.nix"
+  ];
+
   # CONFIG: https://tealdeer-rs.github.io/tealdeer/config_style.html
   programs.tealdeer = {
     enable = true;
