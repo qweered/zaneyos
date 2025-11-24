@@ -34,11 +34,11 @@ in
 
   users = {
     mutableUsers = true; # need agenix password for false
-    defaultUserShell = pkgs.fish;
-    users = {
+    extraUsers = {
       "${vars.username}" = {
         isNormalUser = true;
         initialPassword = "password";
+        shell = pkgs.fish;
         inherit (vars) description;
         extraGroups = [
           "networkmanager"
