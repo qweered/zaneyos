@@ -6,7 +6,7 @@
 }:
 
 {
-  # Perlless https://github.com/NixOS/nixpkgs/blob/8bb4e10098f4f5e47730856e8de5f8836ff7d49a/nixos/modules/profiles/perlless.nix
+  # Perlless https://github.com/NixOS/nixpkgs/blob/0260f927b7c1578b5c7cdefd7db7b660565cd362/nixos/modules/profiles/perlless.nix
 
   system.disableInstallerTools = true; # remove generate, install, enter, option, version, build-vms, firewall
   system.tools.nixos-rebuild.enable = true; # but keep rebuild
@@ -14,10 +14,10 @@
   boot.loader.grub.enable = lib.mkDefault false;
 
   environment.defaultPackages = [ ];
-  environment.systemPackages = [
-    (lib.hiPrio pkgs.uutils-coreutils-noprefix)
-    (lib.hiPrio pkgs.uutils-findutils)
-    (lib.hiPrio pkgs.uutils-diffutils)
+  environment.systemPackages = with pkgs; [
+    uutils-coreutils-noprefix
+    uutils-findutils
+    uutils-diffutils
   ];
 
   documentation = {
