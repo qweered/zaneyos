@@ -7,6 +7,9 @@
     # pkgs-by-name-for-flake-parts.flakeModule
   ];
 
+  # expose options for nixd
+  debug = true;
+
   perSystem =
     { pkgs, config, ... }:
     {
