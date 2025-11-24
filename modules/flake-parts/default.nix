@@ -10,7 +10,6 @@
   perSystem =
     { pkgs, config, ... }:
     {
-
       devShells.default = pkgs.mkShell {
         name = "hyprnixos";
         shellHook = ''
