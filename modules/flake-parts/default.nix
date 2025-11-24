@@ -37,7 +37,10 @@
     };
 
   flake.nixosConfigurations.hyprnix = inputs.nixpkgs.lib.nixosSystem {
-    specialArgs = { inherit inputs; };
+    specialArgs = {
+      inherit inputs;
+      hostPlatform = "x86_64-linux";
+    };
     modules =
       inputs.self.moduleTree {
         _defaultsRecursive = false;
@@ -51,7 +54,6 @@
         {
           networking.hostName = "hyprnix";
           system.stateVersion = "24.11";
-          nixpkgs.hostPlatform = "x86_64-linux";
         }
       ];
   };

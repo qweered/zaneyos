@@ -1,6 +1,6 @@
-{ inputs, pkgs, ... }:
+{ inputs, hostPlatform, ... }:
 let
-  spicetifyPkgs = inputs.spicetify.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  spicetifyPkgs = inputs.spicetify.legacyPackages.${hostPlatform};
 in
 {
   imports = [ inputs.spicetify.homeManagerModules.default ];

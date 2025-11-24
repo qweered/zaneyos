@@ -1,11 +1,17 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  hostPlatform,
+  ...
+}:
 
 {
-  # Host-specific settings
   imports = [ inputs.ucodenix.nixosModules.default ];
+
   services.ucodenix = {
     enable = true;
-    cpuModelId = "00860F81"; # TODO: Run cpuid -1 -l 1 -r | sed -n 's/.*eax=0x\([0-9a-f]*\).*/\U\1/p' to retrieve processor's model ID
+    # To retrieve processor's model ID, run `cpuid -1 -l 1 -r | sed -n 's/.*eax=0x\([0-9a-f]*\).*/\U\1/p'`
+    cpuModelId = "00860F81";
   };
   services.swapspace.enable = true; # dynamic swap file
   zramSwap.enable = true; # swap in zram
@@ -47,4 +53,6 @@
       "dmask=0077"
     ];
   };
+
+  nixpkgs.hostPlatform = hostPlatform;
 }
