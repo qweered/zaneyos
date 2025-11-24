@@ -1,11 +1,9 @@
 # TODO
 
-* Window 1e4b40b0 -> File Operation Progress title in thunar make floating
 * make lazydocker work with podman
 * add devenv, in flake.nix or in home-manager?
 * home-manager in flake-parts? https://github.com/khaneliman/khanelinix/blob/4f55285944563cd24e07753eb484a557fa2d5cd1/flake/home.nix#L35
 * matrix client
-* https://github.com/3timeslazy/nix-search-tv
 * right now users can't influence anything in system, only in home-manager
 * credentials, agenix
 * sort (imports, something else)
@@ -13,7 +11,6 @@
 * stylix
 * check if anything in system have home-manager stuff (for example podman)
 * disko
-* add overlays to separate place
 * allow-dirty = false;
 * remove all TODO todos
 * fix NIX-PATH
@@ -51,7 +48,7 @@
 * why the fuck i need to have exact length for hash to it start building and showing me actual hash?
 * rename network-manager-applet to nm-applet in home manager repo
 
-## Software to watch
+## Software to add
 
 * [kunkun](https://github.com/kunkunsh/kunkun)
 * [goneovim](https://github.com/akiyosi/goneovim)
@@ -59,6 +56,14 @@
 * kando-menu
 * clight, hyprsunset
 * ddcutil
+* nix-search-tv
 * diffoscope
 * [fd](https://github.com/sharkdp/fd)
 * [firedragon](https://firedragon.garudalinux.org)
+* zathura imv - pdf/image viewer
+* wluma - automatic brightness control
+* unzip zip rar unrar - over 7z
+* mc superfile xplr ranger lf nnn yazi broot - over ranger (yazi is best?)
+* xxh + sshpass - transfer shell config over ssh
+* walker anyrun - over rofi
+* activate-linux - fun windows watermark
