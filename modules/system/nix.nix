@@ -7,9 +7,10 @@
 }:
 let
   flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
-  nixpkgs-review = pkgs.nixpkgs-review.override { nix = pkgs.lixPackageSets.git.lix; };
+  inherit (pkgs.lixPackageSets.latest) lix;
+  nixpkgs-review = pkgs.nixpkgs-review.override { nix = lix; };
   nix-update = pkgs.nix-update.override {
-    nix = pkgs.lixPackageSets.git.lix;
+    nix = lix;
     inherit nixpkgs-review;
   };
 in
@@ -42,12 +43,11 @@ in
 
     nixpkgs-review # review nix packages
     nix-update # update nix packages
-    pkgs.nix-init # init nix packages TODO: can override lix here too but 20 mins rebuild
   ];
 
   nix = {
     channel.enable = false;
-    package = pkgs.lixPackageSets.git.lix;
+    package = lix;
 
     # TODO: i don't need all the flakes in registry and path, nixpkgs is set by default nixpkgs.flake.setFlakeRegistry
     registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs; # pin the registry

@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  nix-direnv = pkgs.nix-direnv.override { nix = pkgs.lixPackageSets.git.lix; };
+  nix-direnv = pkgs.nix-direnv.override { nix = pkgs.lixPackageSets.latest.lix; };
 in
 {
   programs.direnv = {
