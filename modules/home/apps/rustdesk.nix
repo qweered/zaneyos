@@ -1,5 +1,5 @@
 { pkgs, ... }:
 {
-  # over anydesk, teamviewer
-  home.packages = [ pkgs.rustdesk ];
+  # over anydesk, teamviewer, rustdesk (bad gui)
+  home.packages = [ pkgs.rustdesk-flutter ];
 }
