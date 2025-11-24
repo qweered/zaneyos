@@ -4,9 +4,10 @@
   config,
   ...
 }:
-
-{
+let
+  cfg = config.wayland.windowManager.hyprland.enable;
+in
+lib.mkIf cfg {
   home.packages = [ pkgs.clipse ];
-
-  wayland.windowManager.hyprland = lib.mkIf config.wayland.windowManager.hyprland.enable { settings.exec-once = [ "clipse -listen" ]; };
+  wayland.windowManager.hyprland.settings.exec-once = [ "clipse -listen" ];
 }
