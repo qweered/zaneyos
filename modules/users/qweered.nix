@@ -1,18 +1,20 @@
 {
-  inputs,
-  specialArgs,
   pkgs,
+  inputs,
+  config,
+  specialArgs,
   ...
 }:
 
 let
+  # TODO: use specialArgs instead of vars or something else
   vars = rec {
+    inherit (config.system) stateVersion;
     username = "qweered";
     homeDirectory = "/home/${username}";
     description = "The only and the greatest admin";
     browser = "vivaldi";
     editor = "nvim";
-    stateVersion = "24.11"; # Change it when i read all changelogs from previous versions and make changes
   };
 in
 
