@@ -29,12 +29,13 @@
   # TODO: Check that the system does not contain a Nix store path that contains the string "perl".
   # system.forbiddenDependenciesRegexes = [ "perl" ];
 
-  services.dbus.implementation = "broker"; # modern
+  # If /etc is read-only, we need to provide the machine-id file as a mount point for systemd.
+  # https://www.freedesktop.org/software/systemd/man/256/machine-id.html#Initialization
+  # environment.etc."machine-id".text = "";
+  # system.etc.overlay.enable = true; # multiple errors for now
+
   systemd.enableStrictShellChecks = true; # CONFIG: will become default
-  # system.etc.overlay = {
-  #   enable = true;
-  #   mutable = false; # TODO: crashes my system
-  # };
+  services.dbus.implementation = "broker"; # CONFIG: will become default
 
   # Man-db cache generation cause it's very slow for fish
   # Stolen from https://github.com/MidAutumnMoon/TaysiTsuki/blob/025509df115b5d589f10d5c0d6d11d56ae74c4a2/nixos/documentation/module.nix
