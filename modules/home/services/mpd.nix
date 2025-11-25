@@ -1,1 +1,6 @@
-{ services.mpd.enable = true; }
+{ homeModulesPath, ... }:
+{
+  imports = [ "${homeModulesPath}/services/mpd.nix" ];
+
+  services.mpd.enable = true;
+}

@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, homeModulesPath, ... }:
 
 {
+  imports = [ "${homeModulesPath}/programs/bat.nix" ];
+
   # CONFIG: look and configure them all if needed
   home.packages = with pkgs; [
     btop # process viewer, over htop, mission-center

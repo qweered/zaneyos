@@ -1,6 +1,9 @@
-{ inputs, ... }:
+{ inputs, homeModulesPath, ... }:
 {
-  imports = [ inputs.dankMaterialShell.homeModules.dankMaterialShell.default ];
+  imports = [
+    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+    "${homeModulesPath}/programs/quickshell.nix"
+  ];
 
   programs.dankMaterialShell = {
     enable = true;

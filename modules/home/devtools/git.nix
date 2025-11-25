@@ -1,6 +1,20 @@
-{ config, ... }:
+{ config, homeModulesPath, ... }:
 
 {
+  imports = [
+    "${homeModulesPath}/programs/delta.nix"
+    "${homeModulesPath}/programs/gh.nix"
+    "${homeModulesPath}/programs/git.nix"
+    "${homeModulesPath}/programs/lazygit.nix"
+    "${homeModulesPath}/programs/jujutsu.nix"
+    "${homeModulesPath}/programs/emacs.nix" # needed for jujutsu
+    "${homeModulesPath}/programs/diff-highlight.nix" # needed
+    "${homeModulesPath}/programs/diff-so-fancy.nix" # needed
+    "${homeModulesPath}/programs/difftastic.nix" # needed
+    "${homeModulesPath}/programs/patdiff.nix" # needed
+    "${homeModulesPath}/programs/riff.nix" # needed
+  ];
+
   # TODO: migrate to jj? Map jj to gg for comfort
   programs = {
     gh.enable = true;

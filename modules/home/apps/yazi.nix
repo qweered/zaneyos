@@ -1,1 +1,6 @@
-{ programs.yazi.enable = true; }
+{ homeModulesPath, ... }:
+{
+  imports = [ "${homeModulesPath}/programs/yazi.nix" ];
+
+  programs.yazi.enable = true;
+}

@@ -1,6 +1,8 @@
-{ vars, ... }:
+{ vars, homeModulesPath, ... }:
 
 {
+  imports = [ "${homeModulesPath}/programs/home-manager.nix" ];
+
   programs.home-manager.enable = true;
 
   home = {
