@@ -25,6 +25,7 @@ in
     extraSpecialArgs = specialArgs // {
       inherit vars;
     };
+    minimal = true;
     verbose = true;
     useGlobalPkgs = true;
     useUserPackages = true;
