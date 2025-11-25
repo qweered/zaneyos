@@ -4,6 +4,7 @@
   programs.home-manager.enable = true;
 
   home = {
+    enableNixpkgsReleaseCheck = false; # flake keep it in sync, produces annoying warning right after release
     inherit (vars) username stateVersion homeDirectory;
     sessionVariables = {
       NIXPKGS_ALLOW_UNFREE = "1"; # for nix shell, nix run https://github.com/NixOS/nix/issues/9875
