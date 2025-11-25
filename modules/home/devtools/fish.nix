@@ -13,32 +13,36 @@
       set fish_greeting
       fastfetch
     '';
-    shellAliases = {
-      nh-switch = "nh os switch --ask";
-      nh-update = "nh os switch --update --ask";
+    shellAliases =
+      let
+        nhCmd = "nh os switch --ask --diff=always --keep-going --keep-failed --fallback";
+      in
+      {
+        nh-switch = "${nhCmd}";
+        nh-update = "${nhCmd} --update";
 
-      nix-develop = "nom develop";
-      nix-build = "nom-build";
-      nix-shell = "nom-shell";
-      manix = "manix \"\" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --preview=\"manix '{}'\" | xargs manix";
+        nix-develop = "nom develop";
+        nix-build = "nom-build";
+        nix-shell = "nom-shell";
+        manix = "manix \"\" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --preview=\"manix '{}'\" | xargs manix";
 
-      svi = "sudo nvim";
-      ls = "eza --icons";
-      ll = "eza -l --icons";
-      la = "eza -la --icons";
+        svi = "sudo nvim";
+        ls = "eza --icons";
+        ll = "eza -l --icons";
+        la = "eza -la --icons";
 
-      ".." = "cd ..";
-      "..." = "cd ../..";
-      "...." = "cd ../../..";
-      "....." = "cd ../../../..";
+        ".." = "cd ..";
+        "..." = "cd ../..";
+        "...." = "cd ../../..";
+        "....." = "cd ../../../..";
 
-      ff = "fastfetch";
-      df = "duf";
-      du = "gdu";
-      top = "btop";
-      htop = "btop";
-      rm = "rip --graveyard ~/.local/share/Trash";
-      # "ps aux" = "procs"; TODO: add this
-    };
+        ff = "fastfetch";
+        df = "duf";
+        du = "gdu";
+        top = "btop";
+        htop = "btop";
+        rm = "rip --graveyard ~/.local/share/Trash";
+        # "ps aux" = "procs"; TODO: add this
+      };
   };
 }
