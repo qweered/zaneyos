@@ -13,7 +13,7 @@ let
     split
     ;
   inherit (pkgs)
-    writeShellScriptBin
+    writeShellScript
     wireplumber
     playerctl
     rofi
@@ -37,7 +37,7 @@ let
   toggle = app: "pkill ${head (split " " app)} || ${getExe uwsm} app -- ${app}";
   run = app: "${getExe uwsm} app -- ${app}";
   micInsteadOfSpeaker = if osConfig.networking.hostName == "hyprnix" then "@DEFAULT_AUDIO_SOURCE@" else "@DEFAULT_AUDIO_SINK@";
-  screenshot = writeShellScriptBin "screenshot" ''
+  screenshot = writeShellScript "screenshot" ''
     ${getExe grim} -g "$(${getExe slurp} -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | \
     ${getExe satty} --filename - --fullscreen \
       --output-filename ~/Pictures/Screenshots/Screenshot_$(date +"%Y%m%d_%H%M%S").png \
