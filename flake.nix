@@ -50,10 +50,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # easyeffects-presets = {
-    #   url = "github:jackhack96/easyeffects-presets";
-    #   flake = false;
-    # };
+    # TODO: move into my repo
+    easyeffects-presets = {
+      url = "github:jackhack96/easyeffects-presets";
+      flake = false;
+    };
   };
 
   outputs =
