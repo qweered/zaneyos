@@ -62,7 +62,10 @@
       _defaultsRecursive = false;
       users.qweered = true;
       hosts.hyprnix = true;
-      system._defaultsRecursive = true;
+      system = {
+        _defaultsRecursive = true;
+        unused = false;
+      };
     };
   };
 }

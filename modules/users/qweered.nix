@@ -29,7 +29,10 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    users."${vars.username}".imports = inputs.self.moduleTree.home { hyprland.smartgaps = false; };
+    users."${vars.username}".imports = inputs.self.moduleTree.home {
+      hyprland.smartgaps = false;
+      unused = false;
+    };
   };
 
   users = {

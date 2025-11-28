@@ -13,14 +13,12 @@
 * disko
 * allow-dirty = false;
 * remove all TODO todos
-* fix NIX-PATH
 * Hyprcursor
 * home-manager.sharedModules
 * see nixos-ex-flake and blueprint
 * fix that i need to enter gpg and immediately keyring password on every boot
 * my own plymouth theme
 * check logs that there are no major errors
-* pywal -> hellwal
 * multi-user, multi-gpu [ZaneyOS](https://gitlab.com/Zaney/zaneyos)
 * denoising? [rnnoise](https://github.com/fufexan/dotfiles/blob/17939d902a780a6db459312baa40940ff2a9c149/home/programs/media/rnnoise.nix#L1C1-L41C2)
 * refactor assets into github repository
@@ -58,6 +56,7 @@
 * ddcutil
 * nix-search-tv
 * diffoscope
+* hellwal
 * [fd](https://github.com/sharkdp/fd)
 * [firedragon](https://firedragon.garudalinux.org)
 * zathura imv - pdf/image viewer
