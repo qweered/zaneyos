@@ -3,8 +3,6 @@
 {
   imports = [ inputs.chaotic.nixosModules.default ];
 
-  services.scx.enable = true;
-
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
