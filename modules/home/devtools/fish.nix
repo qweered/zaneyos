@@ -21,9 +21,6 @@
         nh-switch = "${nhCmd}";
         nh-update = "${nhCmd} --update";
 
-        nix-develop = "nom develop";
-        nix-build = "nom-build";
-        nix-shell = "nom-shell";
         manix = "manix \"\" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | fzf --preview=\"manix '{}'\" | xargs manix";
 
         svi = "sudo nvim";
