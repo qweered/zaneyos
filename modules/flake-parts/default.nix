@@ -1,11 +1,32 @@
 { inputs, ... }:
-
+let
+  config = {
+    allowUnfree = true;
+    allowAliases = false;
+  };
+  hostPlatform = "x86_64-linux";
+  pkgs-stable = import inputs.nixpkgs-stable {
+    system = hostPlatform;
+    inherit config;
+  };
+in
 {
   imports = with inputs; [
     treefmt-nix.flakeModule
     git-hooks.flakeModule
     # pkgs-by-name-for-flake-parts.flakeModule
   ];
+
+  flake.nixosConfigurations.hyprnix = inputs.nixpkgs.lib.nixosSystem {
+    specialArgs = { inherit inputs hostPlatform pkgs-stable; };
+    modules = inputs.self.moduleTree {
+      users.qweered = true;
+      hosts.hyprnix = true;
+      system.unused = false;
+      home = false; # loaded in by user
+      flake-parts = false; # loaded in flake.nix already
+    };
+  };
 
   # expose options for nixd
   debug = true;
@@ -41,31 +62,4 @@
         };
       };
     };
-
-  flake.nixosConfigurations.hyprnix = inputs.nixpkgs.lib.nixosSystem {
-    specialArgs =
-      let
-        hostPlatform = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-          allowAliases = false;
-        };
-      in
-      {
-        inherit inputs hostPlatform;
-        pkgs-stable = import inputs.nixpkgs-stable {
-          system = hostPlatform;
-          inherit config;
-        };
-      };
-    modules = inputs.self.moduleTree {
-      _defaultsRecursive = false;
-      users.qweered = true;
-      hosts.hyprnix = true;
-      system = {
-        _defaultsRecursive = true;
-        unused = false;
-      };
-    };
-  };
 }

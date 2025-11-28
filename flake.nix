@@ -60,8 +60,8 @@
   outputs =
     inputs@{
       nfh,
-      flake-parts,
       nixpkgs,
+      flake-parts,
       ...
     }:
     let
