@@ -16,11 +16,12 @@
     fd # find alternative
     hyperfine # speed benchmarks
     ffmpeg # video/audio converter
+    tree # directory tree
+    yt-dlp # download videos
 
     libnotify # notifications in shell
     hyprpicker # color picker
     wget # download files, over curl
-    yt-dlp # download videos
 
     jq
   ];
